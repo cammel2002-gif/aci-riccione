@@ -2,6 +2,7 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8" />
+  <meta name="google-site-verification" content="UN469CDHCCg07tGmcqyNvwLDSYdFVv7-qbvH70sqfRU" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ACI Riccione – Automobile Club d'Italia</title>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
@@ -450,7 +451,21 @@
         <div class="service-icon"><i class="fas fa-id-card"></i></div>
         <h3>Rinnovo Patenti</h3>
         <p>Rinnovo della patente di guida con medico in sede nei giorni dedicati.</p>
-        <a href="#prenota" class="service-link">Prenota ora <i class="fas fa-arrow-right"></i></a>
+        <button class="btn-documenti" onclick="toggleDocumenti(this)">
+          <i class="fas fa-file-alt"></i> Documenti necessari
+          <i class="fas fa-chevron-down icona-freccia"></i>
+        </button>
+        <div class="documenti-panel">
+          <div class="documenti-categoria">
+            <div class="doc-cat-title"><span>📄</span> Cosa portare</div>
+            <ul class="doc-list">
+              <li><i class="fas fa-check-circle"></i> Patente in originale</li>
+              <li><i class="fas fa-check-circle"></i> Codice fiscale</li>
+              <li class="doc-nota"><i class="fas fa-info-circle"></i> Fototessera <em>(se preferisci, possiamo scattarla noi direttamente durante la visita!)</em></li>
+            </ul>
+          </div>
+        </div>
+        <a href="#prenota" class="service-link" style="margin-top:1.5rem;">Prenota ora <i class="fas fa-arrow-right"></i></a>
       </div>
       <div class="service-card fade-in">
         <span class="badge">Prenotabile</span>
@@ -667,7 +682,7 @@
         </div>
       </div>
       <div class="nota-prenotazione">
-        <i class="fas fa-thumbtack"></i> Si consiglia vivamente la prenotazione
+        <i class="fas fa-thumbtack"></i> Si consiglia di prenotare l'appuntamento
       </div>
     </div>
   </div>
