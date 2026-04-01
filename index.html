@@ -360,6 +360,59 @@
     }
     .btn-cta-outline:hover { border-color: white; }
 
+    /* FAQ */
+    #faq { background: var(--gray-light); }
+    .faq-list { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 0.75rem; }
+    .faq-item {
+      background: white; border-radius: 14px; overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      border: 1.5px solid transparent; transition: border-color 0.25s;
+    }
+    .faq-item.open { border-color: var(--blue-main); }
+    .faq-question {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 1.5rem; cursor: pointer; gap: 1rem;
+      background: none; border: none; width: 100%; text-align: left;
+      font-family: 'Outfit', sans-serif;
+    }
+    .faq-question-left { display: flex; align-items: center; gap: 14px; }
+    .faq-q-icon {
+      width: 38px; height: 38px; background: var(--blue-pale);
+      border-radius: 10px; display: flex; align-items: center; justify-content: center;
+      color: var(--blue-main); font-size: 15px; flex-shrink: 0;
+      transition: background 0.25s, color 0.25s;
+    }
+    .faq-item.open .faq-q-icon { background: var(--blue-main); color: white; }
+    .faq-question span { font-size: 15px; font-weight: 600; color: var(--blue-dark); line-height: 1.4; }
+    .faq-chevron {
+      width: 30px; height: 30px; background: var(--gray-light);
+      border-radius: 8px; display: flex; align-items: center; justify-content: center;
+      color: var(--gray-text); flex-shrink: 0; transition: transform 0.3s, background 0.25s, color 0.25s;
+    }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); background: var(--blue-pale); color: var(--blue-main); }
+    .faq-answer {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+      padding: 0 1.5rem;
+    }
+    .faq-answer.open { max-height: 600px; padding-bottom: 1.4rem; }
+    .faq-answer p { font-size: 14px; color: var(--gray-text); line-height: 1.7; padding-left: 52px; }
+    .faq-answer ul { padding-left: 52px; margin-top: 0.6rem; list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .faq-answer ul li { display: flex; align-items: flex-start; gap: 8px; font-size: 14px; color: var(--gray-text); }
+    .faq-answer ul li i { color: #22c55e; margin-top: 3px; flex-shrink: 0; }
+    .faq-answer a { color: var(--blue-main); text-decoration: none; font-weight: 600; }
+    .faq-answer a:hover { text-decoration: underline; }
+    .faq-contact-hint {
+      max-width: 800px; margin: 2rem auto 0;
+      background: var(--blue-pale); border-radius: 14px; padding: 1.2rem 1.5rem;
+      display: flex; align-items: center; gap: 14px;
+      border: 1.5px solid #c3d9f5;
+    }
+    .faq-contact-hint i { color: var(--blue-main); font-size: 20px; flex-shrink: 0; }
+    .faq-contact-hint p { font-size: 14px; color: var(--blue-dark); line-height: 1.5; margin: 0; padding: 0; }
+    .faq-contact-hint a { color: var(--blue-main); font-weight: 700; text-decoration: none; }
+    .faq-contact-hint a:hover { text-decoration: underline; }
+
     /* FOOTER */
     footer { background: var(--blue-dark); color: rgba(255,255,255,0.7); padding: 3rem 2rem 1.5rem; }
     .footer-inner { max-width: 1100px; margin: 0 auto; }
@@ -453,6 +506,7 @@
     <li><a href="#prenota">Prenota</a></li>
     <li><a href="#orari-medico">Orari Medico</a></li>
     <li><a href="#orari">Orari</a></li>
+    <li><a href="#faq">FAQ</a></li>
     <li><a href="#contatti">Contatti</a></li>
   </ul>
   <div style="display:flex;align-items:center;gap:1rem;">
@@ -833,6 +887,116 @@
   </div>
 </section>
 
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-inner">
+    <div class="section-title fade-in">
+      <h2>Domande Frequenti</h2>
+      <p>Trova le risposte alle domande più comuni sui nostri servizi</p>
+    </div>
+    <div class="faq-list fade-in">
+
+      <!-- 1 -->
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <div class="faq-question-left">
+            <div class="faq-q-icon"><i class="fas fa-id-card"></i></div>
+            <span>Quanto tempo prima della scadenza posso rinnovare la patente?</span>
+          </div>
+          <div class="faq-chevron"><i class="fas fa-chevron-down"></i></div>
+        </button>
+        <div class="faq-answer">
+          <p>Puoi avviare la pratica di rinnovo a partire da <strong>4 mesi prima</strong> della data di scadenza indicata sul tuo documento. Rinnovandola in anticipo non perderai giorni di validità: la nuova scadenza coinciderà comunque con il giorno e il mese del tuo compleanno, a meno che non si possieda una patente di categoria superiore C o D.</p>
+        </div>
+      </div>
+
+      <!-- 2 -->
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <div class="faq-question-left">
+            <div class="faq-q-icon"><i class="fas fa-user-md"></i></div>
+            <span>È obbligatorio prendere appuntamento per la visita medica?</span>
+          </div>
+          <div class="faq-chevron"><i class="fas fa-chevron-down"></i></div>
+        </button>
+        <div class="faq-answer">
+          <p>Per garantirti un servizio rapido e senza inutili code in sala d'attesa, la visita con il nostro medico in sede avviene <strong>su appuntamento</strong>. Puoi prenotare il tuo slot orario comodamente da questo sito nella sezione <a href="#prenota">Prenota</a>, oppure chiamandoci in agenzia.</p>
+        </div>
+      </div>
+
+      <!-- 3 -->
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <div class="faq-question-left">
+            <div class="faq-q-icon"><i class="fas fa-exchange-alt"></i></div>
+            <span>Quanto costa fare un passaggio di proprietà?</span>
+          </div>
+          <div class="faq-chevron"><i class="fas fa-chevron-down"></i></div>
+        </button>
+        <div class="faq-answer">
+          <p>Il costo del passaggio di proprietà non è un importo fisso. La tassa principale (IPT) varia in base alla categoria del veicolo, ai Kilowatt (kW) e alla provincia di residenza di chi acquista. Contattaci fornendoci il numero di targa del veicolo: ti faremo un <strong>preventivo esatto e gratuito</strong> in pochi minuti.</p>
+        </div>
+      </div>
+
+      <!-- 4 -->
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <div class="faq-question-left">
+            <div class="faq-q-icon"><i class="fas fa-car"></i></div>
+            <span>Dopo quanto tempo posso usare l'auto appena acquistata?</span>
+          </div>
+          <div class="faq-chevron"><i class="fas fa-chevron-down"></i></div>
+        </button>
+        <div class="faq-answer">
+          <p><strong>Immediatamente!</strong> Grazie al nostro sistema informatico collegato con la Motorizzazione e il PRA, una volta firmati i documenti ti rilasceremo subito il nuovo <strong>Documento Unico</strong> che ti permette di circolare da subito in totale regolarità.</p>
+        </div>
+      </div>
+
+      <!-- 5 -->
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <div class="faq-question-left">
+            <div class="faq-q-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+            <span>Posso pagare il bollo auto da voi anche se è già scaduto da mesi?</span>
+          </div>
+          <div class="faq-chevron"><i class="fas fa-chevron-down"></i></div>
+        </button>
+        <div class="faq-answer">
+          <p>Certamente. Gestiamo i pagamenti dei bolli auto e moto sia in corso di validità che arretrati. Il nostro sistema calcolerà in automatico le eventuali piccole sanzioni e gli interessi dovuti in base ai mesi di ritardo. Ti basterà fornirci il numero di targa o presentare l'ultimo avviso di pagamento.</p>
+        </div>
+      </div>
+
+      <!-- 6 -->
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <div class="faq-question-left">
+            <div class="faq-q-icon"><i class="fas fa-credit-card"></i></div>
+            <span>Quali sono i vantaggi di sottoscrivere la Tessera ACI?</span>
+          </div>
+          <div class="faq-chevron"><i class="fas fa-chevron-down"></i></div>
+        </button>
+        <div class="faq-answer">
+          <p>La Tessera ACI è la tua sicurezza su strada. Offre numerosi vantaggi fondamentali, tra cui:</p>
+          <ul>
+            <li><i class="fas fa-check-circle"></i> Soccorso stradale gratuito 24 ore su 24, in Italia e all'estero (anche se sei a bordo di un veicolo non tuo).</li>
+            <li><i class="fas fa-check-circle"></i> Auto sostitutiva in caso di guasto.</li>
+            <li><i class="fas fa-check-circle"></i> Tutela legale e rimborsi per corsi di recupero punti patente.</li>
+            <li><i class="fas fa-check-circle"></i> Sconti esclusivi presso una vasta rete di partner.</li>
+          </ul>
+          <p style="margin-top:0.8rem;">Esistono diverse tipologie di tessera (es. Sistema, Gold): passa a trovarci o chiamaci per scoprire quella più adatta alle tue abitudini di guida.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="faq-contact-hint fade-in">
+      <i class="fas fa-headset"></i>
+      <p>Non hai trovato risposta alla tua domanda? <a href="tel:0541605692">Chiamaci al 0541-605692</a> oppure scrivici a <a href="mailto:aci.riccione@gmail.com">aci.riccione@gmail.com</a> — saremo felici di aiutarti!</p>
+    </div>
+
+  </div>
+</section>
+
 <!-- CTA -->
 <section id="cta">
   <div class="section-inner">
@@ -860,6 +1024,7 @@
           <li><a href="#servizi">Servizi</a></li>
           <li><a href="#prenota">Prenota</a></li>
           <li><a href="#orari">Orari</a></li>
+          <li><a href="#faq">FAQ</a></li>
           <li><a href="#contatti">Contatti</a></li>
         </ul>
       </div>
@@ -1110,6 +1275,20 @@
     if (dateInput) dateInput.min = today;
   });
 
+  // ── FAQ TOGGLE ───────────────────────────────────────────────────────────
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const answer = item.querySelector('.faq-answer');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(el => {
+      el.classList.remove('open');
+      el.querySelector('.faq-answer').classList.remove('open');
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      answer.classList.add('open');
+    }
+  }
+
 </script>
-</body>
 </html>
