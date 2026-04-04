@@ -5,7 +5,7 @@
   <meta name="google-site-verification" content="UN469CDHCCg07tGmcqyNvwLDSYdFVv7-qbvH70sqfRU" />
   <link rel="sitemap" type="application/xml" title="Sitemap" href="https://cammel2002-gif.github.io/aci-riccione/sitemap.xml" />
   <meta name="description" content="ACI Riccione - Delegazione di Riccione. Rinnovo patenti, passaggi di proprietà, bolli, immatricolazioni e consulenza automobilistica. Via Circonvallazione 43, Riccione. Tel. 0541-605692" />
-  <meta name="keywords" content="ACI Riccione, rinnovo patente Riccione, passaggio proprietà Riccione, bollo auto Riccione, immatricolazione Riccione, Automobile Club Riccione" />
+  <meta name="keywords" content="ACI Riccione, rinnovo patente Riccione, passaggio proprietà Riccione, bollo auto Riccione, immatricolazione Riccione, Automobile Club Riccione, ASI Riccione, Auto Storiche" />
   <meta name="robots" content="index, follow" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ACI Riccione – Automobile Club d'Italia | Delegazione di Riccione</title>
@@ -29,6 +29,7 @@
       --text-dark: #0f172a;
       --green: #22c55e;
       --red: #ef4444;
+      --gold: #b59410;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -180,10 +181,37 @@
     .doc-list li.doc-nota i.fa-info-circle { color: var(--blue-main); margin-top: 2px; flex-shrink: 0; }
     .doc-list li.doc-nota { color: #94a3b8; }
 
+    /* SEZIONE ASI (AUTO STORICHE) */
+    #veicoli-storici { background: white; }
+    .asi-container {
+      background: linear-gradient(135deg, #fdfcfb 0%, #f5f7fa 100%);
+      border-radius: 24px; padding: 3rem;
+      border: 1px solid #e2e8f0; box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;
+    }
+    .asi-content h3 { font-size: 1.8rem; color: var(--blue-dark); margin-bottom: 1rem; font-weight: 800; }
+    .asi-content p { color: var(--gray-text); line-height: 1.7; margin-bottom: 1.5rem; }
+    .asi-benefits { list-style: none; display: grid; gap: 1rem; margin-bottom: 2rem; }
+    .asi-benefits li {
+      display: flex; align-items: flex-start; gap: 12px;
+      background: white; padding: 1rem; border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .asi-benefits i { color: var(--gold); font-size: 1.2rem; margin-top: 2px; }
+    .asi-benefits strong { color: var(--blue-dark); font-size: 14px; display: block; margin-bottom: 2px; }
+    .asi-benefits span { color: var(--gray-text); font-size: 13px; line-height: 1.4; }
+    .asi-cta-box {
+      background: var(--blue-dark); color: white; border-radius: 20px; padding: 2rem;
+      text-align: center; display: flex; flex-direction: column; align-items: center; gap: 1rem;
+    }
+    .asi-icon-large { font-size: 3rem; color: var(--gold); margin-bottom: 0.5rem; }
+    .asi-cta-box h4 { font-size: 1.2rem; font-weight: 700; }
+    .asi-cta-box p { font-size: 14px; color: rgba(255,255,255,0.7); }
+
     /* PRENOTA FORM */
-    #prenota { background: white; }
+    #prenota { background: var(--gray-light); }
     .prenota-box {
-      background: var(--gray-light); border-radius: 20px; overflow: hidden;
+      background: white; border-radius: 20px; overflow: hidden;
       box-shadow: 0 4px 24px rgba(0,0,0,0.06);
     }
     .prenota-header {
@@ -292,9 +320,9 @@
     }
 
     /* ORARI APERTURA */
-    #orari { background: var(--gray-light); }
+    #orari { background: white; }
     .orari-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; max-width: 800px; margin: 0 auto; }
-    .orari-card { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.05); }
+    .orari-card { background: var(--gray-light); border-radius: 16px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.05); }
     .orari-card-header {
       background: var(--blue-main); padding: 1rem 1.5rem;
       display: flex; align-items: center; gap: 10px;
@@ -320,12 +348,12 @@
     }
 
     /* CONTATTI */
-    #contatti { background: white; }
+    #contatti { background: var(--gray-light); }
     .contatti-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; }
     .contatti-cards { display: flex; flex-direction: column; gap: 1rem; }
     .contatto-card {
-      background: var(--gray-light); border-radius: 14px; padding: 1.2rem 1.5rem;
-      display: flex; align-items: flex-start; gap: 14px;
+      background: white; border-radius: 14px; padding: 1.2rem 1.5rem;
+      display: flex; align-items: flex-start; gap: 14px; box-shadow: 0 2px 10px rgba(0,0,0,0.02);
     }
     .contatto-icon {
       width: 46px; height: 46px; background: var(--blue-main); border-radius: 12px;
@@ -338,7 +366,7 @@
     .contatto-value a:hover { text-decoration: underline; }
     .contatto-extra { font-size: 13px; color: var(--gray-text); margin-top: 2px; }
     .mappa-placeholder {
-      background: var(--gray-light); border-radius: 16px;
+      background: white; border-radius: 16px;
       display: flex; flex-direction: column; align-items: center; justify-content: center;
       min-height: 320px; text-align: center; padding: 2rem;
       border: 2px dashed #cbd5e1;
@@ -366,14 +394,13 @@
     .btn-cta-outline:hover { border-color: white; }
 
     /* FAQ */
-    #faq { background: var(--gray-light); }
+    #faq { background: white; }
     .faq-list { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 0.75rem; }
     .faq-item {
-      background: white; border-radius: 14px; overflow: hidden;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      background: var(--gray-light); border-radius: 14px; overflow: hidden;
       border: 1.5px solid transparent; transition: border-color 0.25s;
     }
-    .faq-item.open { border-color: var(--blue-main); }
+    .faq-item.open { border-color: var(--blue-main); background: white; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
     .faq-question {
       display: flex; align-items: center; justify-content: space-between;
       padding: 1.2rem 1.5rem; cursor: pointer; gap: 1rem;
@@ -382,7 +409,7 @@
     }
     .faq-question-left { display: flex; align-items: center; gap: 14px; }
     .faq-q-icon {
-      width: 38px; height: 38px; background: var(--blue-pale);
+      width: 38px; height: 38px; background: white;
       border-radius: 10px; display: flex; align-items: center; justify-content: center;
       color: var(--blue-main); font-size: 15px; flex-shrink: 0;
       transition: background 0.25s, color 0.25s;
@@ -390,7 +417,7 @@
     .faq-item.open .faq-q-icon { background: var(--blue-main); color: white; }
     .faq-question span { font-size: 15px; font-weight: 600; color: var(--blue-dark); line-height: 1.4; }
     .faq-chevron {
-      width: 30px; height: 30px; background: var(--gray-light);
+      width: 30px; height: 30px; background: white;
       border-radius: 8px; display: flex; align-items: center; justify-content: center;
       color: var(--gray-text); flex-shrink: 0; transition: transform 0.3s, background 0.25s, color 0.25s;
     }
@@ -444,7 +471,7 @@
       .nav-links.open { display: flex; }
       .nav-hamburger { display: block; }
       .form-row { grid-template-columns: 1fr; }
-      .orari-grid { grid-template-columns: 1fr; }
+      .orari-grid, .asi-container { grid-template-columns: 1fr; gap: 2rem; }
       .contatti-grid { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
       .footer-bottom { flex-direction: column; text-align: center; }
@@ -507,6 +534,7 @@
   <ul class="nav-links" id="navLinks">
     <li><a href="#home" class="active">Home</a></li>
     <li><a href="#servizi">Servizi</a></li>
+    <li><a href="#veicoli-storici">Auto Storiche</a></li>
     <li><a href="#prenota">Prenota</a></li>
     <li><a href="#orari-medico">Orari Medico</a></li>
     <li><a href="#orari">Orari</a></li>
@@ -591,7 +619,6 @@
             </ul>
           </div>
         </div>
-
         <a href="#prenota" class="service-link" style="margin-top:1.5rem;">Prenota ora <i class="fas fa-arrow-right"></i></a>
       </div>
       <div class="service-card fade-in">
@@ -635,6 +662,52 @@
         <div class="service-icon"><i class="fas fa-wrench"></i></div>
         <h3>Consulenza Automobilistica</h3>
         <p>Assistenza completa per ogni pratica automobilistica e burocratica.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="veicoli-storici">
+  <div class="section-inner">
+    <div class="section-title fade-in">
+      <h2>Auto e Moto Storiche</h2>
+      <p>Valorizziamo la tua passione con il servizio di iscrizione ASI</p>
+    </div>
+    <div class="asi-container fade-in">
+      <div class="asi-content">
+        <h3>🚗 Valorizza la tua passione</h3>
+        <p>Hai un veicolo con più di 20 anni di età? Non è solo un mezzo di trasporto, è un pezzo di storia! Presso la nostra agenzia offriamo consulenza completa per l'iscrizione all'<strong>ASI (Automotoclub Storico Italiano)</strong> e l'ottenimento del <strong>CRS (Certificato di Rilevanza Storica)</strong>.</p>
+        
+        <ul class="asi-benefits">
+          <li>
+            <i class="fas fa-piggy-bank"></i>
+            <div>
+              <strong>Agevolazioni Fiscali</strong>
+              <span>Per i residenti in Emilia-Romagna, il bollo si trasforma in una tassa di circolazione fissa e ridotta di soli 31,20 €.</span>
+            </div>
+          </li>
+          <li>
+            <i class="fas fa-shield-halved"></i>
+            <div>
+              <strong>Premi Assicurativi Dedicati</strong>
+              <span>Diverse compagnie offrono tariffe agevolate per questa categoria di veicoli; ti consigliamo di consultare il tuo assicuratore per scoprire le migliori condizioni riservate a te.</span>
+            </div>
+          </li>
+          <li>
+            <i class="fas fa-chart-line"></i>
+            <div>
+              <strong>Aumento del Valore</strong>
+              <span>L'iscrizione certifica ufficialmente l'interesse storico e collezionistico del tuo mezzo, aumentandone il valore commerciale e proteggendolo in caso di sinistro.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+      
+      <div class="asi-cta-box">
+        <div class="asi-icon-large"><i class="fas fa-award"></i></div>
+        <h4>Pensiamo a tutto noi!</h4>
+        <p>Passa a trovarci in agenzia con il veicolo e il relativo libretto o chiamaci per scoprire come valorizzare il tuo gioiello storico.</p>
+        <a href="tel:0541605692" class="btn-primary" style="box-shadow:none;"><i class="fas fa-phone"></i> Richiedi Consulenza</a>
       </div>
     </div>
   </div>
@@ -854,8 +927,8 @@
           <div class="contatto-icon"><i class="fas fa-envelope"></i></div>
           <div>
             <div class="contatto-label">Email</div>
-            <div class="contatto-value"><a href="/cdn-cgi/l/email-protection#dabbb9b3f4a8b3b9b9b3b5b4bf9abdb7bbb3b6f4b9b5b7"><span class="__cf_email__" data-cfemail="4e2f2d27603c272d2d2721202b0e29232f2722602d2123">[email protected]</span></a></div>
-            <div class="contatto-extra">PEC: <a href="/cdn-cgi/l/email-protection#dbbab8b2f5a9b2b8b8b2b4b5be9babbeb8f5b2af"><span class="__cf_email__" data-cfemail="4524262c6b372c26262c2a2b20053520266b2c31">[email protected]</span></a></div>
+            <div class="contatto-value"><a href="mailto:aci.riccione@gmail.com">aci.riccione@gmail.com</a></div>
+            <div class="contatto-extra">PEC: <a href="mailto:aci.riccione@pec.it">aci.riccione@pec.it</a></div>
           </div>
         </div>
         <div class="contatto-card">
@@ -946,19 +1019,6 @@
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)">
           <div class="faq-question-left">
-            <div class="faq-q-icon"><i class="fas fa-file-invoice-dollar"></i></div>
-            <span>Posso pagare il bollo auto da voi anche se è già scaduto da mesi?</span>
-          </div>
-          <div class="faq-chevron"><i class="fas fa-chevron-down"></i></div>
-        </button>
-        <div class="faq-answer">
-          <p>Certamente. Gestiamo i pagamenti dei bolli auto e moto sia in corso di validità che arretrati. Il nostro sistema calcolerà in automatico le eventuali piccole sanzioni e gli interessi dovuti in base ai mesi di ritardo. Ti basterà fornirci il numero di targa o presentare l'ultimo avviso di pagamento.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
-          <div class="faq-question-left">
             <div class="faq-q-icon"><i class="fas fa-credit-card"></i></div>
             <span>Quali sono i vantaggi di sottoscrivere la Tessera ACI?</span>
           </div>
@@ -976,11 +1036,50 @@
         </div>
       </div>
 
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <div class="faq-question-left">
+            <div class="faq-q-icon"><i class="fas fa-search"></i></div>
+            <span>Cosa devo fare se ho smarrito la targa o il libretto?</span>
+          </div>
+          <div class="faq-chevron"><i class="fas fa-chevron-down"></i></div>
+        </button>
+        <div class="faq-answer">
+          <p>In caso di smarrimento, furto o distruzione della targa o del libretto di circolazione, la prima cosa da fare è sporgere denuncia presso le Forze dell'Ordine (Polizia o Carabinieri) entro 48 ore. Una volta in possesso della denuncia, recati presso la nostra agenzia: ci occuperemo noi di tutta la pratica.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <div class="faq-question-left">
+            <div class="faq-q-icon"><i class="fas fa-wheelchair"></i></div>
+            <span>Gestite le pratiche per l'esenzione del bollo con Legge 104?</span>
+          </div>
+          <div class="faq-chevron"><i class="fas fa-chevron-down"></i></div>
+        </button>
+        <div class="faq-answer">
+          <p>Certamente. Sappiamo che la burocrazia può essere complessa, per questo ti assistiamo in tutta la procedura per richiedere l'esenzione del pagamento della tassa automobilistica prevista per le persone con disabilità tutelate dalla Legge 104/92. Portaci la documentazione medica, i documenti d'identità e il libretto del veicolo: verificheremo insieme i requisiti e ci occuperemo di presentare l'istanza al posto tuo.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <div class="faq-question-left">
+            <div class="faq-q-icon"><i class="fas fa-history"></i></div>
+            <span>Cosa succede se la mia patente è già scaduta da molto tempo?</span>
+          </div>
+          <div class="faq-chevron"><i class="fas fa-chevron-down"></i></div>
+        </button>
+        <div class="faq-answer">
+          <p>Se la tua patente è scaduta da meno di 5 anni, puoi rinnovarla seguendo la normale procedura, effettuando la consueta visita medica presso la nostra sede. Se invece è scaduta da più di 5 anni, la normativa prevede la possibilità che la Motorizzazione richieda un "esperimento di guida" (revisione della patente) per verificare la permanenza dell'idoneità tecnica alla guida.</p>
+        </div>
+      </div>
+
     </div>
 
     <div class="faq-contact-hint fade-in">
       <i class="fas fa-headset"></i>
-      <p>Non hai trovato risposta alla tua domanda? <a href="tel:0541605692">Chiamaci al 0541-605692</a> oppure scrivici a <a href="/cdn-cgi/l/email-protection#49282a20673b202a2a2026272c092e24282025672a2624"><span class="__cf_email__" data-cfemail="c1a0a2a8efb3a8a2a2a8aeafa481a6aca0a8adefa2aeac">[email protected]</span></a> — saremo felici di aiutarti!</p>
+      <p>Non hai trovato risposta alla tua domanda? <a href="tel:0541605692">Chiamaci al 0541-605692</a> oppure scrivici a <a href="mailto:aci.riccione@gmail.com">aci.riccione@gmail.com</a> — saremo felici di aiutarti!</p>
     </div>
 
   </div>
@@ -991,7 +1090,7 @@
     <h2>Contattaci per ulteriori informazioni</h2>
     <div class="cta-btns">
       <a href="tel:0541605692" class="btn-cta-white"><i class="fas fa-phone"></i> Chiamaci ora</a>
-      <a href="/cdn-cgi/l/email-protection#c7a6a4aee9b5aea4a4aea8a9a287a0aaa6aeabe9a4a8aa" class="btn-cta-outline"><i class="fas fa-envelope"></i> Inviaci una Email</a>
+      <a href="mailto:aci.riccione@gmail.com" class="btn-cta-outline"><i class="fas fa-envelope"></i> Inviaci una Email</a>
     </div>
   </div>
 </section>
@@ -1019,7 +1118,7 @@
         <h4>Contatti Rapidi</h4>
         <ul>
           <li><a href="tel:0541605692">0541-605692</a></li>
-          <li><a href="/cdn-cgi/l/email-protection#5c3d3f35722e353f3f353332391c3b313d3530723f3331"><span class="__cf_email__" data-cfemail="c4a5a7adeab6ada7a7adabaaa184a3a9a5ada8eaa7aba9">[email protected]</span></a></li>
+          <li><a href="mailto:aci.riccione@gmail.com">aci.riccione@gmail.com</a></li>
         </ul>
       </div>
     </div>
@@ -1031,7 +1130,7 @@
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   // Mobile Menu Toggle
   document.getElementById('hamburger').addEventListener('click', () => {
     document.getElementById('navLinks').classList.toggle('open');
@@ -1062,6 +1161,23 @@
     panel.classList.toggle('aperto', !aperto);
     btn.classList.toggle('aperto', !aperto);
   }
+
+  // FAQ Toggle
+  function toggleFaq(btn) {
+    const item = btn.parentElement;
+    const answer = btn.nextElementSibling;
+    const isOpen = item.classList.contains('open');
+
+    document.querySelectorAll('.faq-item').forEach(el => {
+      el.classList.remove('open');
+      el.querySelector('.faq-answer').classList.remove('open');
+    });
+
+    if (!isOpen) {
+      item.classList.add('open');
+      answer.classList.add('open');
+    }
+  }
 </script>
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
@@ -1071,12 +1187,15 @@
   // ── CALENDARIO ──────────────────────────────────────────────────────────────
   const GIORNI_VALIDI = [1, 2, 4, 5]; // lun=1, mar=2, gio=4, ven=5
   const MESI_IT = ['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno','Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'];
+  
+  // LOGICA ORARI (MANTENUTA DAL PRIMO MESSAGGIO)
   const SLOT_PER_GIORNO = {
     1: ['18:00','18:05','18:10','18:15','18:20','18:25','18:30','18:35','18:40','18:45','18:50','18:55','19:00','19:05','19:10','19:15','19:20','19:25','19:30'],
     2: ['17:30'],
     4: ['16:30'],
     5: ['18:30']
   };
+  
   const NOMI_GIORNO = {1:'Lunedì', 2:'Martedì', 4:'Giovedì', 5:'Venerdì'};
   let calAnno, calMese, dataSelezionata = null;
 
@@ -1237,15 +1356,15 @@
     const easterMonday = new Date(easterDate); easterMonday.setDate(easterDate.getDate()+1);
     const em = (easterMonday.getMonth()+1).toString().padStart(2,'0') + '-' + easterMonday.getDate().toString().padStart(2,'0');
     if (mmdd === easter) return "Pasqua: siamo chiusi";
-    if (mmdd === em) return "Lunedì dell'Angelo (Pasquetta): siamo chiusi";
-    return false;
+    if (mmdd === em) return "Pasquetta: siamo chiusi";
+    return null;
   }
 
   function validaData(input) {
-    const msg = isHoliday(input.value);
     const errDiv = document.getElementById('errore-data');
-    if(!errDiv) return;
     const errMsg = document.getElementById('errore-data-msg');
+    if (!input.value) { errDiv.style.display='none'; return; }
+    const msg = isHoliday(input.value);
     if (msg) {
       errMsg.textContent = msg;
       errDiv.style.display = 'block';
@@ -1255,21 +1374,14 @@
     }
   }
 
-  function toggleFaq(btn) {
-    const item = btn.parentElement;
-    const answer = item.querySelector('.faq-answer');
-    const isOpen = item.classList.contains('open');
-    
-    document.querySelectorAll('.faq-item').forEach(faq => {
-        faq.classList.remove('open');
-        faq.querySelector('.faq-answer').classList.remove('open');
-    });
-
-    if (!isOpen) {
-        item.classList.add('open');
-        answer.classList.add('open');
+  // Imposta data minima = oggi
+  document.addEventListener('DOMContentLoaded', function() {
+    const today = new Date().toISOString().split('T')[0];
+    const dateInput = document.getElementById('data_appuntamento');
+    if (dateInput) {
+        dateInput.setAttribute('min', today);
     }
-  }
+  });
 </script>
 </body>
 </html>
