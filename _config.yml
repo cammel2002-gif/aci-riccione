@@ -1,5 +1,15 @@
+# Configurazione sito Jekyll - ACI Riccione
+title: ACI Riccione - Automobile Club d'Italia
+description: Delegazione ACI di Riccione. Rinnovo patenti, passaggi di proprietà, bolli, immatricolazioni e consulenza automobilistica.
+url: "https://cammel2002-gif.github.io"
+baseurl: "/aci-riccione"
+lang: it
+
+# File extra da pubblicare
 include:
   - sitemap.xml
 
-plugins:
-  - jekyll-sitemap
+# Escludi file non utili alla pubblicazione
+exclude:
+  - README.md
+  - .gitignore
