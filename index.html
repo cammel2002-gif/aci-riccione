@@ -87,9 +87,9 @@
       padding: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);
     }
     .hero-logo-badge img { width: 100%; height: 100%; object-fit: contain; border-radius: 12px; }
-    .hero-content h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; color: white; line-height: 1.1; margin-bottom: 0.5rem; }
-    .hero-content h2 { font-size: clamp(1.1rem, 3vw, 1.7rem); font-weight: 500; color: rgba(255,255,255,0.8); margin-bottom: 1.2rem; }
-    .hero-content p { font-size: 1rem; color: rgba(255,255,255,0.7); max-width: 520px; line-height: 1.6; margin-bottom: 2.5rem; }
+    .hero-content h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; color: white; line-height: 1.1; margin-bottom: 1.2rem; }
+    .hero-content h2 { font-size: clamp(1.1rem, 3vw, 1.7rem); font-weight: 500; color: rgba(255,255,255,0.8); margin-bottom: 2.2rem; }
+    .hero-content p { font-size: 1rem; color: rgba(255,255,255,0.7); max-width: 520px; line-height: 1.6; margin-bottom: 3.5rem; }
     .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
     .btn-primary {
       background: white; color: var(--blue-dark); padding: 13px 26px;
@@ -102,19 +102,9 @@
       background: transparent; color: white; border: 2px solid rgba(255,255,255,0.5);
       padding: 13px 26px; border-radius: 10px; font-weight: 600; font-size: 15px;
       text-decoration: none; transition: border-color 0.2s, background 0.2s;
+      display: inline-flex; align-items: center; gap: 8px;
     }
     .btn-secondary:hover { border-color: white; background: rgba(255,255,255,0.1); }
-    .hero-phone {
-      display: flex; align-items: center; gap: 10px;
-      background: rgba(255,255,255,0.1); border-radius: 12px; padding: 10px 18px;
-      width: fit-content; backdrop-filter: blur(4px);
-    }
-    .hero-phone .phone-icon {
-      width: 36px; height: 36px; background: rgba(255,255,255,0.2);
-      border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white;
-    }
-    .hero-phone .phone-label { font-size: 11px; color: rgba(255,255,255,0.6); }
-    .hero-phone .phone-num { font-size: 16px; font-weight: 700; color: white; }
 
     /* SECTIONS */
     section { padding: 5rem 2rem; }
@@ -208,79 +198,6 @@
     .asi-cta-box h4 { font-size: 1.2rem; font-weight: 700; }
     .asi-cta-box p { font-size: 14px; color: rgba(255,255,255,0.7); }
 
-    /* PRENOTA FORM */
-    #prenota { background: var(--gray-light); }
-    .prenota-box {
-      background: white; border-radius: 20px; overflow: hidden;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
-    }
-    .prenota-header {
-      background: var(--blue-main); padding: 1.5rem 2rem;
-      display: flex; align-items: center; gap: 12px;
-    }
-    .prenota-header h3 { color: white; font-size: 1.2rem; font-weight: 700; }
-    .prenota-header p { color: rgba(255,255,255,0.7); font-size: 13px; }
-    .prenota-body { padding: 2rem; }
-    .form-group { margin-bottom: 1.5rem; }
-    .form-group label { display: block; font-size: 14px; font-weight: 600; color: var(--blue-dark); margin-bottom: 0.5rem; }
-    .form-group select, .form-group input {
-      width: 100%; padding: 12px 16px; border: 1.5px solid #e2e8f0;
-      border-radius: 10px; font-family: 'Outfit', sans-serif; font-size: 14px;
-      color: var(--text-dark); background: white; outline: none; transition: border-color 0.2s;
-    }
-    .form-group select:focus, .form-group input:focus { border-color: var(--blue-main); }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    .btn-prenota {
-      background: var(--blue-main); color: white; padding: 14px 32px;
-      border: none; border-radius: 10px; font-family: 'Outfit', sans-serif;
-      font-weight: 700; font-size: 15px; cursor: pointer; width: 100%;
-      transition: background 0.2s; margin-top: 0.5rem;
-    }
-    .btn-prenota:hover { background: var(--blue-dark); }
-
-    /* CALENDARIO PATENTE */
-    .info-patente {
-      background: #e8f0fb; border-radius: 12px; padding: 1rem 1.2rem;
-      margin-bottom: 1.2rem; font-size: 13px; color: #1a4a8a;
-      display: flex; align-items: flex-start; gap: 10px;
-    }
-    .info-patente i { margin-top: 2px; flex-shrink: 0; }
-    .calendario-wrap { margin-bottom: 1rem; }
-    .calendario-nav {
-      display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;
-    }
-    .calendario-nav button {
-      background: var(--blue-pale); border: none; border-radius: 8px;
-      width: 34px; height: 34px; cursor: pointer; font-size: 18px;
-      color: var(--blue-dark); transition: background 0.2s; line-height: 1;
-    }
-    .calendario-nav button:hover { background: #cddaf5; }
-    .calendario-nav span { font-weight: 700; color: var(--blue-dark); font-size: 15px; }
-    .calendario-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
-    .cal-header {
-      text-align: center; font-size: 11px; font-weight: 700;
-      color: var(--gray-text); padding: 4px 0; text-transform: uppercase;
-    }
-    .cal-day {
-      text-align: center; padding: 8px 2px; border-radius: 8px;
-      font-size: 13px; font-weight: 500; cursor: default; min-width: 0;
-    }
-    .cal-day.empty { background: transparent; }
-    .cal-day.disabled { color: #d1d5db; background: transparent; cursor: not-allowed; }
-    .cal-day.past { color: #e2e8f0; cursor: not-allowed; }
-    .cal-day.available {
-      background: var(--blue-pale); color: var(--blue-dark);
-      cursor: pointer; font-weight: 600; transition: all 0.15s;
-    }
-    .cal-day.available:hover { background: var(--blue-main); color: white; }
-    .cal-day.selected { background: var(--blue-dark) !important; color: white !important; font-weight: 700; }
-    .slot-orario-wrap { display: none; }
-    .slot-orario-wrap.visible { display: block; }
-    .data-sel-label {
-      font-size: 13px; color: var(--blue-main); font-weight: 600;
-      margin-bottom: 0.6rem; display: flex; align-items: center; gap: 6px;
-    }
-
     /* ORARI MEDICO */
     #orari-medico {
       background: linear-gradient(135deg, var(--blue-dark), var(--blue-main));
@@ -318,6 +235,8 @@
       text-align: center; font-size: 13px; color: rgba(255,255,255,0.65);
       display: flex; align-items: center; justify-content: center; gap: 8px;
     }
+    .nota-prenotazione a { color: white; font-weight: 700; text-decoration: none; }
+    .nota-prenotazione a:hover { text-decoration: underline; }
 
     /* ORARI APERTURA */
     #orari { background: white; }
@@ -365,33 +284,14 @@
     .contatto-value a { color: var(--blue-main); text-decoration: none; }
     .contatto-value a:hover { text-decoration: underline; }
     .contatto-extra { font-size: 13px; color: var(--gray-text); margin-top: 2px; }
-    .mappa-placeholder {
-      background: white; border-radius: 16px;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      min-height: 320px; text-align: center; padding: 2rem;
-      border: 2px dashed #cbd5e1;
+    .mappa-box {
+      display: flex; flex-direction: column; align-items: stretch;
     }
-    .mappa-placeholder i { font-size: 48px; color: var(--blue-main); margin-bottom: 1rem; }
-    .mappa-placeholder h4 { font-size: 1.1rem; font-weight: 700; color: var(--blue-dark); margin-bottom: 0.5rem; }
-    .mappa-placeholder p { font-size: 14px; color: var(--gray-text); line-height: 1.6; }
-
-    /* CTA */
-    #cta { background: linear-gradient(135deg, var(--blue-dark), var(--blue-mid)); text-align: center; padding: 4rem 2rem; }
-    #cta h2 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 800; color: white; margin-bottom: 0.8rem; }
-    #cta p { color: rgba(255,255,255,0.75); margin-bottom: 2rem; font-size: 1rem; }
-    .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-    .btn-cta-white {
-      background: white; color: var(--blue-dark); padding: 13px 28px;
-      border-radius: 10px; font-weight: 700; font-size: 15px; text-decoration: none;
-      display: flex; align-items: center; gap: 8px; transition: transform 0.2s;
+    .mappa-box iframe { box-shadow: 0 2px 10px rgba(0,0,0,0.04); }
+    .mappa-cta {
+      margin-top: 1rem; align-self: flex-start;
+      display: inline-flex; align-items: center; gap: 8px;
     }
-    .btn-cta-white:hover { transform: translateY(-2px); }
-    .btn-cta-outline {
-      background: transparent; color: white; border: 2px solid rgba(255,255,255,0.5);
-      padding: 13px 28px; border-radius: 10px; font-weight: 600; font-size: 15px;
-      text-decoration: none; display: flex; align-items: center; gap: 8px;
-    }
-    .btn-cta-outline:hover { border-color: white; }
 
     /* FAQ */
     #faq { background: white; }
@@ -470,7 +370,6 @@
       .nav-links { display: none; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: white; padding: 1rem 2rem; border-bottom: 1px solid #e2e8f0; }
       .nav-links.open { display: flex; }
       .nav-hamburger { display: block; }
-      .form-row { grid-template-columns: 1fr; }
       .orari-grid, .asi-container { grid-template-columns: 1fr; gap: 2rem; }
       .contatti-grid { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
@@ -528,14 +427,13 @@
     <img src="aci-logo.webp" alt="ACI Logo" class="nav-logo">
     <div class="nav-brand-text">
       <strong>ACI Riccione</strong>
-      <span>Delegazione di Riccione</span>
+      <span>Via Circonvallazione, 43</span>
     </div>
   </a>
   <ul class="nav-links" id="navLinks">
     <li><a href="#home" class="active">Home</a></li>
     <li><a href="#servizi">Servizi</a></li>
     <li><a href="#veicoli-storici">Auto Storiche</a></li>
-    <li><a href="#prenota">Prenota</a></li>
     <li><a href="#orari-medico">Orari Medico</a></li>
     <li><a href="#orari">Orari</a></li>
     <li><a href="#faq">FAQ</a></li>
@@ -557,15 +455,9 @@
     <h2>Delegazione Riccione</h2>
     <p>Il tuo punto di riferimento per tutti i servizi automobilistici a Riccione. Rinnovo patenti, passaggi di proprietà, bolli e molto altro.</p>
     <div class="hero-btns">
-      <a href="#prenota" class="btn-primary"><i class="far fa-calendar-check"></i> Prenota un Appuntamento</a>
+      <a href="tel:0541605692" class="btn-primary"><i class="fas fa-phone"></i> Chiamaci Ora</a>
+      <a href="mailto:aci.riccione@gmail.com" class="btn-secondary"><i class="fas fa-envelope"></i> Inviaci una Mail</a>
       <a href="#servizi" class="btn-secondary">Scopri i Servizi</a>
-    </div>
-    <div class="hero-phone">
-      <div class="phone-icon"><i class="fas fa-phone"></i></div>
-      <div>
-        <div class="phone-label">Chiamaci</div>
-        <div class="phone-num">0541-605692</div>
-      </div>
     </div>
   </div>
 </section>
@@ -578,7 +470,7 @@
     </div>
     <div class="services-grid">
       <div class="service-card fade-in">
-        <span class="badge">Prenotabile</span>
+        <span class="badge">Su Appuntamento</span>
         <div class="service-icon"><i class="fas fa-id-card"></i></div>
         <h3>Rinnovo Patenti</h3>
         <p>Rinnovo della patente di guida con medico in sede nei giorni dedicati.</p>
@@ -596,10 +488,10 @@
             </ul>
           </div>
         </div>
-        <a href="#prenota" class="service-link" style="margin-top:1.5rem;">Prenota ora <i class="fas fa-arrow-right"></i></a>
+        <a href="tel:0541605692" class="service-link" style="margin-top:1.5rem;">Chiamaci per prenotare <i class="fas fa-arrow-right"></i></a>
       </div>
       <div class="service-card fade-in">
-        <span class="badge">Prenotabile</span>
+        <span class="badge">Su Appuntamento</span>
         <div class="service-icon"><i class="fas fa-car"></i></div>
         <h3>Passaggi di Proprietà</h3>
         <p>Trasferimento rapido e sicuro del veicolo con tutta la documentazione necessaria.</p>
@@ -619,7 +511,7 @@
             </ul>
           </div>
         </div>
-        <a href="#prenota" class="service-link" style="margin-top:1.5rem;">Prenota ora <i class="fas fa-arrow-right"></i></a>
+        <a href="tel:0541605692" class="service-link" style="margin-top:1.5rem;">Chiamaci per prenotare <i class="fas fa-arrow-right"></i></a>
       </div>
       <div class="service-card fade-in">
         <div class="service-icon"><i class="fas fa-file-invoice-dollar"></i></div>
@@ -713,148 +605,41 @@
   </div>
 </section>
 
-<section id="prenota">
-  <div class="section-inner">
-    <div class="section-title fade-in">
-      <h2>Prenota il Tuo Appuntamento</h2>
-      <p>Scegli il servizio, la data e l'orario più comodi per te</p>
-    </div>
-    <div class="prenota-box fade-in" style="max-width:700px;margin:0 auto;">
-      <div class="prenota-header">
-        <div>
-          <h3><i class="far fa-calendar-check" style="margin-right:8px;"></i>Richiesta Appuntamento</h3>
-          <p>Compila il modulo e verrai ricontattato</p>
-        </div>
-      </div>
-      <div class="prenota-body">
-        <div class="form-group">
-          <label>Seleziona il Servizio</label>
-          <select id="servizio">
-            <option value="">Scegli un servizio...</option>
-            <option value="Rinnovo Patente">Rinnovo Patente</option>
-            <option value="Passaggio di Proprietà">Passaggio di Proprietà</option>
-            <option value="Consulenza Automobilistica">Consulenza Automobilistica</option>
-          </select>
-        </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label>Nome e Cognome</label>
-            <input type="text" id="nome" placeholder="Es. Mario Rossi">
-          </div>
-          <div class="form-group">
-            <label>Telefono</label>
-            <input type="tel" id="telefono" placeholder="Es. 333 1234567">
-          </div>
-        </div>
-
-        <div id="campo-data-standard" class="form-row">
-          <div class="form-group">
-            <label>Data Preferita</label>
-            <input type="date" id="data_appuntamento" onchange="validaData(this)"><div id="errore-data" style="color:#ef4444;font-size:12px;margin-top:4px;display:none;"><i class="fas fa-exclamation-circle"></i> <span id="errore-data-msg"></span></div>
-          </div>
-          <div class="form-group">
-            <label>Orario Preferito</label>
-            <select id="orario_appuntamento" style="width:100%;padding:12px 16px;border:1.5px solid #e2e8f0;border-radius:10px;font-family:Outfit,sans-serif;font-size:14px;color:#0f172a;background:white;outline:none;">
-            <option value="">Scegli un orario...</option>
-            <optgroup label="Mattina (08:30 - 12:30)">
-              <option value="08:30">08:30</option>
-              <option value="09:00">09:00</option>
-              <option value="09:30">09:30</option>
-              <option value="10:00">10:00</option>
-              <option value="10:30">10:30</option>
-              <option value="11:00">11:00</option>
-              <option value="11:30">11:30</option>
-              <option value="12:00">12:00</option>
-              <option value="12:30">12:30</option>
-            </optgroup>
-            <optgroup label="Pomeriggio (15:00 - 19:00)">
-              <option value="15:00">15:00</option>
-              <option value="15:30">15:30</option>
-              <option value="16:00">16:00</option>
-              <option value="16:30">16:30</option>
-              <option value="17:00">17:00</option>
-              <option value="17:30">17:30</option>
-              <option value="18:00">18:00</option>
-              <option value="18:30">18:30</option>
-              <option value="19:00">19:00</option>
-            </optgroup>
-          </select>
-          </div>
-        </div>
-
-        <div id="campo-slot-patente" style="display:none;">
-          <div class="info-patente">
-            <i class="fas fa-info-circle"></i>
-            <span>Il rinnovo patente richiede la presenza del medico. Seleziona un giorno disponibile (lunedì, martedì, giovedì, venerdì) e poi l'orario.</span>
-          </div>
-          <div class="form-group">
-            <label>Seleziona la Data</label>
-            <div class="calendario-wrap">
-              <div class="calendario-nav">
-                <button type="button" onclick="cambioMese(-1)">‹</button>
-                <span id="cal-titolo"></span>
-                <button type="button" onclick="cambioMese(1)">›</button>
-              </div>
-              <div class="calendario-grid" id="cal-grid"></div>
-            </div>
-          </div>
-          <div class="slot-orario-wrap" id="slot-orario-wrap">
-            <div class="data-sel-label">
-              <i class="far fa-calendar-check"></i>
-              <span id="data-sel-txt"></span>
-            </div>
-            <div class="form-group">
-              <label>Seleziona l'Orario</label>
-              <select id="slot_orario">
-                <option value="">Scegli un orario...</option>
-              </select>
-            </div>
-          </div>
-        </div>
-
-        <button class="btn-prenota" onclick="inviaEmail()">
-          <i class="far fa-calendar-check"></i> Invia Richiesta
-        </button>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section id="orari-medico">
   <div class="section-inner">
     <div class="section-title fade-in">
       <h2>Rinnovo Patente</h2>
-      <p>Medico disponibile in sede nei seguenti orari</p>
+      <p>Medico disponibile nei seguenti orari</p>
     </div>
     <div class="medico-card fade-in">
       <h3><i class="far fa-clock"></i> Disponibilità Settimanale</h3>
       <div class="orario-row">
         <div class="orario-left">
           <div class="orario-icon"><i class="far fa-clock"></i></div>
-          <div><div class="orario-day">Lunedì</div><div class="orario-time">dalle ore 18:00</div></div>
+          <div><div class="orario-day">Lunedì</div><div class="orario-time">dalle 18:00 alle 19:30</div></div>
         </div>
         <span class="badge-medico">Medico in Sede</span>
       </div>
       <div class="orario-row">
         <div class="orario-left">
           <div class="orario-icon"><i class="far fa-clock"></i></div>
-          <div><div class="orario-day">Martedì</div><div class="orario-time">dalle ore 17:30</div></div>
+          <div><div class="orario-day">Martedì</div><div class="orario-time">alle 17:30</div></div>
         </div>
       </div>
       <div class="orario-row">
         <div class="orario-left">
           <div class="orario-icon"><i class="far fa-clock"></i></div>
-          <div><div class="orario-day">Giovedì</div><div class="orario-time">dalle ore 16:00</div></div>
+          <div><div class="orario-day">Giovedì</div><div class="orario-time">dalle 16:00 alle 16:45</div></div>
         </div>
       </div>
       <div class="orario-row">
         <div class="orario-left">
           <div class="orario-icon"><i class="far fa-clock"></i></div>
-          <div><div class="orario-day">Venerdì</div><div class="orario-time">dalle ore 18:30</div></div>
+          <div><div class="orario-day">Venerdì</div><div class="orario-time">alle 18:30</div></div>
         </div>
       </div>
       <div class="nota-prenotazione">
-        <i class="fas fa-thumbtack"></i> Si consiglia di prenotare l'appuntamento
+        <i class="fas fa-thumbtack"></i> Si consiglia di prenotare contattandoci allo <a href="tel:0541605692">0541-605692</a> o ad <a href="mailto:aci.riccione@gmail.com">aci.riccione@gmail.com</a>
       </div>
     </div>
   </div>
@@ -944,11 +729,15 @@
           </div>
         </div>
       </div>
-      <div class="mappa-placeholder">
-        <i class="fas fa-map-marker-alt"></i>
-        <h4>Ci trovi qui</h4>
-        <p>Via Circonvallazione, 43<br/>47838 Riccione (RN)</p>
-        <a href="https://www.google.com/maps/dir/?api=1&destination=Via+Circonvallazione+43+Riccione" target="_blank" class="btn-call" style="margin-top:1rem;display:inline-block;">
+      <div class="mappa-box">
+        <iframe
+          src="https://maps.google.com/maps?q=Via%20Circonvallazione%2043%2047838%20Riccione%20RN&z=16&output=embed"
+          width="100%" height="320"
+          style="border:0;border-radius:16px;display:block;"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="Mappa ACI Riccione - Via Circonvallazione 43">
+        </iframe>
+        <a href="https://www.google.com/maps/dir/?api=1&destination=Via+Circonvallazione+43+Riccione" target="_blank" rel="noopener" class="btn-call mappa-cta">
           <i class="fas fa-directions"></i> Ottieni indicazioni
         </a>
       </div>
@@ -986,7 +775,7 @@
           <div class="faq-chevron"><i class="fas fa-chevron-down"></i></div>
         </button>
         <div class="faq-answer">
-          <p>Per garantirti un servizio rapido e senza inutili code in sala d'attesa, la visita con il nostro medico in sede avviene <strong>su appuntamento</strong>. Puoi prenotare il tuo slot orario comodamente da questo sito nella sezione <a href="#prenota">Prenota</a>, oppure chiamandoci in agenzia.</p>
+          <p>Per garantirti un servizio rapido e senza inutili code in sala d'attesa, la visita con il nostro medico in sede avviene <strong>su appuntamento</strong>. Puoi prenotare il tuo slot orario chiamandoci in agenzia al <a href="tel:0541605692">0541-605692</a>.</p>
         </div>
       </div>
 
@@ -1085,16 +874,6 @@
   </div>
 </section>
 
-<section id="cta">
-  <div class="section-inner">
-    <h2>Contattaci per ulteriori informazioni</h2>
-    <div class="cta-btns">
-      <a href="tel:0541605692" class="btn-cta-white"><i class="fas fa-phone"></i> Chiamaci ora</a>
-      <a href="mailto:aci.riccione@gmail.com" class="btn-cta-outline"><i class="fas fa-envelope"></i> Inviaci una Email</a>
-    </div>
-  </div>
-</section>
-
 <footer>
   <div class="footer-inner">
     <div class="footer-grid">
@@ -1108,7 +887,6 @@
         <ul>
           <li><a href="#home">Home</a></li>
           <li><a href="#servizi">Servizi</a></li>
-          <li><a href="#prenota">Prenota</a></li>
           <li><a href="#orari">Orari</a></li>
           <li><a href="#faq">FAQ</a></li>
           <li><a href="#contatti">Contatti</a></li>
@@ -1124,13 +902,16 @@
     </div>
     <hr class="footer-divider">
     <div class="footer-bottom">
-      <span>© 2025 ACI Riccione – Tutti i diritti riservati.</span>
+      <span>© <span id="year"></span> ACI Riccione – Tutti i diritti riservati.</span>
       <span>P.IVA 01259880407 – BA6ET11</span>
     </div>
   </div>
 </footer>
 
 <script>
+  // Anno dinamico nel footer
+  document.getElementById('year').textContent = new Date().getFullYear();
+
   // Mobile Menu Toggle
   document.getElementById('hamburger').addEventListener('click', () => {
     document.getElementById('navLinks').classList.toggle('open');
@@ -1154,7 +935,7 @@
   }, { threshold: 0.1 });
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-  // Documenti Immatricolazione Toggle
+  // Documenti Toggle (sulle service card)
   function toggleDocumenti(btn) {
     const panel = btn.nextElementSibling;
     const aperto = panel.classList.contains('aperto');
@@ -1180,208 +961,5 @@
   }
 </script>
 
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-<script type="text/javascript">
-  emailjs.init("BsbDUDp3k_y0tdLvt");
-
-  // ── CALENDARIO ──────────────────────────────────────────────────────────────
-  const GIORNI_VALIDI = [1, 2, 4, 5]; // lun=1, mar=2, gio=4, ven=5
-  const MESI_IT = ['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno','Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'];
-  
-  // LOGICA ORARI (MANTENUTA DAL PRIMO MESSAGGIO)
-  const SLOT_PER_GIORNO = {
-    1: ['18:00','18:05','18:10','18:15','18:20','18:25','18:30','18:35','18:40','18:45','18:50','18:55','19:00','19:05','19:10','19:15','19:20','19:25','19:30'],
-    2: ['17:30'],
-    4: ['16:30'],
-    5: ['18:30']
-  };
-  
-  const NOMI_GIORNO = {1:'Lunedì', 2:'Martedì', 4:'Giovedì', 5:'Venerdì'};
-  let calAnno, calMese, dataSelezionata = null;
-
-  function inizioCalendario() {
-    const oggi = new Date();
-    calAnno = oggi.getFullYear();
-    calMese = oggi.getMonth();
-    renderCalendario();
-  }
-
-  function cambioMese(dir) {
-    calMese += dir;
-    if (calMese < 0) { calMese = 11; calAnno--; }
-    if (calMese > 11) { calMese = 0; calAnno++; }
-    renderCalendario();
-  }
-
-  function renderCalendario() {
-    const grid = document.getElementById('cal-grid');
-    document.getElementById('cal-titolo').textContent = MESI_IT[calMese] + ' ' + calAnno;
-    grid.innerHTML = '';
-    ['Lun','Mar','Mer','Gio','Ven','Sab','Dom'].forEach(g => {
-      const h = document.createElement('div');
-      h.className = 'cal-header'; h.textContent = g;
-      grid.appendChild(h);
-    });
-    const primoGiorno = new Date(calAnno, calMese, 1);
-    let offset = primoGiorno.getDay() === 0 ? 6 : primoGiorno.getDay() - 1;
-    for (let i = 0; i < offset; i++) {
-      const v = document.createElement('div'); v.className = 'cal-day empty'; grid.appendChild(v);
-    }
-    const oggi = new Date(); oggi.setHours(0,0,0,0);
-    const giorniMese = new Date(calAnno, calMese + 1, 0).getDate();
-    for (let g = 1; g <= giorniMese; g++) {
-      const data = new Date(calAnno, calMese, g);
-      const dow = data.getDay();
-      const cell = document.createElement('div');
-      cell.textContent = g; cell.className = 'cal-day';
-      if (data < oggi) {
-        cell.classList.add('past');
-      } else if (GIORNI_VALIDI.includes(dow)) {
-        cell.classList.add('available');
-        if (dataSelezionata && data.toDateString() === dataSelezionata.toDateString()) cell.classList.add('selected');
-        cell.addEventListener('click', () => selezionaData(data));
-      } else {
-        cell.classList.add('disabled');
-      }
-      grid.appendChild(cell);
-    }
-  }
-
-  function selezionaData(data) {
-    dataSelezionata = data;
-    renderCalendario();
-    const dow = data.getDay();
-    const nomeGiorno = NOMI_GIORNO[dow];
-    const dd = String(data.getDate()).padStart(2,'0');
-    const mm = String(data.getMonth()+1).padStart(2,'0');
-    const yyyy = data.getFullYear();
-    document.getElementById('data-sel-txt').textContent = 'Data selezionata: ' + nomeGiorno + ' ' + dd + '/' + mm + '/' + yyyy;
-    const sel = document.getElementById('slot_orario');
-    sel.innerHTML = '<option value="">Scegli un orario...</option>';
-    (SLOT_PER_GIORNO[dow] || []).forEach(ora => {
-      const opt = document.createElement('option');
-      opt.value = nomeGiorno + ' ' + dd + '/' + mm + '/' + yyyy + ' – ' + ora;
-      opt.textContent = ora;
-      sel.appendChild(opt);
-    });
-    document.getElementById('slot-orario-wrap').classList.add('visible');
-  }
-
-  // Mostra/nasconde blocchi in base al servizio
-  document.getElementById('servizio').addEventListener('change', function() {
-    const isPatente = this.value === 'Rinnovo Patente';
-    document.getElementById('campo-data-standard').style.display = isPatente ? 'none' : '';
-    document.getElementById('campo-slot-patente').style.display = isPatente ? '' : 'none';
-    if (isPatente) inizioCalendario();
-    document.getElementById('data_appuntamento').value = '';
-    document.getElementById('orario_appuntamento').value = '';
-    dataSelezionata = null;
-    document.getElementById('slot-orario-wrap').classList.remove('visible');
-  });
-
-  // ── INVIO EMAIL ─────────────────────────────────────────────────────────────
-  function inviaEmail() {
-    const btn = document.querySelector(".btn-prenota");
-    const nome = document.getElementById("nome").value.trim();
-    const telefono = document.getElementById("telefono").value.trim();
-    const servizio = document.getElementById("servizio").value;
-    const isPatente = servizio === 'Rinnovo Patente';
-
-    if (!nome || !telefono || !servizio) { alert("Per favore, inserisci Nome, Telefono e Servizio."); return; }
-
-    let dataFinale = '', orarioFinale = '';
-    if (isPatente) {
-      const slotOrario = document.getElementById("slot_orario").value;
-      if (!dataSelezionata) { alert("Seleziona una data dal calendario."); return; }
-      if (!slotOrario) { alert("Seleziona un orario."); return; }
-      dataFinale = slotOrario; orarioFinale = slotOrario;
-    } else {
-      dataFinale = document.getElementById("data_appuntamento").value;
-      orarioFinale = document.getElementById("orario_appuntamento").value;
-    }
-
-    const originalText = btn.innerHTML;
-    btn.innerHTML = "<i class='fas fa-spinner fa-spin'></i> Invio...";
-    btn.disabled = true;
-
-    emailjs.send('service_qqmd35i', 'template_vzppqdj', {
-      title: "Nuova Prenotazione Sito", name: nome, nome, telefono, servizio,
-      data_appuntamento: dataFinale, orario_appuntamento: orarioFinale, time: orarioFinale,
-      email: "Non fornita",
-      message: isPatente ? "Prenotazione: " + dataFinale : "Richiesta dal modulo web."
-    }).then(function() {
-      alert("Richiesta inviata con successo! Ti contatteremo a breve.");
-      document.getElementById("nome").value = "";
-      document.getElementById("telefono").value = "";
-      document.getElementById("servizio").value = "";
-      document.getElementById("data_appuntamento").value = "";
-      document.getElementById("orario_appuntamento").value = "";
-      document.getElementById("slot_orario").innerHTML = '<option value="">Scegli un orario...</option>';
-      document.getElementById("campo-data-standard").style.display = "";
-      document.getElementById("campo-slot-patente").style.display = "none";
-      document.getElementById("slot-orario-wrap").classList.remove('visible');
-      dataSelezionata = null;
-      btn.innerHTML = originalText; btn.disabled = false;
-    }, function() {
-      alert("Errore nell'invio. Riprova o chiamaci al 0541-605692.");
-      btn.innerHTML = originalText; btn.disabled = false;
-    });
-  }
-
-  // --- Blocco domeniche e festivi ---
-  const festiviItaliani = [
-    "01-01","01-06","04-25","05-01","06-02",
-    "08-15","11-01","12-08","12-25","12-26"
-  ];
-
-  function getEaster(year) {
-    const a = year % 19, b = Math.floor(year/100), c = year % 100;
-    const d = Math.floor(b/4), e = b % 4, f = Math.floor((b+8)/25);
-    const g = Math.floor((b-f+1)/3), h = (19*a+b-d-g+15) % 30;
-    const i = Math.floor(c/4), k = c % 4;
-    const l = (32+2*e+2*i-h-k) % 7;
-    const m = Math.floor((a+11*h+22*l)/451);
-    const month = Math.floor((h+l-7*m+114)/31);
-    const day = ((h+l-7*m+114) % 31) + 1;
-    return month.toString().padStart(2,'0') + '-' + day.toString().padStart(2,'0');
-  }
-
-  function isHoliday(dateStr) {
-    const d = new Date(dateStr);
-    if (d.getDay() === 0) return "Domenica: siamo chiusi";
-    const mmdd = (d.getMonth()+1).toString().padStart(2,'0') + '-' + d.getDate().toString().padStart(2,'0');
-    if (festiviItaliani.includes(mmdd)) return "Giorno festivo: siamo chiusi";
-    const easter = getEaster(d.getFullYear());
-    const easterDate = new Date(d.getFullYear() + '-' + easter);
-    const easterMonday = new Date(easterDate); easterMonday.setDate(easterDate.getDate()+1);
-    const em = (easterMonday.getMonth()+1).toString().padStart(2,'0') + '-' + easterMonday.getDate().toString().padStart(2,'0');
-    if (mmdd === easter) return "Pasqua: siamo chiusi";
-    if (mmdd === em) return "Pasquetta: siamo chiusi";
-    return null;
-  }
-
-  function validaData(input) {
-    const errDiv = document.getElementById('errore-data');
-    const errMsg = document.getElementById('errore-data-msg');
-    if (!input.value) { errDiv.style.display='none'; return; }
-    const msg = isHoliday(input.value);
-    if (msg) {
-      errMsg.textContent = msg;
-      errDiv.style.display = 'block';
-      input.value = '';
-    } else {
-      errDiv.style.display = 'none';
-    }
-  }
-
-  // Imposta data minima = oggi
-  document.addEventListener('DOMContentLoaded', function() {
-    const today = new Date().toISOString().split('T')[0];
-    const dateInput = document.getElementById('data_appuntamento');
-    if (dateInput) {
-        dateInput.setAttribute('min', today);
-    }
-  });
-</script>
 </body>
 </html>
