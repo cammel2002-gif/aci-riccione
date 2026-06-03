@@ -8,372 +8,582 @@
   <meta name="keywords" content="ACI Riccione, rinnovo patente Riccione, passaggio proprietà Riccione, bollo auto Riccione, immatricolazione Riccione, Automobile Club Riccione, ASI Riccione, Auto Storiche" />
   <meta name="robots" content="index, follow" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="theme-color" content="#0d2b5e" />
   <title>ACI Riccione – Automobile Club d'Italia | Delegazione di Riccione</title>
   <meta name="title" content="ACI Riccione – Automobile Club d'Italia | Delegazione di Riccione">
   <meta property="og:title" content="ACI Riccione – Automobile Club d'Italia | Delegazione di Riccione">
   <meta property="og:description" content="ACI Riccione - Delegazione di Riccione. Rinnovo patenti, passaggi di proprietà, bolli, immatricolazioni e consulenza automobilistica. Via Circonvallazione 43, Riccione. Tel. 0541-605692">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://cammel2002-gif.github.io/aci-riccione/">
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="icon" type="image/webp" href="aci-logo.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <style>
     :root {
-      --blue-dark: #0d2b5e;
-      --blue-mid: #1a4a8a;
-      --blue-main: #2563b0;
-      --blue-light: #3b82c4;
-      --blue-pale: #e8f0fb;
-      --white: #ffffff;
-      --gray-light: #f4f6fa;
-      --gray-text: #64748b;
-      --text-dark: #0f172a;
-      --green: #22c55e;
-      --red: #ef4444;
-      --gold: #b59410;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Outfit', sans-serif; color: var(--text-dark); background: var(--white); }
+      --blue-900: #0a2150;
+      --blue-800: #0d2b5e;
+      --blue-700: #16407f;
+      --blue-600: #1d56a8;
+      --blue-500: #2563b0;
+      --blue-400: #3b82c4;
+      --blue-50:  #eef4fc;
+      --blue-100: #dbe7f8;
 
-    /* NAV */
+      --ink:      #0f1b33;
+      --ink-soft: #475569;
+      --muted:    #7488a3;
+      --line:     #e6ecf5;
+      --bg:       #ffffff;
+      --bg-soft:  #f5f8fd;
+      --bg-tint:  #eef4fc;
+
+      --green:    #16a34a;
+      --green-bg: #dcfce7;
+      --red:      #ef4444;
+      --gold:     #b08423;
+
+      --radius:   18px;
+      --radius-sm: 12px;
+      --shadow-sm: 0 1px 2px rgba(15,27,51,.06), 0 2px 8px rgba(15,27,51,.05);
+      --shadow-md: 0 8px 30px rgba(15,27,51,.08);
+      --shadow-lg: 0 20px 50px rgba(13,43,94,.18);
+      --maxw: 1160px;
+      --ease: cubic-bezier(.4,.14,.3,1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: 'Outfit', system-ui, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    h1,h2,h3,h4 { font-family: 'Plus Jakarta Sans', 'Outfit', sans-serif; letter-spacing: -0.02em; }
+    a { color: inherit; }
+    img { max-width: 100%; display: block; }
+    ::selection { background: var(--blue-500); color: #fff; }
+
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 1.5rem; }
+
+    /* ============ TOP BAR ============ */
+    .topbar {
+      background: var(--blue-900);
+      color: rgba(255,255,255,.78);
+      font-size: 13px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .topbar .wrap { display: flex; justify-content: space-between; align-items: center; height: 38px; gap: 1rem; }
+    .topbar a { color: rgba(255,255,255,.85); text-decoration: none; transition: color .2s; }
+    .topbar a:hover { color: #fff; }
+    .topbar-left { display: flex; gap: 1.6rem; }
+    .topbar-left span { display: inline-flex; align-items: center; gap: 7px; }
+    .topbar-left i { color: var(--blue-400); font-size: 12px; }
+    .topbar-status { display: inline-flex; align-items: center; gap: 7px; font-weight: 600; }
+    .status-dot { width: 8px; height: 8px; border-radius: 50%; background: #34d399; box-shadow: 0 0 0 4px rgba(52,211,153,.18); }
+    .topbar-status.closed .status-dot { background: #f87171; box-shadow: 0 0 0 4px rgba(248,113,113,.18); }
+    @media (max-width: 820px) { .topbar-left span:nth-child(2) { display: none; } }
+    @media (max-width: 560px) { .topbar { display: none; } }
+
+    /* ============ NAV ============ */
     nav {
       position: sticky; top: 0; z-index: 100;
-      background: rgba(255,255,255,0.97);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid #e2e8f0;
-      padding: 0 2rem;
-      display: flex; align-items: center; justify-content: space-between;
-      height: 64px;
+      background: rgba(255,255,255,.85);
+      backdrop-filter: saturate(180%) blur(14px);
+      -webkit-backdrop-filter: saturate(180%) blur(14px);
+      border-bottom: 1px solid transparent;
+      transition: border-color .3s, box-shadow .3s, background .3s;
     }
+    nav.scrolled { border-bottom-color: var(--line); box-shadow: 0 4px 20px rgba(15,27,51,.05); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; }
     .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-    .nav-logo { width: 42px; height: 42px; border-radius: 10px; object-fit: contain; }
-    .nav-brand-text { line-height: 1.2; }
-    .nav-brand-text strong { display: block; font-size: 15px; font-weight: 700; color: var(--blue-dark); }
-    .nav-brand-text span { font-size: 12px; color: var(--gray-text); font-weight: 400; }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-logo {
+      width: 46px; height: 46px; border-radius: 12px; object-fit: contain;
+      background: #fff; padding: 4px; box-shadow: var(--shadow-sm); border: 1px solid var(--line);
+    }
+    .nav-brand-text strong { display: block; font-size: 15.5px; font-weight: 800; color: var(--blue-800); font-family: 'Plus Jakarta Sans', sans-serif; letter-spacing: -.01em; }
+    .nav-brand-text span { font-size: 12px; color: var(--muted); }
+    .nav-links { display: flex; gap: 2px; list-style: none; }
     .nav-links a {
-      text-decoration: none; font-size: 14px; font-weight: 500;
-      color: var(--gray-text); transition: color 0.2s; padding-bottom: 4px;
-      border-bottom: 2px solid transparent;
+      text-decoration: none; font-size: 14.5px; font-weight: 500;
+      color: var(--ink-soft); padding: 8px 14px; border-radius: 9px;
+      transition: color .2s, background .2s; position: relative;
     }
-    .nav-links a:hover, .nav-links a.active { color: var(--blue-main); border-bottom-color: var(--blue-main); }
+    .nav-links a:hover { color: var(--blue-600); background: var(--blue-50); }
+    .nav-links a.active { color: var(--blue-600); font-weight: 600; }
+    .nav-cta { display: flex; align-items: center; gap: .8rem; }
     .btn-call {
-      background: var(--blue-main); color: white; border: none; padding: 10px 22px;
-      border-radius: 8px; font-family: 'Outfit', sans-serif; font-weight: 600;
+      background: var(--blue-600); color: #fff; border: none;
+      padding: 11px 20px; border-radius: 10px; font-family: inherit; font-weight: 600;
       font-size: 14px; cursor: pointer; text-decoration: none;
-      transition: background 0.2s, transform 0.1s;
-    }
-    .btn-call:hover { background: var(--blue-dark); transform: translateY(-1px); }
-    .nav-hamburger { display: none; font-size: 22px; cursor: pointer; color: var(--blue-dark); background: none; border: none; }
-
-    /* HERO */
-    #home {
-      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-main) 60%, var(--blue-light) 100%);
-      min-height: 92vh;
-      display: flex; align-items: center;
-      position: relative; overflow: hidden; padding: 4rem 2rem;
-    }
-    .hero-bg-pattern {
-      position: absolute; inset: 0; opacity: 0.06;
-      background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0);
-      background-size: 32px 32px;
-    }
-    .hero-content { max-width: 700px; position: relative; z-index: 2; animation: fadeUp 0.8s ease; }
-    .hero-logo-badge {
-      width: 90px; height: 90px;
-      background: rgba(255,255,255,0.95);
-      border-radius: 20px; margin-bottom: 2rem;
-      display: flex; align-items: center; justify-content: center;
-      padding: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-    }
-    .hero-logo-badge img { width: 100%; height: 100%; object-fit: contain; border-radius: 12px; }
-    .hero-content h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; color: white; line-height: 1.1; margin-bottom: 1.2rem; }
-    .hero-content h2 { font-size: clamp(1.1rem, 3vw, 1.7rem); font-weight: 500; color: rgba(255,255,255,0.8); margin-bottom: 2.2rem; }
-    .hero-content p { font-size: 1rem; color: rgba(255,255,255,0.7); max-width: 520px; line-height: 1.6; margin-bottom: 3.5rem; }
-    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
-    .btn-primary {
-      background: white; color: var(--blue-dark); padding: 13px 26px;
-      border-radius: 10px; font-weight: 700; font-size: 15px; text-decoration: none;
-      display: flex; align-items: center; gap: 8px; transition: transform 0.2s, box-shadow 0.2s;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-    }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.3); }
-    .btn-secondary {
-      background: transparent; color: white; border: 2px solid rgba(255,255,255,0.5);
-      padding: 13px 26px; border-radius: 10px; font-weight: 600; font-size: 15px;
-      text-decoration: none; transition: border-color 0.2s, background 0.2s;
       display: inline-flex; align-items: center; gap: 8px;
+      box-shadow: 0 4px 14px rgba(29,86,168,.28); transition: transform .15s, box-shadow .2s, background .2s;
     }
-    .btn-secondary:hover { border-color: white; background: rgba(255,255,255,0.1); }
+    .btn-call:hover { background: var(--blue-700); transform: translateY(-1px); box-shadow: 0 8px 22px rgba(29,86,168,.34); }
+    .nav-hamburger { display: none; width: 44px; height: 44px; border-radius: 10px; font-size: 20px; cursor: pointer; color: var(--blue-800); background: var(--blue-50); border: none; }
 
-    /* SECTIONS */
-    section { padding: 5rem 2rem; }
-    .section-inner { max-width: 1100px; margin: 0 auto; }
-    .section-title { text-align: center; margin-bottom: 3rem; }
-    .section-title h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 800; color: var(--blue-dark); margin-bottom: 0.6rem; }
-    .section-title p { color: var(--gray-text); font-size: 1rem; max-width: 600px; margin: 0 auto; }
+    /* ============ HERO ============ */
+    #home {
+      position: relative; overflow: hidden;
+      background: radial-gradient(1200px 600px at 80% -10%, #1d56a8 0%, transparent 60%),
+                  linear-gradient(155deg, var(--blue-900) 0%, var(--blue-700) 55%, var(--blue-600) 100%);
+      color: #fff; padding: clamp(3.5rem, 8vw, 6rem) 0 clamp(4rem, 9vw, 7rem);
+    }
+    .hero-grid-bg {
+      position: absolute; inset: 0; opacity: .5; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size: 54px 54px;
+      mask-image: radial-gradient(900px 500px at 70% 10%, #000, transparent 75%);
+      -webkit-mask-image: radial-gradient(900px 500px at 70% 10%, #000, transparent 75%);
+    }
+    .hero-glow { position: absolute; width: 460px; height: 460px; border-radius: 50%; filter: blur(90px); pointer-events: none; }
+    .hero-glow.a { background: rgba(59,130,196,.35); top: -160px; right: -80px; }
+    .hero-glow.b { background: rgba(13,43,94,.6); bottom: -200px; left: -120px; }
+    .hero-layout { position: relative; z-index: 2; display: grid; grid-template-columns: 1.15fr .85fr; gap: 3rem; align-items: center; }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 9px; margin-bottom: 1.6rem;
+      background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.18);
+      padding: 7px 16px 7px 12px; border-radius: 100px; font-size: 13px; font-weight: 600;
+      color: rgba(255,255,255,.92); backdrop-filter: blur(6px);
+    }
+    .hero-eyebrow img { width: 22px; height: 22px; border-radius: 6px; background: #fff; padding: 2px; }
+    .hero-content h1 { font-size: clamp(2.2rem, 5.2vw, 3.6rem); font-weight: 800; line-height: 1.05; margin-bottom: 1.1rem; }
+    .hero-content h1 .accent {
+      background: linear-gradient(90deg, #7db4e8, #cfe3f7);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .hero-content p { font-size: clamp(1rem, 1.5vw, 1.12rem); color: rgba(255,255,255,.78); max-width: 540px; margin-bottom: 2.2rem; }
+    .hero-btns { display: flex; gap: .9rem; flex-wrap: wrap; margin-bottom: 2.4rem; }
+    .btn-primary {
+      background: #fff; color: var(--blue-800); padding: 14px 26px; border-radius: 12px;
+      font-weight: 700; font-size: 15px; text-decoration: none; display: inline-flex; align-items: center; gap: 9px;
+      transition: transform .2s, box-shadow .2s; box-shadow: 0 8px 26px rgba(0,0,0,.22);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 34px rgba(0,0,0,.3); }
+    .btn-ghost {
+      background: rgba(255,255,255,.08); color: #fff; border: 1px solid rgba(255,255,255,.3);
+      padding: 14px 26px; border-radius: 12px; font-weight: 600; font-size: 15px; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 9px; transition: background .2s, border-color .2s;
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,.16); border-color: rgba(255,255,255,.55); }
+    .hero-trust { display: flex; gap: 2rem; flex-wrap: wrap; }
+    .hero-trust .item { }
+    .hero-trust .num { font-size: 1.5rem; font-weight: 800; font-family: 'Plus Jakarta Sans', sans-serif; }
+    .hero-trust .lbl { font-size: 12.5px; color: rgba(255,255,255,.62); }
 
-    /* SERVICES */
-    #servizi { background: var(--gray-light); }
-    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+    /* Hero info card */
+    .hero-card {
+      background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.16);
+      border-radius: 22px; padding: 1.6rem; backdrop-filter: blur(12px);
+      box-shadow: 0 24px 60px rgba(0,0,0,.3);
+    }
+    .hero-card-title { display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 700; margin-bottom: 1.2rem; color: #fff; }
+    .hero-card-title i { color: #7db4e8; }
+    .hero-info-row { display: flex; align-items: center; gap: 13px; padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,.1); }
+    .hero-info-row:last-of-type { border-bottom: none; }
+    .hero-info-ico { width: 40px; height: 40px; border-radius: 10px; background: rgba(255,255,255,.12); display: flex; align-items: center; justify-content: center; color: #aecdf0; font-size: 15px; flex-shrink: 0; }
+    .hero-info-row .l { font-size: 11.5px; color: rgba(255,255,255,.6); text-transform: uppercase; letter-spacing: .04em; }
+    .hero-info-row .v { font-size: 14.5px; font-weight: 600; color: #fff; }
+    .hero-info-row a { color: #fff; text-decoration: none; }
+    .hero-card-foot { margin-top: 1.2rem; }
+    .hero-card-foot a { display: flex; justify-content: center; gap: 8px; background: #fff; color: var(--blue-800); padding: 12px; border-radius: 11px; font-weight: 700; font-size: 14.5px; text-decoration: none; transition: transform .15s; }
+    .hero-card-foot a:hover { transform: translateY(-1px); }
+
+    /* Wave divider */
+    .hero-wave { position: absolute; left: 0; right: 0; bottom: -1px; z-index: 2; line-height: 0; }
+    .hero-wave svg { width: 100%; height: 60px; display: block; }
+
+    @media (max-width: 900px) {
+      .hero-layout { grid-template-columns: 1fr; gap: 2.2rem; }
+      .hero-card { max-width: 440px; }
+    }
+
+    /* ============ SECTION GENERIC ============ */
+    section { padding: clamp(3.5rem, 7vw, 6rem) 0; }
+    .sec-head { text-align: center; max-width: 640px; margin: 0 auto 3rem; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 12.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+      color: var(--blue-600); background: var(--blue-50); padding: 6px 14px; border-radius: 100px; margin-bottom: 1rem;
+    }
+    .sec-head h2 { font-size: clamp(1.7rem, 3.4vw, 2.5rem); font-weight: 800; color: var(--blue-900); margin-bottom: .7rem; }
+    .sec-head p { color: var(--ink-soft); font-size: 1.05rem; }
+
+    /* ============ SERVICES ============ */
+    #servizi { background: var(--bg-soft); }
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 1.4rem; }
     .service-card {
-      background: white; border-radius: 16px; padding: 2rem;
-      border: 2px solid transparent; transition: all 0.3s;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.05); position: relative;
+      background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 1.9rem;
+      transition: transform .3s var(--ease), box-shadow .3s, border-color .3s; position: relative; display: flex; flex-direction: column;
     }
-    .service-card:hover { border-color: var(--blue-main); transform: translateY(-4px); box-shadow: 0 8px 32px rgba(37,99,176,0.15); }
+    .service-card:hover { transform: translateY(-5px); border-color: var(--blue-100); box-shadow: var(--shadow-md); }
     .service-card .badge {
-      position: absolute; top: 1.2rem; right: 1.2rem;
-      background: #dcfce7; color: #16a34a; font-size: 11px; font-weight: 600;
-      padding: 3px 10px; border-radius: 20px;
+      position: absolute; top: 1.5rem; right: 1.5rem;
+      background: var(--green-bg); color: var(--green); font-size: 11px; font-weight: 700;
+      padding: 4px 11px; border-radius: 100px;
     }
     .service-icon {
-      width: 52px; height: 52px; background: var(--blue-main); border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
-      color: white; font-size: 20px; margin-bottom: 1.2rem;
+      width: 56px; height: 56px; border-radius: 14px;
+      background: linear-gradient(140deg, var(--blue-600), var(--blue-400));
+      display: flex; align-items: center; justify-content: center; color: #fff; font-size: 22px;
+      margin-bottom: 1.3rem; box-shadow: 0 8px 18px rgba(29,86,168,.25);
     }
-    .service-card h3 { font-size: 1.1rem; font-weight: 700; color: var(--blue-dark); margin-bottom: 0.5rem; }
-    .service-card p { font-size: 0.9rem; color: var(--gray-text); line-height: 1.5; margin-bottom: 1.2rem; }
-    .service-link { color: var(--blue-main); font-size: 14px; font-weight: 600; text-decoration: none; display: flex; align-items: center; gap: 6px; }
-    .service-link:hover { gap: 10px; }
+    .service-card h3 { font-size: 1.18rem; font-weight: 700; color: var(--blue-900); margin-bottom: .5rem; }
+    .service-card > p { font-size: .94rem; color: var(--ink-soft); margin-bottom: 1.2rem; }
+    .service-spacer { flex: 1; }
+    .service-link { color: var(--blue-600); font-size: 14px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 7px; transition: gap .2s; }
+    .service-link:hover { gap: 11px; }
 
-    /* DOCUMENTI IMMATRICOLAZIONE */
+    /* Documenti accordion */
     .btn-documenti {
-      display: flex; align-items: center; gap: 8px;
-      background: var(--blue-pale); color: var(--blue-main);
-      border: 1.5px solid #c3d9f5; border-radius: 8px;
-      padding: 9px 14px; font-family: 'Outfit', sans-serif;
-      font-size: 13px; font-weight: 600; cursor: pointer;
-      transition: all 0.2s; width: 100%; margin-top: 0.2rem;
+      display: flex; align-items: center; gap: 8px; background: var(--blue-50); color: var(--blue-600);
+      border: 1px solid var(--blue-100); border-radius: 10px; padding: 10px 14px; font-family: inherit;
+      font-size: 13px; font-weight: 600; cursor: pointer; transition: background .2s, border-color .2s; width: 100%;
     }
-    .btn-documenti:hover { background: #cddaf5; border-color: var(--blue-main); }
-    .btn-documenti .icona-freccia { margin-left: auto; transition: transform 0.3s; }
+    .btn-documenti:hover { background: var(--blue-100); }
+    .btn-documenti .icona-freccia { margin-left: auto; transition: transform .3s; }
+    .btn-documenti.aperto { background: var(--blue-100); border-color: var(--blue-400); }
     .btn-documenti.aperto .icona-freccia { transform: rotate(180deg); }
-    .documenti-panel {
-      max-height: 0; overflow: hidden;
-      transition: max-height 0.4s ease, padding 0.3s ease;
-    }
-    .documenti-panel.aperto { max-height: 400px; padding-top: 1rem; }
+    .documenti-panel { max-height: 0; overflow: hidden; transition: max-height .4s var(--ease); }
+    .documenti-panel.aperto { max-height: 460px; }
+    .documenti-inner { padding-top: 1rem; }
     .documenti-categoria { margin-bottom: 1rem; }
     .documenti-categoria:last-child { margin-bottom: 0; }
-    .doc-cat-title {
-      display: flex; align-items: center; gap: 8px;
-      font-size: 13px; font-weight: 700; color: var(--blue-dark); margin-bottom: 0.5rem;
-    }
-    .doc-list { list-style: none; padding: 0; }
-    .doc-list li {
-      display: flex; align-items: flex-start; gap: 8px;
-      font-size: 13px; color: var(--gray-text); padding: 4px 0;
-      border-bottom: 1px solid #f1f5f9;
-    }
+    .doc-cat-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: var(--blue-800); margin-bottom: .5rem; }
+    .doc-list { list-style: none; }
+    .doc-list li { display: flex; align-items: flex-start; gap: 9px; font-size: 13px; color: var(--ink-soft); padding: 5px 0; border-bottom: 1px solid var(--bg-soft); }
     .doc-list li:last-child { border-bottom: none; }
-    .doc-list li i.fa-check-circle { color: #22c55e; margin-top: 2px; flex-shrink: 0; }
-    .doc-list li.doc-nota i.fa-info-circle { color: var(--blue-main); margin-top: 2px; flex-shrink: 0; }
-    .doc-list li.doc-nota { color: #94a3b8; }
+    .doc-list li i.fa-check-circle { color: var(--green); margin-top: 3px; flex-shrink: 0; }
+    .doc-list li.doc-nota i.fa-info-circle { color: var(--blue-500); margin-top: 3px; flex-shrink: 0; }
+    .doc-list li.doc-nota { color: var(--muted); }
+    .mt-auto { margin-top: 1.3rem; }
 
-    /* SEZIONE ASI (AUTO STORICHE) */
-    #veicoli-storici { background: white; }
+    /* Preventivo via targa (service card) */
+    .prev-box { margin-top: 1rem; background: var(--bg-soft); border: 1px solid var(--line); border-radius: 12px; padding: .9rem 1rem; }
+    .prev-box-title { font-size: 12.5px; font-weight: 700; color: var(--blue-800); display: flex; align-items: center; gap: 7px; margin-bottom: .7rem; }
+    .prev-box-title i { color: var(--blue-600); }
+    .prev-btns { display: flex; gap: .55rem; }
+    .btn-prev { flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 7px; padding: 9px 10px; border-radius: 9px; font-size: 13px; font-weight: 700; text-decoration: none; transition: transform .15s, filter .2s; }
+    .btn-prev:hover { transform: translateY(-1px); filter: brightness(1.05); }
+    .btn-prev.wa { background: #25D366; color: #fff; }
+    .btn-prev.mail { background: var(--blue-600); color: #fff; }
+    .btn-prev i { font-size: 15px; }
+
+    /* ============ ASI ============ */
+    #veicoli-storici { background: #fff; }
     .asi-container {
-      background: linear-gradient(135deg, #fdfcfb 0%, #f5f7fa 100%);
-      border-radius: 24px; padding: 3rem;
-      border: 1px solid #e2e8f0; box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;
+      background: linear-gradient(135deg, #fbfaf7 0%, var(--bg-soft) 100%);
+      border-radius: 26px; padding: clamp(1.8rem, 4vw, 3.2rem);
+      border: 1px solid var(--line); box-shadow: var(--shadow-sm);
+      display: grid; grid-template-columns: 1.25fr .75fr; gap: 2.8rem; align-items: center;
     }
-    .asi-content h3 { font-size: 1.8rem; color: var(--blue-dark); margin-bottom: 1rem; font-weight: 800; }
-    .asi-content p { color: var(--gray-text); line-height: 1.7; margin-bottom: 1.5rem; }
-    .asi-benefits { list-style: none; display: grid; gap: 1rem; margin-bottom: 2rem; }
-    .asi-benefits li {
-      display: flex; align-items: flex-start; gap: 12px;
-      background: white; padding: 1rem; border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-    }
-    .asi-benefits i { color: var(--gold); font-size: 1.2rem; margin-top: 2px; }
-    .asi-benefits strong { color: var(--blue-dark); font-size: 14px; display: block; margin-bottom: 2px; }
-    .asi-benefits span { color: var(--gray-text); font-size: 13px; line-height: 1.4; }
-    .asi-cta-box {
-      background: var(--blue-dark); color: white; border-radius: 20px; padding: 2rem;
-      text-align: center; display: flex; flex-direction: column; align-items: center; gap: 1rem;
-    }
-    .asi-icon-large { font-size: 3rem; color: var(--gold); margin-bottom: 0.5rem; }
-    .asi-cta-box h4 { font-size: 1.2rem; font-weight: 700; }
-    .asi-cta-box p { font-size: 14px; color: rgba(255,255,255,0.7); }
+    .asi-content h3 { font-size: 1.7rem; color: var(--blue-900); margin-bottom: 1rem; font-weight: 800; }
+    .asi-content > p { color: var(--ink-soft); margin-bottom: 1.6rem; }
+    .asi-benefits { list-style: none; display: grid; gap: .9rem; }
+    .asi-benefits li { display: flex; align-items: flex-start; gap: 14px; background: #fff; padding: 1.1rem 1.2rem; border-radius: 14px; box-shadow: var(--shadow-sm); border: 1px solid var(--line); }
+    .asi-ico { width: 42px; height: 42px; border-radius: 11px; background: linear-gradient(140deg,#cfa14a,#e9cd84); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 17px; flex-shrink: 0; }
+    .asi-benefits strong { color: var(--blue-900); font-size: 14.5px; display: block; margin-bottom: 3px; }
+    .asi-benefits span { color: var(--ink-soft); font-size: 13px; line-height: 1.5; }
+    .asi-cta-box { background: linear-gradient(160deg, var(--blue-800), var(--blue-600)); color: #fff; border-radius: 22px; padding: 2.2rem; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 1rem; box-shadow: var(--shadow-lg); }
+    .asi-icon-large { width: 76px; height: 76px; border-radius: 20px; background: rgba(255,255,255,.12); display: flex; align-items: center; justify-content: center; font-size: 2rem; color: #ecd28a; }
+    .asi-cta-box h4 { font-size: 1.3rem; font-weight: 800; }
+    .asi-cta-box p { font-size: 14px; color: rgba(255,255,255,.78); }
+    .asi-cta-box .btn-primary { margin-top: .4rem; box-shadow: none; }
+    @media (max-width: 860px) { .asi-container { grid-template-columns: 1fr; gap: 2rem; } }
 
-    /* ORARI MEDICO */
-    #orari-medico {
-      background: linear-gradient(135deg, var(--blue-dark), var(--blue-main));
-      color: white;
-    }
-    #orari-medico .section-title h2 { color: white; }
-    #orari-medico .section-title p { color: rgba(255,255,255,0.7); }
-    .medico-card {
-      background: rgba(255,255,255,0.1); backdrop-filter: blur(8px);
-      border: 1px solid rgba(255,255,255,0.2); border-radius: 20px; padding: 2rem;
-      max-width: 700px; margin: 0 auto;
-    }
-    .medico-card h3 { font-size: 1.1rem; font-weight: 600; color: rgba(255,255,255,0.8); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 8px; }
-    .orario-row {
-      display: flex; align-items: center; justify-content: space-between;
-      background: rgba(255,255,255,0.08); border-radius: 12px; padding: 1rem 1.2rem;
-      margin-bottom: 0.8rem;
-    }
+    /* ============ ORARI MEDICO ============ */
+    #orari-medico { background: linear-gradient(160deg, var(--blue-900), var(--blue-700)); color: #fff; position: relative; overflow: hidden; }
+    #orari-medico .hero-glow.a { top: -200px; right: -100px; opacity: .6; }
+    #orari-medico .eyebrow { background: rgba(255,255,255,.1); color: #aecdf0; }
+    #orari-medico .sec-head h2 { color: #fff; }
+    #orari-medico .sec-head p { color: rgba(255,255,255,.72); }
+    .medico-card { position: relative; z-index: 2; background: rgba(255,255,255,.07); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,.16); border-radius: 22px; padding: 2rem; max-width: 720px; margin: 0 auto; }
+    .medico-card > h3 { font-size: 1rem; font-weight: 600; color: rgba(255,255,255,.8); margin-bottom: 1.3rem; display: flex; align-items: center; gap: 9px; }
+    .orario-row { display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.08); border-radius: 14px; padding: 1rem 1.2rem; margin-bottom: .7rem; transition: background .2s; }
+    .orario-row:hover { background: rgba(255,255,255,.1); }
     .orario-left { display: flex; align-items: center; gap: 14px; }
-    .orario-icon {
-      width: 42px; height: 42px; background: rgba(255,255,255,0.15);
-      border-radius: 10px; display: flex; align-items: center; justify-content: center;
-      font-size: 16px; color: rgba(255,255,255,0.9);
-    }
-    .orario-day { font-weight: 700; font-size: 1rem; color: white; }
-    .orario-time { font-size: 13px; color: rgba(255,255,255,0.65); margin-top: 2px; }
-    .badge-medico {
-      background: rgba(34,197,94,0.25); color: #86efac;
-      font-size: 11px; font-weight: 600; padding: 4px 12px; border-radius: 20px;
-      border: 1px solid rgba(134,239,172,0.3);
-    }
-    .nota-prenotazione {
-      margin-top: 1.5rem; background: rgba(255,255,255,0.06);
-      border-radius: 10px; padding: 1rem 1.2rem;
-      text-align: center; font-size: 13px; color: rgba(255,255,255,0.65);
-      display: flex; align-items: center; justify-content: center; gap: 8px;
-    }
-    .nota-prenotazione a { color: white; font-weight: 700; text-decoration: none; }
+    .orario-icon { width: 44px; height: 44px; background: rgba(255,255,255,.12); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 16px; color: #aecdf0; }
+    .orario-day { font-weight: 700; font-size: 1rem; color: #fff; }
+    .orario-time { font-size: 13px; color: rgba(255,255,255,.66); }
+    .badge-medico { background: rgba(52,211,153,.18); color: #6ee7b7; font-size: 11px; font-weight: 700; padding: 5px 12px; border-radius: 100px; border: 1px solid rgba(110,231,183,.3); white-space: nowrap; }
+    .nota-prenotazione { margin-top: 1.3rem; background: rgba(255,255,255,.06); border-radius: 12px; padding: 1rem 1.2rem; text-align: center; font-size: 13.5px; color: rgba(255,255,255,.72); display: flex; align-items: center; justify-content: center; gap: 9px; flex-wrap: wrap; }
+    .nota-prenotazione a { color: #fff; font-weight: 700; text-decoration: none; }
     .nota-prenotazione a:hover { text-decoration: underline; }
 
-    /* ORARI APERTURA */
-    #orari { background: white; }
-    .orari-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; max-width: 800px; margin: 0 auto; }
-    .orari-card { background: var(--gray-light); border-radius: 16px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.05); }
-    .orari-card-header {
-      background: var(--blue-main); padding: 1rem 1.5rem;
-      display: flex; align-items: center; gap: 10px;
-      color: white; font-weight: 700; font-size: 1rem;
-    }
+    /* ============ ORARI APERTURA ============ */
+    #orari { background: var(--bg-soft); }
+    .orari-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; max-width: 860px; margin: 0 auto; }
+    .orari-card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm); }
+    .orari-card-header { background: linear-gradient(135deg, var(--blue-700), var(--blue-500)); padding: 1.1rem 1.5rem; display: flex; align-items: center; gap: 11px; color: #fff; font-weight: 700; font-size: 1.02rem; }
     .orari-card-header.chiuso { background: #475569; }
     .orari-card-body { padding: 1.5rem; }
-    .orari-slot { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 1rem; }
+    .orari-slot { display: flex; align-items: center; gap: 13px; margin-bottom: 1.1rem; }
     .orari-slot:last-child { margin-bottom: 0; }
-    .slot-icon {
-      width: 34px; height: 34px; border-radius: 8px;
-      display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0;
-    }
+    .slot-icon { width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
     .slot-icon.yellow { background: #fef9c3; color: #ca8a04; }
-    .slot-icon.blue { background: #dbeafe; color: var(--blue-main); }
-    .slot-icon.green { background: #dcfce7; color: #16a34a; }
-    .slot-label { font-size: 12px; color: var(--gray-text); }
-    .slot-time { font-size: 1.1rem; font-weight: 700; color: var(--blue-dark); }
-    .badge-chiuso {
-      background: #fee2e2; color: var(--red); font-weight: 700;
-      padding: 8px 24px; border-radius: 10px; font-size: 15px;
-      display: inline-block; margin: 0.5rem 0;
-    }
+    .slot-icon.blue { background: var(--blue-50); color: var(--blue-600); }
+    .slot-icon.green { background: var(--green-bg); color: var(--green); }
+    .slot-label { font-size: 12px; color: var(--muted); }
+    .slot-time { font-size: 1.12rem; font-weight: 700; color: var(--blue-900); }
+    .badge-chiuso { background: #fee2e2; color: var(--red); font-weight: 700; padding: 9px 26px; border-radius: 11px; font-size: 15px; display: inline-block; margin: .6rem 0; }
+    @media (max-width: 720px) { .orari-grid { grid-template-columns: 1fr; } }
 
-    /* CONTATTI */
-    #contatti { background: var(--gray-light); }
-    .contatti-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; }
+    /* ============ CONTATTI ============ */
+    #contatti { background: #fff; }
+    .contatti-grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: 2.2rem; align-items: stretch; }
     .contatti-cards { display: flex; flex-direction: column; gap: 1rem; }
-    .contatto-card {
-      background: white; border-radius: 14px; padding: 1.2rem 1.5rem;
-      display: flex; align-items: flex-start; gap: 14px; box-shadow: 0 2px 10px rgba(0,0,0,0.02);
-    }
-    .contatto-icon {
-      width: 46px; height: 46px; background: var(--blue-main); border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
-      color: white; font-size: 18px; flex-shrink: 0;
-    }
-    .contatto-label { font-size: 13px; color: var(--gray-text); margin-bottom: 4px; }
-    .contatto-value { font-size: 15px; font-weight: 600; color: var(--blue-dark); }
-    .contatto-value a { color: var(--blue-main); text-decoration: none; }
+    .contatto-card { background: var(--bg-soft); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 1.25rem 1.4rem; display: flex; align-items: flex-start; gap: 15px; transition: border-color .2s, box-shadow .2s; }
+    .contatto-card:hover { border-color: var(--blue-100); box-shadow: var(--shadow-sm); }
+    .contatto-icon { width: 48px; height: 48px; background: linear-gradient(140deg, var(--blue-600), var(--blue-400)); border-radius: 13px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 18px; flex-shrink: 0; box-shadow: 0 6px 14px rgba(29,86,168,.22); }
+    .contatto-label { font-size: 12.5px; color: var(--muted); margin-bottom: 4px; text-transform: uppercase; letter-spacing: .03em; }
+    .contatto-value { font-size: 15px; font-weight: 600; color: var(--blue-900); }
+    .contatto-value a { color: var(--blue-600); text-decoration: none; }
     .contatto-value a:hover { text-decoration: underline; }
-    .contatto-extra { font-size: 13px; color: var(--gray-text); margin-top: 2px; }
-    .mappa-box {
-      display: flex; flex-direction: column; align-items: stretch;
-    }
-    .mappa-box iframe { box-shadow: 0 2px 10px rgba(0,0,0,0.04); }
-    .mappa-cta {
-      margin-top: 1rem; align-self: flex-start;
-      display: inline-flex; align-items: center; gap: 8px;
-    }
+    .contatto-extra { font-size: 13px; color: var(--ink-soft); margin-top: 3px; }
+    .contatto-extra a { color: var(--blue-600); text-decoration: none; }
+    .fiscal-card { display: flex; flex-direction: column; gap: 8px; }
+    .fiscal-row { display: flex; align-items: center; gap: 9px; font-size: 14px; color: var(--ink-soft); }
+    .fiscal-row i { color: var(--blue-600); width: 16px; }
+    .fiscal-row strong { color: var(--blue-900); }
+    .mappa-box { display: flex; flex-direction: column; }
+    .mappa-box iframe { border: 1px solid var(--line); border-radius: var(--radius); flex: 1; min-height: 340px; box-shadow: var(--shadow-sm); }
+    .mappa-cta { margin-top: 1rem; align-self: flex-start; }
+    @media (max-width: 860px) { .contatti-grid { grid-template-columns: 1fr; } }
 
-    /* FAQ */
-    #faq { background: white; }
-    .faq-list { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 0.75rem; }
-    .faq-item {
-      background: var(--gray-light); border-radius: 14px; overflow: hidden;
-      border: 1.5px solid transparent; transition: border-color 0.25s;
-    }
-    .faq-item.open { border-color: var(--blue-main); background: white; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-    .faq-question {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1.2rem 1.5rem; cursor: pointer; gap: 1rem;
-      background: none; border: none; width: 100%; text-align: left;
-      font-family: 'Outfit', sans-serif;
-    }
+    /* ============ FAQ ============ */
+    #faq { background: var(--bg-soft); }
+    .faq-list { max-width: 820px; margin: 0 auto; display: flex; flex-direction: column; gap: .8rem; }
+    .faq-item { background: #fff; border-radius: var(--radius-sm); overflow: hidden; border: 1px solid var(--line); transition: border-color .25s, box-shadow .25s; }
+    .faq-item.open { border-color: var(--blue-400); box-shadow: var(--shadow-md); }
+    .faq-question { display: flex; align-items: center; justify-content: space-between; padding: 1.15rem 1.4rem; cursor: pointer; gap: 1rem; background: none; border: none; width: 100%; text-align: left; font-family: inherit; }
     .faq-question-left { display: flex; align-items: center; gap: 14px; }
-    .faq-q-icon {
-      width: 38px; height: 38px; background: white;
-      border-radius: 10px; display: flex; align-items: center; justify-content: center;
-      color: var(--blue-main); font-size: 15px; flex-shrink: 0;
-      transition: background 0.25s, color 0.25s;
-    }
-    .faq-item.open .faq-q-icon { background: var(--blue-main); color: white; }
-    .faq-question span { font-size: 15px; font-weight: 600; color: var(--blue-dark); line-height: 1.4; }
-    .faq-chevron {
-      width: 30px; height: 30px; background: white;
-      border-radius: 8px; display: flex; align-items: center; justify-content: center;
-      color: var(--gray-text); flex-shrink: 0; transition: transform 0.3s, background 0.25s, color 0.25s;
-    }
-    .faq-item.open .faq-chevron { transform: rotate(180deg); background: var(--blue-pale); color: var(--blue-main); }
-    .faq-answer {
-      max-height: 0; overflow: hidden;
-      transition: max-height 0.4s ease, padding 0.3s ease;
-      padding: 0 1.5rem;
-    }
-    .faq-answer.open { max-height: 600px; padding-bottom: 1.4rem; }
-    .faq-answer p { font-size: 14px; color: var(--gray-text); line-height: 1.7; padding-left: 52px; }
-    .faq-answer ul { padding-left: 52px; margin-top: 0.6rem; list-style: none; display: flex; flex-direction: column; gap: 6px; }
-    .faq-answer ul li { display: flex; align-items: flex-start; gap: 8px; font-size: 14px; color: var(--gray-text); }
-    .faq-answer ul li i { color: #22c55e; margin-top: 3px; flex-shrink: 0; }
-    .faq-answer a { color: var(--blue-main); text-decoration: none; font-weight: 600; }
+    .faq-q-icon { width: 40px; height: 40px; background: var(--blue-50); border-radius: 11px; display: flex; align-items: center; justify-content: center; color: var(--blue-600); font-size: 15px; flex-shrink: 0; transition: background .25s, color .25s; }
+    .faq-item.open .faq-q-icon { background: var(--blue-600); color: #fff; }
+    .faq-question > span, .faq-question-left span { font-size: 15px; font-weight: 600; color: var(--blue-900); line-height: 1.4; }
+    .faq-chevron { width: 30px; height: 30px; background: var(--bg-soft); border-radius: 9px; display: flex; align-items: center; justify-content: center; color: var(--muted); flex-shrink: 0; transition: transform .3s, background .25s, color .25s; }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); background: var(--blue-50); color: var(--blue-600); }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height .4s var(--ease); }
+    .faq-answer-inner { padding: 0 1.4rem 1.3rem 4.4rem; }
+    .faq-answer p { font-size: 14.5px; color: var(--ink-soft); line-height: 1.7; }
+    .faq-answer ul { margin-top: .7rem; list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .faq-answer ul li { display: flex; align-items: flex-start; gap: 9px; font-size: 14.5px; color: var(--ink-soft); }
+    .faq-answer ul li i { color: var(--green); margin-top: 4px; flex-shrink: 0; }
+    .faq-answer a { color: var(--blue-600); text-decoration: none; font-weight: 600; }
     .faq-answer a:hover { text-decoration: underline; }
-    .faq-contact-hint {
-      max-width: 800px; margin: 2rem auto 0;
-      background: var(--blue-pale); border-radius: 14px; padding: 1.2rem 1.5rem;
-      display: flex; align-items: center; gap: 14px;
-      border: 1.5px solid #c3d9f5;
-    }
-    .faq-contact-hint i { color: var(--blue-main); font-size: 20px; flex-shrink: 0; }
-    .faq-contact-hint p { font-size: 14px; color: var(--blue-dark); line-height: 1.5; margin: 0; padding: 0; }
-    .faq-contact-hint a { color: var(--blue-main); font-weight: 700; text-decoration: none; }
-    .faq-contact-hint a:hover { text-decoration: underline; }
+    .faq-contact-hint { max-width: 820px; margin: 1.6rem auto 0; background: linear-gradient(135deg, var(--blue-700), var(--blue-500)); color: #fff; border-radius: var(--radius); padding: 1.4rem 1.6rem; display: flex; align-items: center; gap: 16px; box-shadow: var(--shadow-md); }
+    .faq-contact-hint i { font-size: 22px; color: #aecdf0; flex-shrink: 0; }
+    .faq-contact-hint p { font-size: 14.5px; line-height: 1.55; margin: 0; }
+    .faq-contact-hint a { color: #fff; font-weight: 700; text-decoration: underline; }
+    @media (max-width: 560px) { .faq-answer-inner { padding-left: 1.4rem; } }
 
-    /* FOOTER */
-    footer { background: var(--blue-dark); color: rgba(255,255,255,0.7); padding: 3rem 2rem 1.5rem; }
-    .footer-inner { max-width: 1100px; margin: 0 auto; }
-    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; margin-bottom: 2rem; }
-    .footer-brand strong { display: block; font-size: 16px; font-weight: 700; color: white; margin-bottom: 4px; }
-    .footer-brand span { font-size: 13px; }
-    .footer-brand p { font-size: 13px; margin-top: 0.8rem; line-height: 1.6; max-width: 280px; }
-    .footer-col h4 { color: white; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; }
+    /* ============ FOOTER ============ */
+    footer { background: var(--blue-900); color: rgba(255,255,255,.62); padding: 3.5rem 0 1.5rem; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; margin-bottom: 2.2rem; }
+    .footer-brand-row { display: flex; align-items: center; gap: 12px; margin-bottom: 1rem; }
+    .footer-brand-row img { width: 46px; height: 46px; border-radius: 12px; background: #fff; padding: 4px; }
+    .footer-brand-row strong { display: block; font-size: 16px; font-weight: 800; color: #fff; font-family: 'Plus Jakarta Sans', sans-serif; }
+    .footer-brand-row span { font-size: 12.5px; }
+    .footer-brand p { font-size: 13.5px; line-height: 1.6; max-width: 300px; }
+    .footer-col h4 { color: #fff; font-size: 12.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 1.1rem; }
     .footer-col ul { list-style: none; }
-    .footer-col ul li { margin-bottom: 0.5rem; }
-    .footer-col ul li a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 14px; transition: color 0.2s; }
-    .footer-col ul li a:hover { color: white; }
-    .footer-divider { border: none; border-top: 1px solid rgba(255,255,255,0.1); margin: 1.5rem 0; }
-    .footer-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 13px; flex-wrap: wrap; gap: 0.5rem; }
+    .footer-col ul li { margin-bottom: .6rem; }
+    .footer-col ul li a { color: rgba(255,255,255,.6); text-decoration: none; font-size: 14px; transition: color .2s; display: inline-flex; align-items: center; gap: 8px; }
+    .footer-col ul li a:hover { color: #fff; }
+    .footer-col ul li a i { font-size: 12px; color: var(--blue-400); width: 14px; }
+    .footer-divider { border: none; border-top: 1px solid rgba(255,255,255,.1); margin: 1.5rem 0; }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 13px; flex-wrap: wrap; gap: .6rem; }
+    @media (max-width: 760px) { .footer-grid { grid-template-columns: 1fr; gap: 2rem; } .footer-bottom { flex-direction: column; text-align: center; } }
 
-    /* ANIMATIONS */
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
-    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    /* ============ RECENSIONI ============ */
+    #recensioni { background: #fff; }
+    .reviews-summary {
+      display: flex; align-items: center; justify-content: center; gap: 1.4rem;
+      max-width: 560px; margin: 0 auto 2.6rem; background: var(--bg-soft);
+      border: 1px solid var(--line); border-radius: var(--radius); padding: 1.3rem 1.6rem; flex-wrap: wrap;
+    }
+    .rs-score { font-size: 2.6rem; font-weight: 800; color: var(--blue-900); font-family: 'Plus Jakarta Sans', sans-serif; line-height: 1; }
+    .rs-mid { text-align: left; }
+    .rs-stars { color: #fbbf24; font-size: 1.05rem; letter-spacing: 2px; }
+    .rs-mid .rs-sub { font-size: 13px; color: var(--ink-soft); margin-top: 4px; }
+    .rs-google { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; color: var(--blue-900); font-size: 14px; }
+    .g-logo { font-weight: 800; font-size: 20px; font-family: 'Plus Jakarta Sans', sans-serif; }
+    .g-logo .b { color: #4285F4; } .g-logo .r { color: #EA4335; } .g-logo .y { color: #FBBC05; } .g-logo .g { color: #34A853; }
+    .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1.4rem; margin-bottom: 2.4rem; }
+    .review-card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 1.6rem; box-shadow: var(--shadow-sm); transition: transform .3s var(--ease), box-shadow .3s, border-color .3s; display: flex; flex-direction: column; position: relative; }
+    .review-card:hover { transform: translateY(-5px); border-color: var(--blue-100); box-shadow: var(--shadow-md); }
+    .review-quote { position: absolute; top: 1.1rem; right: 1.4rem; font-size: 2.6rem; color: var(--blue-50); font-family: Georgia, serif; line-height: 1; }
+    .review-head { display: flex; align-items: center; gap: 12px; margin-bottom: .9rem; }
+    .review-avatar { width: 46px; height: 46px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: 17px; flex-shrink: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+    .review-name { font-weight: 700; color: var(--blue-900); font-size: 15px; }
+    .review-meta { font-size: 12.5px; color: var(--muted); }
+    .review-stars { color: #fbbf24; font-size: 14px; letter-spacing: 1px; margin-bottom: .7rem; }
+    .review-text { font-size: 14.5px; color: var(--ink-soft); line-height: 1.6; }
+    .reviews-cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-review-google { display: inline-flex; align-items: center; gap: 10px; background: #fff; color: var(--ink); border: 1.5px solid var(--line); border-radius: 12px; padding: 13px 24px; font-weight: 700; font-size: 14.5px; text-decoration: none; transition: border-color .2s, box-shadow .2s, transform .15s; }
+    .btn-review-google:hover { border-color: var(--blue-300, var(--blue-400)); box-shadow: var(--shadow-sm); transform: translateY(-1px); }
 
-    /* MOBILE */
-    @media (max-width: 768px) {
-      .nav-links { display: none; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: white; padding: 1rem 2rem; border-bottom: 1px solid #e2e8f0; }
-      .nav-links.open { display: flex; }
-      .nav-hamburger { display: block; }
-      .orari-grid, .asi-container { grid-template-columns: 1fr; gap: 2rem; }
-      .contatti-grid { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
-      .footer-bottom { flex-direction: column; text-align: center; }
+    /* ============ WHATSAPP FAB ============ */
+    .fab-wa {
+      position: fixed; bottom: 24px; right: 24px; z-index: 95;
+      display: inline-flex; align-items: center; gap: 0; height: 56px;
+      background: #25D366; color: #fff; border-radius: 100px; text-decoration: none;
+      box-shadow: 0 10px 26px rgba(37,211,102,.45); overflow: hidden;
+      padding: 0 18px; font-weight: 700; font-size: 15px;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .fab-wa i { font-size: 27px; line-height: 1; }
+    .fab-wa .fab-wa-label {
+      max-width: 0; overflow: hidden; white-space: nowrap;
+      opacity: 0; transition: max-width .35s var(--ease), opacity .25s, margin .35s;
+    }
+    .fab-wa:hover { transform: translateY(-2px); box-shadow: 0 14px 32px rgba(37,211,102,.55); }
+    .fab-wa:hover .fab-wa-label { max-width: 220px; opacity: 1; margin-left: 11px; }
+    .fab-wa::before {
+      content: ""; position: absolute; inset: 0; border-radius: 100px;
+      box-shadow: 0 0 0 0 rgba(37,211,102,.5); animation: waPulse 2.4s ease-out infinite; pointer-events: none;
+    }
+    @keyframes waPulse { 0% { box-shadow: 0 0 0 0 rgba(37,211,102,.5); } 70% { box-shadow: 0 0 0 16px rgba(37,211,102,0); } 100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); } }
+    @media (prefers-reduced-motion: reduce) { .fab-wa::before { animation: none; } }
+    @media (max-width: 560px) { .fab-wa:hover .fab-wa-label { max-width: 0; opacity: 0; margin-left: 0; } .fab-wa { padding: 0 15px; } }
+
+    /* ============ BACK TO TOP ============ */
+    #toTop { position: fixed; bottom: 92px; right: 28px; width: 48px; height: 48px; border-radius: 14px; background: var(--blue-600); color: #fff; border: none; font-size: 17px; cursor: pointer; box-shadow: var(--shadow-lg); opacity: 0; visibility: hidden; transform: translateY(12px); transition: opacity .3s, transform .3s, visibility .3s, background .2s; z-index: 90; }
+    #toTop.show { opacity: 1; visibility: visible; transform: translateY(0); }
+    #toTop:hover { background: var(--blue-700); }
+
+    /* ============ REVEAL ============ */
+    .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal.from-left { transform: translateX(-40px); }
+    .reveal.from-right { transform: translateX(40px); }
+    .reveal.from-left.visible, .reveal.from-right.visible { transform: translateX(0); }
+    .reveal.zoom { transform: scale(.92); }
+    .reveal.zoom.visible { transform: scale(1); }
+
+    /* ============ KEYFRAMES & ANIMATIONS ============ */
+    @keyframes floatOrb {
+      0%, 100% { transform: translate(0,0) scale(1); }
+      33%      { transform: translate(40px,-30px) scale(1.08); }
+      66%      { transform: translate(-30px,25px) scale(.95); }
+    }
+    @keyframes shimmerText {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 200% 50%; }
+    }
+    @keyframes pulseDot {
+      0%   { box-shadow: 0 0 0 0 rgba(52,211,153,.5); }
+      70%  { box-shadow: 0 0 0 7px rgba(52,211,153,0); }
+      100% { box-shadow: 0 0 0 0 rgba(52,211,153,0); }
+    }
+    @keyframes pulseDotRed {
+      0%   { box-shadow: 0 0 0 0 rgba(248,113,113,.5); }
+      70%  { box-shadow: 0 0 0 7px rgba(248,113,113,0); }
+      100% { box-shadow: 0 0 0 0 rgba(248,113,113,0); }
+    }
+    @keyframes shineSweep {
+      0%   { left: -130%; }
+      60%, 100% { left: 130%; }
+    }
+    @keyframes meshDrift {
+      0%, 100% { background-position: 0% 0%, 100% 100%, 50% 50%; }
+      50%      { background-position: 30% 20%, 70% 80%, 60% 40%; }
+    }
+    @keyframes floatY { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+    @keyframes badgePop { 0% { transform: scale(.6); opacity: 0; } 60% { transform: scale(1.12); } 100% { transform: scale(1); opacity: 1; } }
+    @keyframes spinSlow { to { transform: rotate(360deg); } }
+
+    /* animated mesh layer on hero */
+    #home::after {
+      content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: .55;
+      background:
+        radial-gradient(420px 320px at 15% 80%, rgba(59,130,196,.45), transparent 60%),
+        radial-gradient(480px 360px at 90% 15%, rgba(125,180,232,.32), transparent 62%),
+        radial-gradient(380px 300px at 60% 50%, rgba(13,43,94,.5), transparent 65%);
+      background-size: 180% 180%, 180% 180%, 180% 180%;
+      animation: meshDrift 18s ease-in-out infinite;
+    }
+    .hero-glow.a { animation: floatOrb 16s ease-in-out infinite; }
+    .hero-glow.b { animation: floatOrb 20s ease-in-out infinite reverse; }
+
+    /* shimmering accent text */
+    .hero-content h1 .accent {
+      background: linear-gradient(90deg, #7db4e8, #eaf3fc, #9cc6ee, #7db4e8);
+      background-size: 200% auto;
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      animation: shimmerText 5s linear infinite;
+    }
+
+    /* status dot pulse */
+    .status-dot { animation: pulseDot 2.2s ease-out infinite; }
+    .topbar-status.closed .status-dot { animation: pulseDotRed 2.2s ease-out infinite; }
+
+    /* shine sweep on light buttons */
+    .btn-primary, .btn-call { position: relative; overflow: hidden; }
+    .btn-primary::after, .btn-call::after {
+      content: ""; position: absolute; top: 0; left: -130%; width: 60%; height: 100%;
+      background: linear-gradient(100deg, transparent, rgba(255,255,255,.55), transparent);
+      transform: skewX(-20deg); pointer-events: none;
+    }
+    .btn-call::after { background: linear-gradient(100deg, transparent, rgba(255,255,255,.3), transparent); }
+    .btn-primary:hover::after, .btn-call:hover::after { animation: shineSweep .9s ease; }
+
+    /* hero info card floats gently */
+    .hero-card { animation: floatY 6s ease-in-out infinite; }
+
+    /* service card cursor spotlight */
+    .service-card { overflow: hidden; }
+    .service-card::before {
+      content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0;
+      background: radial-gradient(360px circle at var(--mx,50%) var(--my,50%), rgba(37,99,176,.12), transparent 45%);
+      transition: opacity .35s;
+    }
+    .service-card:hover::before { opacity: 1; }
+    .service-card .service-icon { transition: transform .35s var(--ease), box-shadow .3s; }
+    .service-card:hover .service-icon { transform: translateY(-4px) rotate(-6deg) scale(1.06); box-shadow: 0 14px 26px rgba(29,86,168,.35); }
+
+    /* contact + asi icon lift */
+    .contatto-card:hover .contatto-icon { transform: scale(1.08) rotate(-5deg); }
+    .contatto-icon { transition: transform .3s var(--ease); }
+    .asi-benefits li { transition: transform .25s var(--ease), box-shadow .25s, border-color .25s; }
+    .asi-benefits li:hover { transform: translateX(6px); border-color: var(--blue-100); box-shadow: var(--shadow-md); }
+    .asi-icon-large { animation: floatY 5s ease-in-out infinite; }
+
+    /* orario rows slide in feel */
+    .orario-row { transition: background .2s, transform .2s var(--ease); }
+    .orario-row:hover { transform: translateX(5px); }
+    .badge-medico { animation: badgePop .6s ease both; }
+
+    /* faq icon spin hint */
+    .faq-item.open .faq-q-icon i { animation: floatY 2.4s ease-in-out infinite; }
+
+    /* nav logo subtle */
+    .nav-logo, .hero-eyebrow img { transition: transform .4s var(--ease); }
+    .nav-brand:hover .nav-logo { transform: rotate(8deg) scale(1.05); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1 !important; transform: none !important; transition: none; }
+      html { scroll-behavior: auto; }
+      #home::after, .hero-glow.a, .hero-glow.b, .hero-content h1 .accent,
+      .status-dot, .hero-card, .asi-icon-large, .badge-medico, .faq-item.open .faq-q-icon i { animation: none !important; }
+    }
+
+    /* ============ MOBILE NAV ============ */
+    @media (max-width: 940px) {
+      .nav-links {
+        position: fixed; inset: 72px 0 auto 0; flex-direction: column; gap: 0;
+        background: #fff; padding: 1rem 1.5rem 1.5rem; border-bottom: 1px solid var(--line);
+        box-shadow: var(--shadow-md); transform: translateY(-130%); transition: transform .35s var(--ease); z-index: 99;
+      }
+      .nav-links.open { transform: translateY(0); }
+      .nav-links a { padding: 13px 14px; border-radius: 10px; font-size: 16px; }
+      .nav-hamburger { display: flex; align-items: center; justify-content: center; }
+      .nav-cta .btn-call span.full { display: none; }
     }
   </style>
 
@@ -395,81 +605,164 @@
       "addressCountry": "IT"
     },
     "openingHoursSpecification": [
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-        "opens": "08:30",
-        "closes": "12:30"
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-        "opens": "15:00",
-        "closes": "19:00"
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": "Saturday",
-        "opens": "09:00",
-        "closes": "12:00"
-      }
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:30", "closes": "12:30" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "15:00", "closes": "19:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "12:00" }
     ],
-    "sameAs": [
-      "https://cammel2002-gif.github.io/aci-riccione/"
+    "sameAs": ["https://cammel2002-gif.github.io/aci-riccione/"]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Quanto tempo prima della scadenza posso rinnovare la patente?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Puoi avviare la pratica di rinnovo a partire da 4 mesi prima della data di scadenza indicata sul documento. Rinnovandola in anticipo non perderai giorni di validità: la nuova scadenza coinciderà comunque con il giorno e il mese del tuo compleanno, a meno che non si possieda una patente di categoria superiore C o D." }
+      },
+      {
+        "@type": "Question",
+        "name": "È obbligatorio prendere appuntamento per la visita medica?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Per garantire un servizio rapido e senza code, la visita con il nostro medico in sede avviene su appuntamento. Puoi prenotare il tuo slot chiamando l'agenzia al 0541-605692." }
+      },
+      {
+        "@type": "Question",
+        "name": "Quanto costa fare un passaggio di proprietà?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Il costo non è un importo fisso. La tassa principale (IPT) varia in base alla categoria del veicolo, ai Kilowatt (kW) e alla provincia di residenza dell'acquirente. Fornendoci il numero di targa del veicolo ti facciamo un preventivo esatto e gratuito in pochi minuti." }
+      },
+      {
+        "@type": "Question",
+        "name": "Dopo quanto tempo posso usare l'auto appena acquistata?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Immediatamente. Grazie al sistema informatico collegato con la Motorizzazione e il PRA, una volta firmati i documenti rilasciamo subito il nuovo Documento Unico che permette di circolare da subito in totale regolarità." }
+      },
+      {
+        "@type": "Question",
+        "name": "Quali sono i vantaggi di sottoscrivere la Tessera ACI?",
+        "acceptedAnswer": { "@type": "Answer", "text": "La Tessera ACI offre soccorso stradale gratuito 24 ore su 24 in Italia e all'estero, auto sostitutiva in caso di guasto, tutela legale e rimborsi per corsi di recupero punti, oltre a sconti esclusivi presso una vasta rete di partner. Esistono diverse tipologie (es. Sistema, Gold): contattaci per scoprire quella più adatta a te." }
+      },
+      {
+        "@type": "Question",
+        "name": "Cosa devo fare se ho smarrito la targa o il libretto?",
+        "acceptedAnswer": { "@type": "Answer", "text": "In caso di smarrimento, furto o distruzione della targa o del libretto di circolazione, occorre prima sporgere denuncia presso le Forze dell'Ordine (Polizia o Carabinieri) entro 48 ore. Con la denuncia in mano, recati in agenzia: ci occupiamo noi di tutta la pratica." }
+      },
+      {
+        "@type": "Question",
+        "name": "Gestite le pratiche per l'esenzione del bollo con Legge 104?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sì. Ti assistiamo in tutta la procedura per richiedere l'esenzione della tassa automobilistica prevista per le persone con disabilità tutelate dalla Legge 104/92. Porta la documentazione medica, i documenti d'identità e il libretto del veicolo: verifichiamo insieme i requisiti e presentiamo l'istanza per te." }
+      },
+      {
+        "@type": "Question",
+        "name": "Cosa succede se la mia patente è già scaduta da molto tempo?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Se la patente è scaduta da meno di 5 anni puoi rinnovarla con la normale procedura ed effettuando la consueta visita medica in sede. Se è scaduta da più di 5 anni, la normativa prevede che la Motorizzazione possa richiedere un esperimento di guida (revisione della patente) per verificare l'idoneità tecnica alla guida." }
+      }
     ]
   }
   </script>
 </head>
 <body>
 
-<nav>
-  <a class="nav-brand" href="#home">
-    <img src="aci-logo.webp" alt="ACI Logo" class="nav-logo">
-    <div class="nav-brand-text">
-      <strong>ACI Riccione</strong>
-      <span>Via Circonvallazione, 43</span>
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="wrap">
+    <div class="topbar-left">
+      <span><i class="fas fa-location-dot"></i> Via Circonvallazione, 43 – Riccione</span>
+      <span><i class="fas fa-envelope"></i> <a href="mailto:aci.riccione@gmail.com">aci.riccione@gmail.com</a></span>
     </div>
-  </a>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="#home" class="active">Home</a></li>
-    <li><a href="#servizi">Servizi</a></li>
-    <li><a href="#veicoli-storici">Auto Storiche</a></li>
-    <li><a href="#orari-medico">Orari Medico</a></li>
-    <li><a href="#orari">Orari</a></li>
-    <li><a href="#faq">FAQ</a></li>
-    <li><a href="#contatti">Contatti</a></li>
-  </ul>
-  <div style="display:flex;align-items:center;gap:1rem;">
-    <a class="btn-call" href="tel:0541605692">Chiama Ora</a>
-    <button class="nav-hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
+    <div class="topbar-status" id="statusBadge">
+      <span class="status-dot"></span><span id="statusText">Verifica orario…</span>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="wrap nav-inner">
+    <a class="nav-brand" href="#home">
+      <img src="aci-logo.webp" alt="ACI Logo" class="nav-logo">
+      <div class="nav-brand-text">
+        <strong>ACI Riccione</strong>
+        <span>Delegazione di Riccione</span>
+      </div>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#servizi">Servizi</a></li>
+      <li><a href="#veicoli-storici">Auto Storiche</a></li>
+      <li><a href="#orari-medico">Rinnovo Patente</a></li>
+      <li><a href="#orari">Orari</a></li>
+      <li><a href="#recensioni">Recensioni</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contatti">Contatti</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a class="btn-call" href="tel:0541605692"><i class="fas fa-phone"></i> <span class="full">Chiama Ora</span></a>
+      <button class="nav-hamburger" id="hamburger" aria-label="Menu"><i class="fas fa-bars"></i></button>
+    </div>
   </div>
 </nav>
 
+<!-- HERO -->
 <section id="home">
-  <div class="hero-bg-pattern"></div>
-  <div class="hero-content">
-    <div class="hero-logo-badge">
-      <img src="aci-logo.webp" alt="ACI Logo">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow a"></div>
+  <div class="hero-glow b"></div>
+  <div class="wrap">
+    <div class="hero-layout">
+      <div class="hero-content reveal from-left">
+        <div class="hero-eyebrow">
+          <img src="aci-logo.webp" alt=""> Automobile Club d'Italia
+        </div>
+        <h1>Tutti i servizi auto<br><span class="accent">a Riccione</span>, senza pensieri.</h1>
+        <p>Rinnovo patenti con medico in sede, passaggi di proprietà, bolli, immatricolazioni e consulenza completa. La burocrazia la gestiamo noi.</p>
+        <div class="hero-btns">
+          <a href="tel:0541605692" class="btn-primary"><i class="fas fa-phone"></i> Chiamaci Ora</a>
+          <a href="#servizi" class="btn-ghost">Scopri i Servizi <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="hero-trust">
+          <div class="item"><div class="num" data-count="6" data-suffix="+">0</div><div class="lbl">Servizi principali</div></div>
+          <div class="item"><div class="num">Medico</div><div class="lbl">In sede su appuntamento</div></div>
+        </div>
+      </div>
+
+      <div class="hero-card reveal from-right">
+        <div class="hero-card-title"><i class="fas fa-circle-info"></i> Informazioni rapide</div>
+        <div class="hero-info-row">
+          <div class="hero-info-ico"><i class="fas fa-location-dot"></i></div>
+          <div><div class="l">Indirizzo</div><div class="v">Via Circonvallazione, 43 – Riccione</div></div>
+        </div>
+        <div class="hero-info-row">
+          <div class="hero-info-ico"><i class="fas fa-phone"></i></div>
+          <div><div class="l">Telefono</div><div class="v"><a href="tel:0541605692">0541-605692</a></div></div>
+        </div>
+        <div class="hero-info-row">
+          <div class="hero-info-ico"><i class="far fa-clock"></i></div>
+          <div><div class="l">Orari</div><div class="v">Lun–Ven 8:30–12:30 / 15:00–19:00<br>Sabato 9:00–12:00</div></div>
+        </div>
+        <div class="hero-card-foot">
+          <a href="mailto:aci.riccione@gmail.com"><i class="fas fa-envelope"></i> Inviaci una mail</a>
+        </div>
+      </div>
     </div>
-    <h1>Automobile Club d'Italia</h1>
-    <h2>Delegazione Riccione</h2>
-    <p>Il tuo punto di riferimento per tutti i servizi automobilistici a Riccione. Rinnovo patenti, passaggi di proprietà, bolli e molto altro.</p>
-    <div class="hero-btns">
-      <a href="tel:0541605692" class="btn-primary"><i class="fas fa-phone"></i> Chiamaci Ora</a>
-      <a href="mailto:aci.riccione@gmail.com" class="btn-secondary"><i class="fas fa-envelope"></i> Inviaci una Mail</a>
-      <a href="#servizi" class="btn-secondary">Scopri i Servizi</a>
-    </div>
+  </div>
+  <div class="hero-wave">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path fill="#ffffff" d="M0,32 C240,64 480,0 720,16 C960,32 1200,64 1440,32 L1440,60 L0,60 Z"></path></svg>
   </div>
 </section>
 
+<!-- SERVIZI -->
 <section id="servizi">
-  <div class="section-inner">
-    <div class="section-title fade-in">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow"><i class="fas fa-list-check"></i> Cosa facciamo</span>
       <h2>I Nostri Servizi</h2>
-      <p>Offriamo una gamma completa di servizi automobilistici professionali per ogni tua esigenza</p>
+      <p>Una gamma completa di servizi automobilistici professionali per ogni tua esigenza.</p>
     </div>
     <div class="services-grid">
-      <div class="service-card fade-in">
+
+      <div class="service-card reveal">
         <span class="badge">Su Appuntamento</span>
         <div class="service-icon"><i class="fas fa-id-card"></i></div>
         <h3>Rinnovo Patenti</h3>
@@ -478,19 +771,20 @@
           <i class="fas fa-file-alt"></i> Documenti necessari
           <i class="fas fa-chevron-down icona-freccia"></i>
         </button>
-        <div class="documenti-panel">
+        <div class="documenti-panel"><div class="documenti-inner">
           <div class="documenti-categoria">
             <div class="doc-cat-title"><span>📄</span> Cosa portare</div>
             <ul class="doc-list">
               <li><i class="fas fa-check-circle"></i> Patente in originale</li>
               <li><i class="fas fa-check-circle"></i> Codice fiscale</li>
-              <li class="doc-nota"><i class="fas fa-info-circle"></i> Fototessera <em>(se preferisci, possiamo scattarla noi direttamente durante la visita!)</em></li>
+              <li class="doc-nota"><i class="fas fa-info-circle"></i> Fototessera <em>(se preferisci, possiamo scattarla noi durante la visita!)</em></li>
             </ul>
           </div>
-        </div>
-        <a href="tel:0541605692" class="service-link" style="margin-top:1.5rem;">Chiamaci per prenotare <i class="fas fa-arrow-right"></i></a>
+        </div></div>
+        <a href="tel:0541605692" class="service-link mt-auto">Chiamaci per prenotare <i class="fas fa-arrow-right"></i></a>
       </div>
-      <div class="service-card fade-in">
+
+      <div class="service-card reveal">
         <span class="badge">Su Appuntamento</span>
         <div class="service-icon"><i class="fas fa-car"></i></div>
         <h3>Passaggi di Proprietà</h3>
@@ -499,26 +793,37 @@
           <i class="fas fa-file-alt"></i> Documenti necessari
           <i class="fas fa-chevron-down icona-freccia"></i>
         </button>
-        <div class="documenti-panel">
+        <div class="documenti-panel"><div class="documenti-inner">
           <div class="documenti-categoria">
             <div class="doc-cat-title"><span>📄</span> Documenti del veicolo</div>
             <ul class="doc-list">
               <li><i class="fas fa-check-circle"></i> Libretto originale</li>
               <li><i class="fas fa-check-circle"></i> Certificato di proprietà (solo se comprata prima di Ottobre 2015)</li>
-              <li><i class="fas fa-check-circle"></i> Documento di identità valido di entrambi le parti</li>
+              <li><i class="fas fa-check-circle"></i> Documento di identità valido di entrambe le parti</li>
               <li><i class="fas fa-check-circle"></i> Codice fiscale di entrambe le parti</li>
               <li class="doc-nota"><i class="fas fa-info-circle"></i> Permesso di soggiorno <em>(solo se intestatario cittadino fuori UE)</em></li>
             </ul>
           </div>
+        </div></div>
+        <div class="prev-box">
+          <div class="prev-box-title"><i class="fas fa-calculator"></i> Preventivo gratuito con la targa</div>
+          <div class="prev-btns">
+            <a class="btn-prev wa" href="https://wa.me/393515748261?text=Ciao,%20vorrei%20un%20preventivo%20per%20il%20passaggio%20di%20propriet%C3%A0.%20Targa:%20" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a class="btn-prev mail" href="mailto:aci.riccione@gmail.com?subject=Richiesta%20preventivo%20passaggio%20di%20propriet%C3%A0&body=Buongiorno,%0Avorrei%20un%20preventivo%20per%20il%20passaggio%20di%20propriet%C3%A0.%0A%0ATarga%20del%20veicolo:%20%0A%0AGrazie."><i class="fas fa-envelope"></i> Email</a>
+          </div>
         </div>
-        <a href="tel:0541605692" class="service-link" style="margin-top:1.5rem;">Chiamaci per prenotare <i class="fas fa-arrow-right"></i></a>
+        <a href="tel:0541605692" class="service-link mt-auto">Chiamaci per prenotare <i class="fas fa-arrow-right"></i></a>
       </div>
-      <div class="service-card fade-in">
+
+      <div class="service-card reveal">
         <div class="service-icon"><i class="fas fa-file-invoice-dollar"></i></div>
         <h3>Servizio Bolli</h3>
         <p>Pagamento e gestione del bollo auto in modo semplice e veloce.</p>
+        <div class="service-spacer"></div>
+        <a href="tel:0541605692" class="service-link mt-auto">Maggiori info <i class="fas fa-arrow-right"></i></a>
       </div>
-      <div class="service-card fade-in">
+
+      <div class="service-card reveal">
         <div class="service-icon"><i class="fas fa-clipboard-list"></i></div>
         <h3>Immatricolazioni</h3>
         <p>Prima immatricolazione di veicoli nuovi e usati con assistenza completa.</p>
@@ -526,7 +831,7 @@
           <i class="fas fa-file-alt"></i> Documenti necessari
           <i class="fas fa-chevron-down icona-freccia"></i>
         </button>
-        <div class="documenti-panel">
+        <div class="documenti-panel"><div class="documenti-inner">
           <div class="documenti-categoria">
             <div class="doc-cat-title"><span>📄</span> Documenti del veicolo</div>
             <ul class="doc-list">
@@ -543,75 +848,77 @@
               <li class="doc-nota"><i class="fas fa-info-circle"></i> Permesso di soggiorno <em>(solo per cittadini extra-UE)</em></li>
             </ul>
           </div>
-        </div>
+        </div></div>
+        <div class="service-spacer"></div>
       </div>
-      <div class="service-card fade-in">
+
+      <div class="service-card reveal">
         <div class="service-icon"><i class="fas fa-file-alt"></i></div>
         <h3>Visure PRA e Certificati CCIA</h3>
         <p>Visure camerali e certificati ufficiali richiesti in tempi brevi.</p>
+        <div class="service-spacer"></div>
+        <a href="tel:0541605692" class="service-link mt-auto">Maggiori info <i class="fas fa-arrow-right"></i></a>
       </div>
-      <div class="service-card fade-in">
-        <div class="service-icon"><i class="fas fa-wrench"></i></div>
-        <h3>Consulenza Automobilistica</h3>
-        <p>Assistenza completa per ogni pratica automobilistica e burocratica.</p>
+
+      <div class="service-card reveal">
+        <div class="service-icon"><i class="fas fa-id-badge"></i></div>
+        <h3>Tessere ACI</h3>
+        <p>Soccorso stradale, assistenza e vantaggi esclusivi: scegli la tessera più adatta a te.</p>
+        <div class="service-spacer"></div>
+        <a href="https://club.aci.it/entra-nel-club/scopri-tessere/" target="_blank" rel="noopener" class="service-link mt-auto">Maggiori info <i class="fas fa-arrow-right"></i></a>
       </div>
+
     </div>
   </div>
 </section>
 
+<!-- AUTO STORICHE -->
 <section id="veicoli-storici">
-  <div class="section-inner">
-    <div class="section-title fade-in">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow"><i class="fas fa-award"></i> Veicoli d'epoca</span>
       <h2>Auto e Moto Storiche</h2>
-      <p>Valorizziamo la tua passione con il servizio di iscrizione ASI</p>
+      <p>Valorizziamo la tua passione con il servizio di iscrizione ASI.</p>
     </div>
-    <div class="asi-container fade-in">
+    <div class="asi-container reveal">
       <div class="asi-content">
         <h3>🚗 Valorizza la tua passione</h3>
         <p>Hai un veicolo con più di 20 anni di età? Non è solo un mezzo di trasporto, è un pezzo di storia! Presso la nostra agenzia offriamo consulenza completa per l'iscrizione all'<strong>ASI (Automotoclub Storico Italiano)</strong> e l'ottenimento del <strong>CRS (Certificato di Rilevanza Storica)</strong>.</p>
-        
         <ul class="asi-benefits">
           <li>
-            <i class="fas fa-piggy-bank"></i>
-            <div>
-              <strong>Agevolazioni Fiscali</strong>
-              <span>Per i residenti in Emilia-Romagna, il bollo si trasforma in una tassa di circolazione fissa e ridotta di soli 31,20 €.</span>
-            </div>
+            <div class="asi-ico"><i class="fas fa-piggy-bank"></i></div>
+            <div><strong>Agevolazioni Fiscali</strong><span>Per i residenti in Emilia-Romagna, il bollo si trasforma in una tassa di circolazione fissa e ridotta di soli 31,20 €.</span></div>
           </li>
           <li>
-            <i class="fas fa-shield-halved"></i>
-            <div>
-              <strong>Premi Assicurativi Dedicati</strong>
-              <span>Diverse compagnie offrono tariffe agevolate per questa categoria di veicoli; ti consigliamo di consultare il tuo assicuratore per scoprire le migliori condizioni riservate a te.</span>
-            </div>
+            <div class="asi-ico"><i class="fas fa-shield-halved"></i></div>
+            <div><strong>Premi Assicurativi Dedicati</strong><span>Diverse compagnie offrono tariffe agevolate per questa categoria di veicoli; consulta il tuo assicuratore per scoprire le migliori condizioni riservate a te.</span></div>
           </li>
           <li>
-            <i class="fas fa-chart-line"></i>
-            <div>
-              <strong>Aumento del Valore</strong>
-              <span>L'iscrizione certifica ufficialmente l'interesse storico e collezionistico del tuo mezzo, aumentandone il valore commerciale e proteggendolo in caso di sinistro.</span>
-            </div>
+            <div class="asi-ico"><i class="fas fa-chart-line"></i></div>
+            <div><strong>Aumento del Valore</strong><span>L'iscrizione certifica ufficialmente l'interesse storico e collezionistico del tuo mezzo, aumentandone il valore commerciale e proteggendolo in caso di sinistro.</span></div>
           </li>
         </ul>
       </div>
-      
       <div class="asi-cta-box">
         <div class="asi-icon-large"><i class="fas fa-award"></i></div>
         <h4>Pensiamo a tutto noi!</h4>
-        <p>Passa a trovarci in agenzia con il veicolo e il relativo libretto o chiamaci per scoprire come valorizzare il tuo gioiello storico.</p>
-        <a href="tel:0541605692" class="btn-primary" style="box-shadow:none;"><i class="fas fa-phone"></i> Richiedi Consulenza</a>
+        <p>Passa in agenzia con il veicolo e il relativo libretto, oppure chiamaci per scoprire come valorizzare il tuo gioiello storico.</p>
+        <a href="tel:0541605692" class="btn-primary"><i class="fas fa-phone"></i> Richiedi Consulenza</a>
       </div>
     </div>
   </div>
 </section>
 
+<!-- ORARI MEDICO -->
 <section id="orari-medico">
-  <div class="section-inner">
-    <div class="section-title fade-in">
+  <div class="hero-glow a"></div>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow"><i class="fas fa-user-md"></i> Visita medica</span>
       <h2>Rinnovo Patente</h2>
-      <p>Medico disponibile nei seguenti orari</p>
+      <p>Medico disponibile in sede nei seguenti orari.</p>
     </div>
-    <div class="medico-card fade-in">
+    <div class="medico-card reveal">
       <h3><i class="far fa-clock"></i> Disponibilità Settimanale</h3>
       <div class="orario-row">
         <div class="orario-left">
@@ -639,38 +946,40 @@
         </div>
       </div>
       <div class="nota-prenotazione">
-        <i class="fas fa-thumbtack"></i> Si consiglia di prenotare contattandoci allo <a href="tel:0541605692">0541-605692</a> o ad <a href="mailto:aci.riccione@gmail.com">aci.riccione@gmail.com</a>
+        <i class="fas fa-thumbtack"></i> Si consiglia di prenotare allo <a href="tel:0541605692">0541-605692</a> o ad <a href="mailto:aci.riccione@gmail.com">aci.riccione@gmail.com</a>
       </div>
     </div>
   </div>
 </section>
 
+<!-- ORARI APERTURA -->
 <section id="orari">
-  <div class="section-inner">
-    <div class="section-title fade-in">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow"><i class="far fa-calendar-alt"></i> Quando siamo aperti</span>
       <h2>Orari di Apertura</h2>
-      <p>I nostri orari di ufficio per accoglierti al meglio</p>
+      <p>I nostri orari di ufficio per accoglierti al meglio.</p>
     </div>
-    <div class="orari-grid fade-in">
+    <div class="orari-grid reveal">
       <div class="orari-card">
         <div class="orari-card-header"><i class="far fa-calendar-alt"></i> Lunedì – Venerdì</div>
         <div class="orari-card-body">
           <div class="orari-slot">
-            <div class="slot-icon yellow"><i class="far fa-clock"></i></div>
+            <div class="slot-icon yellow"><i class="fas fa-sun"></i></div>
             <div><div class="slot-label">Mattina</div><div class="slot-time">08:30 – 12:30</div></div>
           </div>
           <div class="orari-slot">
-            <div class="slot-icon blue"><i class="far fa-clock"></i></div>
+            <div class="slot-icon blue"><i class="fas fa-cloud-sun"></i></div>
             <div><div class="slot-label">Pomeriggio</div><div class="slot-time">15:00 – 19:00</div></div>
           </div>
         </div>
       </div>
       <div>
-        <div class="orari-card" style="margin-bottom:1.5rem;">
+        <div class="orari-card" style="margin-bottom:1.4rem;">
           <div class="orari-card-header"><i class="far fa-calendar-alt"></i> Sabato</div>
           <div class="orari-card-body">
             <div class="orari-slot">
-              <div class="slot-icon green"><i class="far fa-clock"></i></div>
+              <div class="slot-icon green"><i class="fas fa-sun"></i></div>
               <div><div class="slot-label">Solo mattina</div><div class="slot-time">09:00 – 12:00</div></div>
             </div>
           </div>
@@ -686,13 +995,99 @@
   </div>
 </section>
 
-<section id="contatti">
-  <div class="section-inner">
-    <div class="section-title fade-in">
-      <h2>Contatti</h2>
-      <p>Siamo qui per aiutarti. Contattaci per qualsiasi informazione</p>
+<!-- RECENSIONI -->
+<!--
+  Recensioni REALI tratte dalla scheda Google di ACI Delegazione di Riccione
+  (cognome oscurato per privacy). Media 4,6 su 88 recensioni.
+  Lo schema aggregateRating NON è stato inserito di proposito: pur essendo
+  recensioni vere, sono raccolte da Google e non in prima persona dal sito,
+  quindi per policy è più sicuro non dichiararlo nei dati strutturati.
+  Aggiorna i link "Leggi tutte" / "Lascia una recensione" con l'URL diretto
+  della scheda Google Business Profile quando disponibile.
+-->
+<section id="recensioni">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow"><i class="fas fa-star"></i> Dicono di noi</span>
+      <h2>Recensioni dei Clienti</h2>
+      <p>La fiducia di chi si è già affidato a noi per le proprie pratiche.</p>
     </div>
-    <div class="contatti-grid fade-in">
+
+    <div class="reviews-summary reveal">
+      <div class="rs-score">4,6</div>
+      <div class="rs-mid">
+        <div class="rs-stars">★★★★★</div>
+        <div class="rs-sub">Media basata su 88 recensioni Google</div>
+      </div>
+      <div class="rs-google">
+        <span class="g-logo"><span class="b">G</span><span class="r">o</span><span class="y">o</span><span class="b">g</span><span class="g">l</span><span class="r">e</span></span>
+      </div>
+    </div>
+
+    <div class="reviews-grid">
+
+      <div class="review-card reveal">
+        <div class="review-quote">”</div>
+        <div class="review-head">
+          <div class="review-avatar" style="background:linear-gradient(140deg,#1d56a8,#3b82c4);">L</div>
+          <div><div class="review-name">Lara S.</div><div class="review-meta">Recensione Google</div></div>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">Mi sono rivolta a questo ufficio numerose volte, con anche situazioni burocratiche brigose che mi sono state risolte in modo veloce ed efficiente.</div>
+      </div>
+
+      <div class="review-card reveal">
+        <div class="review-quote">”</div>
+        <div class="review-head">
+          <div class="review-avatar" style="background:linear-gradient(140deg,#0d9488,#2dd4bf);">W</div>
+          <div><div class="review-name">Wladimiro C.</div><div class="review-meta">Recensione Google</div></div>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">Nei miei cambi di residenza e nelle varie pratiche relative alle patenti mi sono sempre servito della delegazione ACI locale. Sempre impeccabili.</div>
+      </div>
+
+      <div class="review-card reveal">
+        <div class="review-quote">”</div>
+        <div class="review-head">
+          <div class="review-avatar" style="background:linear-gradient(140deg,#b45309,#f59e0b);">P</div>
+          <div><div class="review-name">Procchio</div><div class="review-meta">Recensione Google</div></div>
+        </div>
+        <div class="review-stars">★★★★<span style="color:#d8dee9;">★</span></div>
+        <div class="review-text">Molto disponibili per risolvere piccoli e grandi problemi. Cordiali con gli anziani.</div>
+      </div>
+
+      <div class="review-card reveal">
+        <div class="review-quote">”</div>
+        <div class="review-head">
+          <div class="review-avatar" style="background:linear-gradient(140deg,#6d28d9,#a78bfa);">S</div>
+          <div><div class="review-name">Stefano B.</div><div class="review-meta">Recensione Google</div></div>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">Gentili, veloci e competenti!</div>
+      </div>
+
+    </div>
+
+    <div class="reviews-cta reveal">
+      <a href="https://www.google.com/maps/search/?api=1&query=ACI+Riccione+Via+Circonvallazione+43" target="_blank" rel="noopener" class="btn-review-google">
+        <span class="g-logo"><span class="b">G</span><span class="r">o</span><span class="y">o</span><span class="b">g</span><span class="g">l</span><span class="r">e</span></span> Leggi tutte le recensioni
+      </a>
+      <a href="https://www.google.com/maps/search/?api=1&query=ACI+Riccione+Via+Circonvallazione+43" target="_blank" rel="noopener" class="btn-call">
+        <i class="fas fa-star"></i> Lascia una recensione
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATTI -->
+<section id="contatti">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow"><i class="fas fa-headset"></i> Parla con noi</span>
+      <h2>Contatti</h2>
+      <p>Siamo qui per aiutarti. Contattaci per qualsiasi informazione.</p>
+    </div>
+    <div class="contatti-grid reveal">
       <div class="contatti-cards">
         <div class="contatto-card">
           <div class="contatto-icon"><i class="fas fa-map-marker-alt"></i></div>
@@ -717,103 +1112,83 @@
           </div>
         </div>
         <div class="contatto-card">
-          <div style="display:flex;flex-direction:column;gap:4px;">
-            <div style="display:flex;align-items:center;gap:8px;font-size:14px;color:var(--gray-text);">
-              <i class="fas fa-building" style="color:var(--blue-main);"></i>
-              <span>P.IVA: <strong style="color:var(--blue-dark);">01259880407</strong></span>
-            </div>
-            <div style="display:flex;align-items:center;gap:8px;font-size:14px;color:var(--gray-text);">
-              <i class="fas fa-key" style="color:var(--blue-main);"></i>
-              <span>Codice Univoco: <strong style="color:var(--blue-dark);">BA6ET11</strong></span>
-            </div>
+          <div class="contatto-icon"><i class="fas fa-building"></i></div>
+          <div class="fiscal-card">
+            <div class="fiscal-row"><i class="fas fa-building"></i> P.IVA: <strong>01259880407</strong></div>
+            <div class="fiscal-row"><i class="fas fa-key"></i> Codice Univoco: <strong>BA6ET11</strong></div>
           </div>
         </div>
       </div>
       <div class="mappa-box">
         <iframe
           src="https://maps.google.com/maps?q=Via%20Circonvallazione%2043%2047838%20Riccione%20RN&z=16&output=embed"
-          width="100%" height="320"
-          style="border:0;border-radius:16px;display:block;"
-          loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-          title="Mappa ACI Riccione - Via Circonvallazione 43">
-        </iframe>
+          width="100%" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="Mappa ACI Riccione - Via Circonvallazione 43"></iframe>
         <a href="https://www.google.com/maps/dir/?api=1&destination=Via+Circonvallazione+43+Riccione" target="_blank" rel="noopener" class="btn-call mappa-cta">
-          <i class="fas fa-directions"></i> Ottieni indicazioni
+          <i class="fas fa-diamond-turn-right"></i> Ottieni indicazioni
         </a>
       </div>
     </div>
   </div>
 </section>
 
+<!-- FAQ -->
 <section id="faq">
-  <div class="section-inner">
-    <div class="section-title fade-in">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow"><i class="fas fa-circle-question"></i> Dubbi?</span>
       <h2>Domande Frequenti</h2>
-      <p>Trova le risposte alle domande più comuni sui nostri servizi</p>
+      <p>Le risposte alle domande più comuni sui nostri servizi.</p>
     </div>
-    <div class="faq-list fade-in">
+    <div class="faq-list reveal">
 
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)">
-          <div class="faq-question-left">
-            <div class="faq-q-icon"><i class="fas fa-id-card"></i></div>
-            <span>Quanto tempo prima della scadenza posso rinnovare la patente?</span>
-          </div>
+          <div class="faq-question-left"><div class="faq-q-icon"><i class="fas fa-id-card"></i></div><span>Quanto tempo prima della scadenza posso rinnovare la patente?</span></div>
           <div class="faq-chevron"><i class="fas fa-chevron-down"></i></div>
         </button>
-        <div class="faq-answer">
+        <div class="faq-answer"><div class="faq-answer-inner">
           <p>Puoi avviare la pratica di rinnovo a partire da <strong>4 mesi prima</strong> della data di scadenza indicata sul tuo documento. Rinnovandola in anticipo non perderai giorni di validità: la nuova scadenza coinciderà comunque con il giorno e il mese del tuo compleanno, a meno che non si possieda una patente di categoria superiore C o D.</p>
-        </div>
+        </div></div>
       </div>
 
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)">
-          <div class="faq-question-left">
-            <div class="faq-q-icon"><i class="fas fa-user-md"></i></div>
-            <span>È obbligatorio prendere appuntamento per la visita medica?</span>
-          </div>
+          <div class="faq-question-left"><div class="faq-q-icon"><i class="fas fa-user-md"></i></div><span>È obbligatorio prendere appuntamento per la visita medica?</span></div>
           <div class="faq-chevron"><i class="fas fa-chevron-down"></i></div>
         </button>
-        <div class="faq-answer">
+        <div class="faq-answer"><div class="faq-answer-inner">
           <p>Per garantirti un servizio rapido e senza inutili code in sala d'attesa, la visita con il nostro medico in sede avviene <strong>su appuntamento</strong>. Puoi prenotare il tuo slot orario chiamandoci in agenzia al <a href="tel:0541605692">0541-605692</a>.</p>
-        </div>
+        </div></div>
       </div>
 
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)">
-          <div class="faq-question-left">
-            <div class="faq-q-icon"><i class="fas fa-exchange-alt"></i></div>
-            <span>Quanto costa fare un passaggio di proprietà?</span>
-          </div>
+          <div class="faq-question-left"><div class="faq-q-icon"><i class="fas fa-exchange-alt"></i></div><span>Quanto costa fare un passaggio di proprietà?</span></div>
           <div class="faq-chevron"><i class="fas fa-chevron-down"></i></div>
         </button>
-        <div class="faq-answer">
+        <div class="faq-answer"><div class="faq-answer-inner">
           <p>Il costo del passaggio di proprietà non è un importo fisso. La tassa principale (IPT) varia in base alla categoria del veicolo, ai Kilowatt (kW) e alla provincia di residenza di chi acquista. Contattaci fornendoci il numero di targa del veicolo: ti faremo un <strong>preventivo esatto e gratuito</strong> in pochi minuti.</p>
-        </div>
+          <p style="margin-top:.8rem;"><a href="https://wa.me/393515748261?text=Ciao,%20vorrei%20un%20preventivo%20per%20il%20passaggio%20di%20propriet%C3%A0.%20Targa:%20" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:#25D366;color:#fff;padding:10px 18px;border-radius:10px;font-weight:700;text-decoration:none;"><i class="fab fa-whatsapp" style="font-size:18px;"></i> Richiedi il preventivo su WhatsApp</a></p>
+        </div></div>
       </div>
 
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)">
-          <div class="faq-question-left">
-            <div class="faq-q-icon"><i class="fas fa-car"></i></div>
-            <span>Dopo quanto tempo posso usare l'auto appena acquistata?</span>
-          </div>
+          <div class="faq-question-left"><div class="faq-q-icon"><i class="fas fa-car"></i></div><span>Dopo quanto tempo posso usare l'auto appena acquistata?</span></div>
           <div class="faq-chevron"><i class="fas fa-chevron-down"></i></div>
         </button>
-        <div class="faq-answer">
+        <div class="faq-answer"><div class="faq-answer-inner">
           <p><strong>Immediatamente!</strong> Grazie al nostro sistema informatico collegato con la Motorizzazione e il PRA, una volta firmati i documenti ti rilasceremo subito il nuovo <strong>Documento Unico</strong> che ti permette di circolare da subito in totale regolarità.</p>
-        </div>
+        </div></div>
       </div>
 
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)">
-          <div class="faq-question-left">
-            <div class="faq-q-icon"><i class="fas fa-credit-card"></i></div>
-            <span>Quali sono i vantaggi di sottoscrivere la Tessera ACI?</span>
-          </div>
+          <div class="faq-question-left"><div class="faq-q-icon"><i class="fas fa-credit-card"></i></div><span>Quali sono i vantaggi di sottoscrivere la Tessera ACI?</span></div>
           <div class="faq-chevron"><i class="fas fa-chevron-down"></i></div>
         </button>
-        <div class="faq-answer">
+        <div class="faq-answer"><div class="faq-answer-inner">
           <p>La Tessera ACI è la tua sicurezza su strada. Offre numerosi vantaggi fondamentali, tra cui:</p>
           <ul>
             <li><i class="fas fa-check-circle"></i> Soccorso stradale gratuito 24 ore su 24, in Italia e all'estero (anche se sei a bordo di un veicolo non tuo).</li>
@@ -821,82 +1196,77 @@
             <li><i class="fas fa-check-circle"></i> Tutela legale e rimborsi per corsi di recupero punti patente.</li>
             <li><i class="fas fa-check-circle"></i> Sconti esclusivi presso una vasta rete di partner.</li>
           </ul>
-          <p style="margin-top:0.8rem;">Esistono diverse tipologie di tessera (es. Sistema, Gold): passa a trovarci o chiamaci per scoprire quella più adatta alle tue abitudini di guida.</p>
-        </div>
+          <p style="margin-top:.8rem;">Esistono diverse tipologie di tessera (es. Sistema, Gold): passa a trovarci o chiamaci per scoprire quella più adatta alle tue abitudini di guida.</p>
+        </div></div>
       </div>
 
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)">
-          <div class="faq-question-left">
-            <div class="faq-q-icon"><i class="fas fa-search"></i></div>
-            <span>Cosa devo fare se ho smarrito la targa o il libretto?</span>
-          </div>
+          <div class="faq-question-left"><div class="faq-q-icon"><i class="fas fa-search"></i></div><span>Cosa devo fare se ho smarrito la targa o il libretto?</span></div>
           <div class="faq-chevron"><i class="fas fa-chevron-down"></i></div>
         </button>
-        <div class="faq-answer">
+        <div class="faq-answer"><div class="faq-answer-inner">
           <p>In caso di smarrimento, furto o distruzione della targa o del libretto di circolazione, la prima cosa da fare è sporgere denuncia presso le Forze dell'Ordine (Polizia o Carabinieri) entro 48 ore. Una volta in possesso della denuncia, recati presso la nostra agenzia: ci occuperemo noi di tutta la pratica.</p>
-        </div>
+        </div></div>
       </div>
 
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)">
-          <div class="faq-question-left">
-            <div class="faq-q-icon"><i class="fas fa-wheelchair"></i></div>
-            <span>Gestite le pratiche per l'esenzione del bollo con Legge 104?</span>
-          </div>
+          <div class="faq-question-left"><div class="faq-q-icon"><i class="fas fa-wheelchair"></i></div><span>Gestite le pratiche per l'esenzione del bollo con Legge 104?</span></div>
           <div class="faq-chevron"><i class="fas fa-chevron-down"></i></div>
         </button>
-        <div class="faq-answer">
+        <div class="faq-answer"><div class="faq-answer-inner">
           <p>Certamente. Sappiamo che la burocrazia può essere complessa, per questo ti assistiamo in tutta la procedura per richiedere l'esenzione del pagamento della tassa automobilistica prevista per le persone con disabilità tutelate dalla Legge 104/92. Portaci la documentazione medica, i documenti d'identità e il libretto del veicolo: verificheremo insieme i requisiti e ci occuperemo di presentare l'istanza al posto tuo.</p>
-        </div>
+        </div></div>
       </div>
 
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)">
-          <div class="faq-question-left">
-            <div class="faq-q-icon"><i class="fas fa-history"></i></div>
-            <span>Cosa succede se la mia patente è già scaduta da molto tempo?</span>
-          </div>
+          <div class="faq-question-left"><div class="faq-q-icon"><i class="fas fa-history"></i></div><span>Cosa succede se la mia patente è già scaduta da molto tempo?</span></div>
           <div class="faq-chevron"><i class="fas fa-chevron-down"></i></div>
         </button>
-        <div class="faq-answer">
+        <div class="faq-answer"><div class="faq-answer-inner">
           <p>Se la tua patente è scaduta da meno di 5 anni, puoi rinnovarla seguendo la normale procedura, effettuando la consueta visita medica presso la nostra sede. Se invece è scaduta da più di 5 anni, la normativa prevede la possibilità che la Motorizzazione richieda un "esperimento di guida" (revisione della patente) per verificare la permanenza dell'idoneità tecnica alla guida.</p>
-        </div>
+        </div></div>
       </div>
 
     </div>
 
-    <div class="faq-contact-hint fade-in">
+    <div class="faq-contact-hint reveal">
       <i class="fas fa-headset"></i>
       <p>Non hai trovato risposta alla tua domanda? <a href="tel:0541605692">Chiamaci al 0541-605692</a> oppure scrivici a <a href="mailto:aci.riccione@gmail.com">aci.riccione@gmail.com</a> — saremo felici di aiutarti!</p>
     </div>
-
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
-  <div class="footer-inner">
+  <div class="wrap">
     <div class="footer-grid">
       <div class="footer-brand">
-        <strong>ACI Riccione</strong>
-        <span>Automobile Club d'Italia – Delegazione di Riccione</span>
+        <div class="footer-brand-row">
+          <img src="aci-logo.webp" alt="ACI Logo">
+          <div><strong>ACI Riccione</strong><span>Automobile Club d'Italia – Delegazione di Riccione</span></div>
+        </div>
         <p>Il tuo partner affidabile per ogni pratica automobilistica a Riccione.</p>
       </div>
       <div class="footer-col">
         <h4>Navigazione</h4>
         <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#servizi">Servizi</a></li>
-          <li><a href="#orari">Orari</a></li>
-          <li><a href="#faq">FAQ</a></li>
-          <li><a href="#contatti">Contatti</a></li>
+          <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+          <li><a href="#servizi"><i class="fas fa-chevron-right"></i> Servizi</a></li>
+          <li><a href="#orari"><i class="fas fa-chevron-right"></i> Orari</a></li>
+          <li><a href="#recensioni"><i class="fas fa-chevron-right"></i> Recensioni</a></li>
+          <li><a href="#faq"><i class="fas fa-chevron-right"></i> FAQ</a></li>
+          <li><a href="#contatti"><i class="fas fa-chevron-right"></i> Contatti</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>Contatti Rapidi</h4>
         <ul>
-          <li><a href="tel:0541605692">0541-605692</a></li>
-          <li><a href="mailto:aci.riccione@gmail.com">aci.riccione@gmail.com</a></li>
+          <li><a href="tel:0541605692"><i class="fas fa-phone"></i> 0541-605692</a></li>
+          <li><a href="mailto:aci.riccione@gmail.com"><i class="fas fa-envelope"></i> aci.riccione@gmail.com</a></li>
+          <li><a href="https://www.google.com/maps/dir/?api=1&destination=Via+Circonvallazione+43+Riccione" target="_blank" rel="noopener"><i class="fas fa-location-dot"></i> Via Circonvallazione, 43</a></li>
         </ul>
       </div>
     </div>
@@ -908,57 +1278,110 @@
   </div>
 </footer>
 
+<a class="fab-wa" href="https://wa.me/393515748261?text=Ciao,%20vorrei%20informazioni%20sui%20vostri%20servizi." target="_blank" rel="noopener" aria-label="Scrivici su WhatsApp">
+  <i class="fab fa-whatsapp"></i><span class="fab-wa-label">Scrivici su WhatsApp</span>
+</a>
+
+<button id="toTop" aria-label="Torna su"><i class="fas fa-arrow-up"></i></button>
+
 <script>
-  // Anno dinamico nel footer
+  // Anno dinamico
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Mobile Menu Toggle
-  document.getElementById('hamburger').addEventListener('click', () => {
-    document.getElementById('navLinks').classList.toggle('open');
-  });
+  // Mobile menu
+  const navLinks = document.getElementById('navLinks');
+  document.getElementById('hamburger').addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
 
-  // Scroll Active Links
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-links a');
+  // Navbar scrolled + back-to-top
+  const navbar = document.getElementById('navbar');
+  const toTop = document.getElementById('toTop');
   window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 10);
+    toTop.classList.toggle('show', window.scrollY > 600);
+    // Active link
     let current = '';
-    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) current = s.getAttribute('id'); });
-    navLinks.forEach(a => {
-      a.classList.remove('active');
-      if (a.getAttribute('href') === '#' + current) a.classList.add('active');
-    });
+    document.querySelectorAll('section[id]').forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
+    document.querySelectorAll('.nav-links a').forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current));
   });
+  toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-  // Fade-in Observer
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  // Reveal on scroll + count-up trigger
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        e.target.querySelectorAll('[data-count]').forEach(countUp);
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach((el, i) => { el.style.transitionDelay = (Math.min(i % 4, 3) * 0.07) + 's'; obs.observe(el); });
 
-  // Documenti Toggle (sulle service card)
-  function toggleDocumenti(btn) {
-    const panel = btn.nextElementSibling;
-    const aperto = panel.classList.contains('aperto');
-    panel.classList.toggle('aperto', !aperto);
-    btn.classList.toggle('aperto', !aperto);
+  // Count-up animation
+  function countUp(el) {
+    const target = parseInt(el.dataset.count, 10);
+    const suffix = el.dataset.suffix || '';
+    if (reduceMotion) { el.textContent = target + suffix; return; }
+    const dur = 1100, start = performance.now();
+    (function step(now) {
+      const p = Math.min((now - start) / dur, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(target * eased) + suffix;
+      if (p < 1) requestAnimationFrame(step);
+    })(start);
   }
 
-  // FAQ Toggle
+  // Cursor spotlight on service cards
+  if (!reduceMotion) {
+    document.querySelectorAll('.service-card').forEach(card => {
+      card.addEventListener('pointermove', ev => {
+        const r = card.getBoundingClientRect();
+        card.style.setProperty('--mx', (ev.clientX - r.left) + 'px');
+        card.style.setProperty('--my', (ev.clientY - r.top) + 'px');
+      });
+    });
+  }
+
+  // Documenti toggle
+  function toggleDocumenti(btn) {
+    const panel = btn.nextElementSibling;
+    const open = panel.classList.toggle('aperto');
+    btn.classList.toggle('aperto', open);
+  }
+
+  // FAQ toggle
   function toggleFaq(btn) {
     const item = btn.parentElement;
     const answer = btn.nextElementSibling;
     const isOpen = item.classList.contains('open');
-
     document.querySelectorAll('.faq-item').forEach(el => {
       el.classList.remove('open');
-      el.querySelector('.faq-answer').classList.remove('open');
+      el.querySelector('.faq-answer').style.maxHeight = null;
     });
-
     if (!isOpen) {
       item.classList.add('open');
-      answer.classList.add('open');
+      answer.style.maxHeight = answer.scrollHeight + 'px';
     }
   }
+
+  // Stato apertura dinamico (top bar)
+  (function updateStatus() {
+    const badge = document.getElementById('statusBadge');
+    const text = document.getElementById('statusText');
+    const now = new Date();
+    const day = now.getDay(); // 0=dom
+    const mins = now.getHours() * 60 + now.getMinutes();
+    let open = false;
+    if (day >= 1 && day <= 5) {
+      open = (mins >= 510 && mins <= 750) || (mins >= 900 && mins <= 1140); // 8:30-12:30, 15-19
+    } else if (day === 6) {
+      open = (mins >= 540 && mins <= 720); // 9-12 sabato
+    }
+    if (open) { text.textContent = 'Aperto ora'; badge.classList.remove('closed'); }
+    else { text.textContent = 'Chiuso ora'; badge.classList.add('closed'); }
+  })();
 </script>
 
 </body>

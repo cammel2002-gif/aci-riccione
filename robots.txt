@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://cammel2002-gif.github.io/aci-riccione/sitemap.xml
