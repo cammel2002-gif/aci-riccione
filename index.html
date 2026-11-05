@@ -222,32 +222,39 @@
     /* ---------- 4. BARRA IN ALTO: tolta (indirizzo, stato ed email erano ripetuti in "Informazioni rapide") ---------- */
 
     /* ---------- 5. MENU SOBRIO ----------
-       In cima è blu come l'inizio pagina (sembrano un pezzo solo); appena si scorre torna bianco come prima. */
+       Prende il colore di quello che ha sotto: blu sopra la parte blu dell'inizio pagina (sembrano un pezzo solo),
+       poi diventa bianca A POCO A POCO mentre sotto arriva la parte chiara: due strati (blu sotto, vetro bianco sopra)
+       che si scambiano seguendo lo scorrimento (--p da 0 a 1, lo calcola lo script). Senza script resta blu. */
     #navbar {
       position: sticky; top: 0; z-index: 100;
-      background: var(--blue-900);
+      background: transparent;
       border-bottom: 1px solid transparent;
-      transition: border-color .3s, box-shadow .3s, background-color .3s;
+      --p: 0;
     }
-    #navbar.scrolled {
+    #navbar::before, #navbar::after { content: ""; position: absolute; inset: 0 0 -1px; z-index: -1; pointer-events: none; transition: opacity .25s linear; }
+    #navbar::before { background: var(--blue-900); opacity: calc(1 - var(--p)); }
+    #navbar::after {
       background: rgba(255,255,255,.9); -webkit-backdrop-filter: saturate(180%) blur(14px); backdrop-filter: saturate(180%) blur(14px);
-      border-bottom-color: var(--line); box-shadow: 0 4px 20px rgba(15,27,51,.05);
+      box-shadow: inset 0 -1px 0 var(--line), 0 4px 20px rgba(15,27,51,.05); opacity: var(--p);
     }
     #navbar.libera { position: relative; }  /* testo molto grande: se la barra supera 1/4 dello schermo scorre via con la pagina */
     .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 68px; }
 
     /* Nome piccolo col logo: compare solo quando il marchio grande dell'inizio pagina non si vede più */
-    .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; transition: opacity .3s, transform .3s var(--ease), visibility .3s; }
-    #navbar.marchio-via .nav-brand { opacity: 0; visibility: hidden; transform: translateY(-6px); }
-    .nav-logo { width: 44px; height: 44px; object-fit: contain; }
-    .nav-brand-text strong { display: block; font-family: var(--font-head); font-size: 1rem; font-weight: 800; line-height: 1.2; letter-spacing: -.01em; color: var(--blue-900); }
-    .nav-brand-text .nav-luogo { display: block; color: var(--blue-600); }
+    .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; transition: opacity .45s var(--ease), transform .45s var(--ease), visibility .45s; }
+    #navbar.marchio-via .nav-brand { opacity: 0; visibility: hidden; transform: translateY(6px); }
+    .nav-logo { width: 54px; height: 54px; object-fit: contain; }
+    .nav-brand-text strong { display: block; font-family: var(--font-head); font-size: 1rem; font-weight: 800; line-height: 1.2; letter-spacing: -.01em; color: var(--blue-900); transition: color .35s; }
+    .nav-brand-text .nav-luogo { display: block; color: var(--blue-600); transition: color .35s; }
+    /* finché la barra è blu il nome è bianco, come il marchio grande dell'inizio pagina */
+    #navbar:not(.scrolled) .nav-brand-text strong { color: var(--white); }
+    #navbar:not(.scrolled) .nav-brand-text .nav-luogo { color: var(--su-blu); }
 
     .nav-links { display: flex; gap: 4px; list-style: none; }
     .nav-links a {
       position: relative; padding: 8px 14px; border-radius: var(--radius-xs);
       font-size: 0.96875rem; font-weight: 500; color: var(--ink-soft); text-decoration: none;
-      transition: color .2s, background .2s;
+      transition: color .35s, background .2s;
     }
     .nav-links a:hover { color: var(--blue-600); background: var(--blue-50); }
     .nav-links a.active { color: var(--blue-600); font-weight: 600; }
@@ -265,13 +272,15 @@
     /* "Chiama" nel menu: nel primo schermo c'è già il bottone grande "Chiama 0541-605692" dell'inizio pagina,
        quindi qui compare solo quando quello esce dallo schermo (lo decide lo script; senza script resta sempre) */
     #navbar.chiama-via .nav-cta .btn-call { max-width: 0; min-width: 0; padding-left: 0; padding-right: 0; opacity: 0; visibility: hidden; box-shadow: none; }
-    .nav-hamburger { display: none; width: 44px; height: 44px; border-radius: var(--radius-sm); font-size: 1.25rem; cursor: pointer; color: var(--blue-800); background: var(--blue-50); border: none; }
+    .nav-hamburger { display: none; width: 44px; height: 44px; border-radius: var(--radius-sm); font-size: 1.25rem; cursor: pointer; color: var(--blue-800); background: var(--blue-50); border: none; transition: color .35s, background-color .35s; }
 
     /* Computer: tre colonne (nome | voci | Chiama) con le voci sempre al centro esatto della barra,
        anche quando il nome o "Chiama" sono nascosti. Voci con una sottolineatura pulita al posto dei riquadri. */
     @media (min-width: 62.5625em) {
       .nav-inner { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; }
       .nav-brand { justify-self: start; }
+      .nav-brand-text strong { white-space: nowrap; }   /* «ACI Delegazione» su una riga, «di Riccione» sotto */
+      #navbar.nome-stretto .nav-brand-text { display: none; }   /* testo molto grande: solo il logo (lo decide lo script, sezione 11) */
       .nav-links { justify-self: center; justify-content: center; flex-wrap: wrap; gap: 6px; }
       .nav-cta { justify-self: end; }
       .nav-links a { padding: 10px 14px; font-size: 1rem; font-weight: 600; letter-spacing: .005em; border-radius: 0; background: none; }
@@ -286,6 +295,9 @@
       .nav-links { gap: 2px; }
       .nav-links a { padding: 8px 10px; font-size: 0.9375rem; }
       .nav-links a::after { left: 10px; right: 10px; }
+      .nav-logo { width: 46px; height: 46px; }
+      .nav-brand { gap: 8px; }
+      .nav-brand-text strong { font-size: .9375rem; }
     }
     /* Fino a 1000 px il menu si apre con il bottone ☰. Chiuso non sbuca e non si raggiunge con il tasto Tab;
        se è più alto dello spazio sotto la barra lo script gli dà l'altezza disponibile e si scorre al suo interno.
@@ -308,7 +320,7 @@
     }
     @media (max-width: 35em) {
       .nav-inner { min-height: 64px; gap: .75rem; }
-      .nav-logo { width: 40px; height: 40px; }
+      .nav-logo { width: 50px; height: 50px; }
       /* testo molto grande su telefoni stretti: il nome va a capo invece di spingere fuori telefono e menu */
       .nav-brand, .nav-brand-text { min-width: 0; flex-shrink: 1; }
       .nav-brand-text strong { overflow-wrap: anywhere; }
@@ -323,6 +335,90 @@
       .nav-cta { gap: .4rem; }
     }
     @media (max-width: 15em) { .nav-logo { display: none; } }
+
+    /* ---------- 5b. L'ISOLA SOSPESA (solo schermo, solo con lo script: lo script mette "isola-attiva" alla barra) ----------
+       In cima la barra è trasparente e appoggiata sull'inizio pagina blu: un pezzo solo, nessuna banda.
+       Scorrendo, piano piano e seguendo il dito, dietro le voci si forma un'"isola" (dall'inizio fino a quando il marchio
+       grande è passato tutto sotto la barra; nello stesso tratto entrano il logo piccolo e il nome, e l'isola è completa
+       esattamente quando sono al loro posto): un rettangolo di vetro con gli angoli arrotondati,
+       staccato di 8 px dall'alto e dai lati, con un'ombra morbida. Sopra il blu è vetro blu con scritte bianche;
+       quando sotto arriva la parte chiara diventa vetro bianco con scritte blu (dissolvenza di ~0,4 s, mai a metà).
+       Per essere fluida anche sui telefoni modesti si muove SOLO con transform e opacity: l'isola ha già la sua forma
+       finale e lo script la "allarga" fino ai bordi con scale() quando si è in cima.
+       L'altezza della barra non cambia mai: 8 px di margine + la riga del menu (--barra la misura lo script). */
+    @media screen {
+      #navbar.isola-attiva {
+        --isola-x: 12px;            /* quanto l'isola sporge oltre il testo del menu, a destra e a sinistra */
+        --isola-r: 18px;            /* raggio degli angoli */
+        padding-top: 8px; border-bottom: 0;
+      }
+      #navbar.isola-attiva:not(.libera)::before, #navbar.isola-attiva:not(.libera)::after { display: none; }
+      /* 8 + 61 = 69 px: la stessa altezza della barra di prima, così tutto il resto della pagina resta al pixel dov'era */
+      #navbar.isola-attiva .nav-inner { position: relative; min-height: 61px; }
+      .isola { display: none; }
+      #navbar.isola-attiva:not(.libera) .isola {
+        display: block; position: absolute; z-index: -1; top: 0; bottom: 0; left: var(--isola-x); right: var(--isola-x);
+        border-radius: var(--isola-r); pointer-events: none; transform-origin: 50% 50%;
+      }
+      /* due vetri uno sopra l'altro: la loro opacità la decide lo script (all'inizio 0: niente lampi).
+         L'effetto vetro (sfocatura) sta dentro ogni vetro, così in cima sparisce del tutto insieme al colore */
+      .isola-blu, .isola-bianca {
+        position: absolute; inset: 0; border-radius: inherit; opacity: 0;
+        -webkit-backdrop-filter: blur(18px) saturate(150%); backdrop-filter: blur(18px) saturate(150%);
+      }
+      .isola-blu {
+        background: linear-gradient(180deg, rgba(24,66,130,.86) 0%, rgba(10,33,80,.92) 100%);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,.16), inset 0 0 0 1px rgba(255,255,255,.09), 0 14px 34px -12px rgba(2,10,30,.6);
+      }
+      .isola-bianca {
+        background: rgba(255,255,255,.9);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,.9), inset 0 0 0 1px rgba(13,43,94,.08), 0 1px 2px rgba(15,27,51,.06), 0 14px 34px -12px rgba(15,27,51,.24);
+      }
+
+      /* L'inizio pagina sale sotto la barra (resta identico: c'è solo una striscia blu notte in più, nascosta dietro la barra) */
+      #navbar.isola-attiva ~ main #home { margin-top: calc(-1 * var(--barra)); border-top: var(--barra) solid var(--blue-900); }
+      /* il marchio grande, scorrendo, sfuma e si stringe appena verso sinistra (lo script; fermo in cima resta identico) */
+      #navbar.isola-attiva ~ main .hero-marchio { transform-origin: 0 50%; }
+
+      /* Nome piccolo col logo: entra INSIEME all'isola, seguendo lo scorrimento (lo script ne scrive opacità e
+         transform a ogni fotogramma: il logo cresce mentre il marchio grande passa sotto la barra, la scritta
+         scivola da sinistra un soffio dopo). Qui solo il punto di partenza: invisibile, senza animazioni a tempo. */
+      #navbar.isola-attiva .nav-brand, #navbar.isola-attiva.marchio-via .nav-brand { opacity: 1; transform: none; visibility: hidden; transition: none; }
+      #navbar.isola-attiva .nav-logo, #navbar.isola-attiva .nav-brand-text { opacity: 0; transition: none; transform-origin: 0 50%; }
+      #navbar.isola-attiva .nav-logo { transform-origin: 50% 50%; }
+
+      /* Telefono e tablet: il menu ☰ si apre in un pannello di vetro bianco, largo come l'isola e staccato di 8 px */
+      @media (max-width: 62.5em) {
+        #navbar.isola-attiva .nav-links {
+          top: calc(100% + 8px); left: var(--isola-x); right: var(--isola-x);
+          padding: 8px; border: 0; border-radius: var(--isola-r);
+          background: rgba(255,255,255,.95); -webkit-backdrop-filter: blur(18px) saturate(170%); backdrop-filter: blur(18px) saturate(170%);
+          box-shadow: inset 0 0 0 1px rgba(13,43,94,.08), 0 22px 48px -14px rgba(15,27,51,.32);
+          transform: translateY(-8px) scale(.98); transform-origin: 50% 0; opacity: 0; visibility: hidden;
+          transition: transform .28s var(--ease), opacity .2s ease, visibility 0s linear .28s;
+        }
+        #navbar.isola-attiva .nav-links.open { transform: none; opacity: 1; visibility: visible; transition: transform .4s cubic-bezier(.2,.8,.2,1), opacity .25s ease; }
+        #navbar.isola-attiva .nav-links a { border-radius: var(--radius-sm); color: var(--ink); font-weight: 600; }
+        #navbar.isola-attiva .nav-links a.active { background: var(--blue-50); color: var(--blue-600); }
+        /* le voci arrivano una dopo l'altra, appena appena */
+        #navbar.isola-attiva .nav-links li { opacity: 0; transform: translateY(-4px); transition: opacity .2s ease, transform .2s ease; }
+        #navbar.isola-attiva .nav-links.open li { opacity: 1; transform: none; transition: opacity .3s ease, transform .4s cubic-bezier(.2,.8,.2,1); }
+        #navbar.isola-attiva .nav-links.open li:nth-child(2) { transition-delay: .03s; }
+        #navbar.isola-attiva .nav-links.open li:nth-child(3) { transition-delay: .06s; }
+        #navbar.isola-attiva .nav-links.open li:nth-child(4) { transition-delay: .09s; }
+        #navbar.isola-attiva .nav-links.open li:nth-child(5) { transition-delay: .12s; }
+        #navbar.isola-attiva .nav-links.open li:nth-child(6) { transition-delay: .15s; }
+        #navbar.isola-attiva .nav-links.open li:nth-child(7) { transition-delay: .18s; }
+      }
+      @media (max-width: 35em) {
+        #navbar.isola-attiva { --isola-x: 14px; --isola-r: 16px; }   /* l'isola resta a 10 px dai bordi del telefono */
+        #navbar.isola-attiva .nav-inner { min-height: 57px; }   /* 8 + 57 = 65 px, come prima */
+      }
+      @media (max-width: 18.75em) {
+        #navbar.isola-attiva { --isola-x: 6px; --isola-r: 14px; padding-top: 6px; }
+        #navbar.isola-attiva .nav-inner { min-height: 59px; }   /* 6 + 59 = 65 px, come prima */
+      }
+    }
 
     /* ---------- 6. HERO (inizio pagina) ---------- */
     #home {
@@ -339,13 +435,13 @@
     /* Marchio grande sopra il titolo: logo ACI senza cornice (vettoriale, nitido) e il nome per intero.
        Una linea sottile lo separa dal titolo: prima "chi siamo", poi "cosa facciamo". */
     .hero-marchio { display: flex; align-items: center; gap: 20px; margin-bottom: 2rem; padding-bottom: 1.6rem; border-bottom: 1px solid rgba(255,255,255,.16); max-width: 34rem; }
-    .hero-marchio img { width: 92px; height: 92px; flex-shrink: 0; object-fit: contain; filter: drop-shadow(0 6px 14px rgba(0,0,0,.28)); }
+    .hero-marchio img { width: 120px; height: 120px; flex-shrink: 0; object-fit: contain; filter: drop-shadow(0 6px 14px rgba(0,0,0,.28)); }
     .hero-marchio-nome { font-family: var(--font-head); line-height: 1.12; letter-spacing: -.015em; min-width: 0; overflow-wrap: break-word; }
     .hero-marchio-nome strong { display: block; font-size: 1.875rem; font-weight: 800; color: var(--white); }
     .hero-marchio-nome span { display: block; font-size: 1.375rem; font-weight: 600; color: var(--su-blu); margin-top: 2px; }
     @media (max-width: 35em) {
       .hero-marchio { gap: 14px; margin-bottom: 1.2rem; padding-bottom: 1.1rem; }
-      .hero-marchio img { width: 68px; height: 68px; }
+      .hero-marchio img { width: 88px; height: 88px; }
       .hero-marchio-nome strong { font-size: 1.4375rem; }
       .hero-marchio-nome span { font-size: 1.125rem; }
     }
@@ -933,7 +1029,11 @@
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       .status-dot { animation: none; }
-      #navbar, .nav-brand, .nav-cta .btn-call { transition: none; }
+      #navbar, #navbar::before, #navbar::after, .nav-brand, .nav-cta .btn-call, .nav-links a, .nav-hamburger, .nav-brand-text strong, .nav-brand-text .nav-luogo { transition: none; }
+      /* isola: niente forme che cambiano né scivolamenti (lo script la mette subito al suo posto), solo cambi netti */
+      #navbar.isola-attiva .nav-brand, #navbar.isola-attiva .nav-logo, #navbar.isola-attiva .nav-brand-text,
+      #navbar.isola-attiva .nav-links, #navbar.isola-attiva .nav-links.open, #navbar.isola-attiva .nav-links li, #navbar.isola-attiva .nav-links.open li { transition: none !important; }
+      #navbar.isola-attiva .nav-links, #navbar.isola-attiva .nav-links li { transform: none; }
     }
 
     /* ---------- 18. STAMPA: testo nero su carta bianca, documenti e risposte tutti aperti;
@@ -949,8 +1049,10 @@
       .service-icon, .asi-ico, .asi-icon-large, .contatto-icon, .faq-q-icon { display: none !important; }
       .hero-content h1 .accent { text-decoration-color: #000 !important; }
       #navbar { position: static; border-bottom: 1px solid #999; }
+      #navbar::before, #navbar::after, .isola { display: none !important; }
       .nav-cta .btn-call span.full { display: inline !important; }
       #navbar .nav-cta .btn-call, #navbar .nav-brand { visibility: visible !important; opacity: 1 !important; max-width: none !important; transform: none !important; }
+      #navbar .nav-logo, #navbar .nav-brand-text { opacity: 1 !important; transform: none !important; }  /* l'isola li muove sullo schermo, non in stampa */
       .hero-marchio { display: none !important; }
       section { padding: .6rem 0 !important; }
       footer { padding: 1rem 0 0 !important; }
@@ -1101,9 +1203,10 @@
      Niente barra sopra: indirizzo, stato ed email sono già in "Informazioni rapide". Stesso ordine delle sezioni. -->
 <nav id="navbar" aria-label="Menu principale">
   <div class="wrap nav-inner">
+    <span class="isola" aria-hidden="true"><span class="isola-blu"></span><span class="isola-bianca"></span></span>
     <a class="nav-brand" href="#home">
-      <img src="aci-logo.svg" alt="Logo ACI" class="nav-logo" width="44" height="44">
-      <span class="nav-brand-text"><strong>Delegazione ACI <span class="nav-luogo">di Riccione</span></strong></span>
+      <img src="aci-logo.svg" alt="Logo ACI" class="nav-logo" width="54" height="54">
+      <span class="nav-brand-text"><strong>ACI Delegazione <span class="nav-luogo">di Riccione</span></strong></span>
     </a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#servizi">Servizi</a></li>
@@ -1120,6 +1223,8 @@
     </div>
   </div>
 </nav>
+<!-- Con lo script la barra diventa l'"isola" sospesa (vedi 5b nel foglio di stile); senza script resta la barra blu di sempre -->
+<script>document.getElementById('navbar').classList.add('isola-attiva');</script>
 
 <main id="contenuto" tabindex="-1">
 
@@ -1130,7 +1235,7 @@
       <div class="hero-content">
         <div class="hero-marchio">
           <img src="aci-logo.svg" alt="Logo ACI" width="92" height="92">
-          <div class="hero-marchio-nome"><strong>Delegazione ACI</strong> <span>di Riccione</span></div>
+          <div class="hero-marchio-nome"><strong>ACI Delegazione</strong> <span>di Riccione</span></div>
         </div>
         <h1>Pratiche auto e rinnovo patente <span class="accent unito">a Riccione</span></h1>
         <p>Rinnovo della patente con il medico in sede, passaggi di proprietà, bollo auto e immatricolazione di veicoli esteri. Tu porti i documenti, alla pratica pensiamo noi.</p>
@@ -1753,17 +1858,20 @@
     navLinks.classList.remove('open');
     hamburger.setAttribute('aria-expanded', 'false');
     hamburger.setAttribute('aria-label', 'Apri il menu');
+    chiediDisegno(); // l'isola torna com'era prima di aprire il menu
   }
   // Se il menu aperto è più alto dello spazio sotto la barra (testo molto grande, zoom, telefono in orizzontale),
   // riceve l'altezza disponibile e si scorre al suo interno: tutte le voci restano raggiungibili
+  // (16 px = lo stacco di 8 px sotto l'isola + 8 px di respiro in fondo)
   function altezzaMenu() {
-    const sotto = window.innerHeight - navbar.getBoundingClientRect().bottom;
+    const sotto = window.innerHeight - navbar.getBoundingClientRect().bottom - 16;
     navLinks.style.maxHeight = menuAperto() ? Math.max(160, Math.floor(sotto)) + 'px' : '';
   }
   hamburger.addEventListener('click', e => {
     const aperto = navLinks.classList.toggle('open');
     hamburger.setAttribute('aria-expanded', String(aperto));
     hamburger.setAttribute('aria-label', aperto ? 'Chiudi il menu' : 'Apri il menu');
+    chiediDisegno(); // menu aperto: l'isola si forma (anche in cima) e diventa bianca come il pannello
     altezzaMenu();
     // aperto con la tastiera (Invio o Spazio): si va subito sulla prima voce
     if (e.detail === 0 && aperto) navLinks.querySelector('a').focus();
@@ -1775,24 +1883,146 @@
     if (e.key === 'Escape' && menuAperto()) { chiudiMenu(); hamburger.focus(); }
   });
 
-  /* ---------- 3. Scorrimento: ombra della barra, bottone "Torna su", voce del menu della sezione visibile ----------
-     L'ascoltatore è "passive" (non rallenta lo scorrimento) e fa i calcoli al massimo una volta per fotogramma. */
+  /* ---------- 3. Scorrimento: l'isola del menu, bottone "Torna su", voce del menu della sezione visibile ----------
+     L'ascoltatore è "passive" (non rallenta lo scorrimento) e tutto si calcola al massimo una volta per fotogramma.
+     Le misure (posizioni delle sezioni, fondo dell'inizio pagina, forma dell'isola) si leggono SOLO all'apertura,
+     quando cambia la finestra o l'altezza della pagina: mentre si scorre si legge solo scrollY e si scrivono
+     solo transform e opacity dell'isola (niente ricalcoli dell'impaginazione: fluido anche sui telefoni modesti).
+     L'isola:
+     - "stacco" k da 0 a 1 dall'inizio fino a quando il marchio grande è passato tutto sotto la barra, con una curva
+       dolce: in cima è allargata fino ai bordi e trasparente (un pezzo solo con l'inizio pagina), poi si stringe piano
+       alla sua forma sospesa mentre il vetro compare;
+     - passaggio di testimone: il marchio grande, avvicinandosi alla barra, sfuma e si stringe appena; a metà
+       della sua sfumatura cominciano a entrare logo piccolo e nome (m da 0 a 1), che arrivano al loro posto ESATTAMENTE quando l'isola è completa (mai un'isola finita ma vuota).
+       Il logo cresce mentre il grande sparisce sotto il vetro, la scritta scivola da sinistra un soffio dopo;
+     - colore: vetro blu sopra il blu, vetro bianco quando sotto la barra arriva la parte chiara. Il cambio è una
+       dissolvenza di ~0,4 s (il vetro bianco si posa sopra quello blu), così non resta mai fermo a metà, illeggibile;
+     - menu ☰ aperto: l'isola si forma e diventa bianca come il pannello.
+     Con "riduci movimento": niente forme che cambiano; isola e nome compaiono insieme, di colpo, quando il marchio
+     grande è sotto la barra. */
   const toTop = $('toTop');
   const sezioni = Array.from(document.querySelectorAll('section[id]'));
   const vociMenu = Array.from(navLinks.querySelectorAll('a'));
-  let scrollInAttesa = false;
-  function suScroll() {
-    scrollInAttesa = false;
+  const inizioPagina = $('home');
+  const isola = navbar.querySelector('.isola');
+  const vetroBlu = isola && isola.querySelector('.isola-blu');
+  const vetroBianco = isola && isola.querySelector('.isola-bianca');
+  const marchioGrande = document.querySelector('.hero-marchio');
+  const nome = navbar.querySelector('.nav-brand');
+  const logoPiccolo = nome && nome.querySelector('.nav-logo');
+  const scrittaNome = nome && nome.querySelector('.nav-brand-text');
+  const movimentoRidotto = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : { matches: false };
+  let corsa = 200;          // px di scorrimento in cui l'isola si forma (fino all'uscita del marchio grande)
+  let inizioNome = 40;      // da qui entra il nome piccolo (il marchio grande comincia a passare sotto la barra)
+  let sottoBarra = 150;     // da qui il marchio grande è tutto sotto la barra (serve col movimento ridotto)
+  let marchioDa = 0, marchioA = 100;   // tratto in cui il marchio grande sfuma mentre si avvicina alla barra
+  let sogliaBianco = 520;   // da qui in giù l'isola è bianca
+  let forma = null;         // quanto allargare e spostare l'isola perché in cima arrivi ai bordi della barra
+  let inizioSezioni = [];
+  let conHamburger = false;
+  let bianco = null, aperturaMenu = 0, tempoPrima = 0, disegnoChiesto = false, sezioneAttuale = null;
+  const scritto = { t: '', blu: '', bianco: '', logo: '', scritta: '', vis: '', marchio: '' };
+  const liscia = x => x <= 0 ? 0 : x >= 1 ? 1 : x * x * (3 - 2 * x);   // parte e arriva piano
+  const verso = (da, a, passo) => da < a ? Math.min(a, da + passo) : Math.max(a, da - passo);
+
+  function misura() {
+    const h = navbar.offsetHeight;
+    if (inizioPagina && inizioPagina.offsetHeight) {
+      const fondo = inizioPagina.offsetTop + inizioPagina.offsetHeight;   // fondo dell'inizio pagina, onda compresa
+      sogliaBianco = Math.max(1, fondo - h / 2 - 26);                     // il centro dell'isola è sulla parte chiara dell'onda
+      corsa = Math.max(60, Math.min(200, fondo / 4));
+    }
+    if (marchioGrande && marchioGrande.offsetHeight) {
+      // posizione senza il rimpicciolimento (offsetTop non risente di transform)
+      let su = 0;
+      for (let e = marchioGrande; e; e = e.offsetParent) su += e.offsetTop;
+      const alto = marchioGrande.offsetHeight, giu = su + alto;
+      sottoBarra = Math.max(1, giu - h);             // il marchio grande è tutto dietro la barra
+      marchioDa = Math.max(0, su - h - 20);          // 20 px prima di toccare il fondo della barra comincia a sfumare
+      marchioA = Math.max(marchioDa + 60, su - h + alto * 0.7);   // sparito quando è per due terzi dietro la barra
+      inizioNome = marchioDa + (marchioA - marchioDa) * 0.25;     // il piccolo cresce MENTRE il grande sfuma (si sovrappongono)
+      corsa = Math.max(120, marchioA + (marchioA - marchioDa) * 0.25);   // isola completa poco dopo: logo e nome al loro posto
+    }
+    forma = null;
+    if (isola && isola.offsetWidth && isola.offsetParent) {
+      const riga = isola.offsetParent;                                     // la riga del menu, dentro la barra
+      const x = riga.offsetLeft + isola.offsetLeft, y = riga.offsetTop + isola.offsetTop;
+      const w = isola.offsetWidth, hh = isola.offsetHeight, W = navbar.clientWidth;
+      forma = { sx: W / w, sy: h / hh, dx: W / 2 - (x + w / 2), dy: h / 2 - (y + hh / 2) };
+    }
+    conHamburger = getComputedStyle(hamburger).display !== 'none';
+    inizioSezioni = sezioni.map(s => ({ id: s.id, y: s.offsetTop }));
+  }
+
+  function disegna(ora) {
+    disegnoChiesto = false;
     const y = window.scrollY;
-    navbar.classList.toggle('scrolled', y > 10);
+    const ridotto = movimentoRidotto.matches;
+    const libera = navbar.classList.contains('libera');
+    const aperto = conHamburger && menuAperto();
+    const voglioBianco = !libera && (aperto || y >= sogliaBianco) ? 1 : 0;
+    const voglioMenu = aperto ? 1 : 0;
+    const passo = tempoPrima && ora ? Math.min(80, ora - tempoPrima) : 16;
+    if (bianco === null || ridotto) { bianco = voglioBianco; aperturaMenu = voglioMenu; }   // all'apertura: subito giusta
+    else { bianco = verso(bianco, voglioBianco, passo / 420); aperturaMenu = verso(aperturaMenu, voglioMenu, passo / 380); }
+    navbar.classList.toggle('scrolled', voglioBianco === 1);
+
+    if (forma && vetroBlu && vetroBianco) {
+      let k = libera ? 0 : ridotto ? (y >= sottoBarra ? 1 : 0) : liscia(y / corsa);
+      k += (1 - k) * liscia(aperturaMenu);
+      const r = 1 - k, b = liscia(bianco);
+      const t = 'translate3d(' + (forma.dx * r).toFixed(2) + 'px,' + (forma.dy * r).toFixed(2) + 'px,0) scale(' +
+                (1 + (forma.sx - 1) * r).toFixed(4) + ',' + (1 + (forma.sy - 1) * r).toFixed(4) + ')';
+      const oBianco = (k * b).toFixed(3), oBlu = (k * (1 - b * b)).toFixed(3);
+      if (t !== scritto.t) { isola.style.transform = t; scritto.t = t; }
+      // un vetro del tutto trasparente si spegne (visibility), così il telefono non lavora a sfocare per niente
+      if (oBlu !== scritto.blu) { vetroBlu.style.opacity = oBlu; vetroBlu.style.visibility = +oBlu ? '' : 'hidden'; scritto.blu = oBlu; }
+      if (oBianco !== scritto.bianco) { vetroBianco.style.opacity = oBianco; vetroBianco.style.visibility = +oBianco ? '' : 'hidden'; scritto.bianco = oBianco; }
+    }
+    navbar.classList.toggle('menu-aperto', aperto);
+
+    // logo piccolo e nome: entrano con l'isola e sono al loro posto quando l'isola è completa
+    if (logoPiccolo && scrittaNome) {
+      // curva che parte svelta e arriva piano: il logo piccolo c'è già mentre il grande sta sfumando
+      const xm = Math.min(1, Math.max(0, (y - inizioNome) / Math.max(1, corsa - inizioNome)));
+      let m = ridotto ? (y >= sottoBarra ? 1 : 0) : 1 - (1 - xm) * (1 - xm);
+      m = Math.max(m, liscia(aperturaMenu));                                  // menu ☰ aperto: il nome c'è sempre
+      const ml = liscia(Math.min(1, m / 0.8)), ms = liscia((m - 0.2) / 0.8);   // il logo un soffio prima della scritta
+      const logo = ml >= 1 ? 'none' : 'scale(' + (0.55 + 0.45 * ml).toFixed(3) + ')';
+      const scritta = ms >= 1 ? 'none' : 'translate3d(' + (-12 * (1 - ms)).toFixed(2) + 'px,0,0)';
+      const vis = m > 0 ? 'visible' : '';
+      if (logo + ml !== scritto.logo) { logoPiccolo.style.transform = logo; logoPiccolo.style.opacity = ml.toFixed(3); scritto.logo = logo + ml; }
+      if (scritta + ms !== scritto.scritta) { scrittaNome.style.transform = scritta; scrittaNome.style.opacity = ms.toFixed(3); scritto.scritta = scritta + ms; }
+      if (vis !== scritto.vis) { nome.style.visibility = vis; scritto.vis = vis; }   // invisibile = né cliccabile né col Tab
+    }
+    // marchio grande: mentre si avvicina alla barra sfuma e si stringe appena (passa il testimone a quello piccolo),
+    // così non si vedono mai due marchi pieni insieme, né il nome grande in trasparenza sotto il vetro
+    if (marchioGrande) {
+      const g = ridotto || libera ? 0 : liscia((y - marchioDa) / Math.max(1, marchioA - marchioDa));
+      const og = (1 - g).toFixed(3), tg = g > 0 ? 'scale(' + (1 - 0.08 * g).toFixed(4) + ')' : '';
+      if (og + tg !== scritto.marchio) { marchioGrande.style.opacity = g > 0 ? og : ''; marchioGrande.style.transform = tg; scritto.marchio = og + tg; }
+    }
+
     toTop.classList.toggle('show', y > 600);
     let attuale = '';
-    sezioni.forEach(s => { if (y >= s.offsetTop - 120) attuale = s.id; });
-    vociMenu.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + attuale));
+    for (const s of inizioSezioni) if (y >= s.y - 120) attuale = s.id;
+    if (attuale !== sezioneAttuale) {
+      sezioneAttuale = attuale;
+      vociMenu.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + attuale));
+    }
+
+    // dissolvenza ancora in corso: si continua al prossimo fotogramma
+    if (bianco !== voglioBianco || aperturaMenu !== voglioMenu) { tempoPrima = ora || 0; chiediDisegno(); } else tempoPrima = 0;
   }
-  window.addEventListener('scroll', () => {
-    if (!scrollInAttesa) { scrollInAttesa = true; requestAnimationFrame(suScroll); }
-  }, { passive: true });
+  function chiediDisegno() { if (!disegnoChiesto) { disegnoChiesto = true; requestAnimationFrame(disegna); } }
+  function rimisuraEDisegna() { misura(); disegna(0); }   // subito, prima che il browser mostri la pagina
+
+  window.addEventListener('scroll', chiediDisegno, { passive: true });
+  window.addEventListener('resize', rimisuraEDisegna, { passive: true });
+  window.addEventListener('load', rimisuraEDisegna);
+  // la pagina cambia altezza (risposte aperte, caratteri caricati) o la barra cambia misura: si rimisura
+  if ('ResizeObserver' in window) { const ro = new ResizeObserver(rimisuraEDisegna); ro.observe(document.body); ro.observe(navbar); }
+  requestAnimationFrame(rimisuraEDisegna); // pagina riaperta a metà: l'isola è subito come deve essere
   toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
   /* ---------- 4. Tendine "Documenti necessari" ---------- */
@@ -2004,6 +2234,23 @@
     }
     quandoSiVede(document.querySelector('.hero-marchio'), 'marchio-via');
     quandoSiVede(document.querySelector('.hero-btns'), 'chiama-via');
+  })();
+
+  /* ---------- 11. Testo molto grande sul computer ----------
+     Se il nome nel menu finirebbe sopra le voci (Servizi, Auto storiche…), nella barra resta solo il logo.
+     Si controlla all'apertura, quando arrivano i caratteri e quando cambia la finestra (mai mentre si scorre). */
+  (function () {
+    const marchio = navbar.querySelector('.nav-brand');
+    if (!marchio) return;
+    function controlla() {
+      navbar.classList.remove('nome-stretto');
+      if (getComputedStyle(navLinks).position === 'absolute') return; // telefono e tablet: le voci stanno nel pannello ☰
+      navbar.classList.toggle('nome-stretto', marchio.getBoundingClientRect().right > navLinks.getBoundingClientRect().left - 8);
+    }
+    window.addEventListener('resize', controlla, { passive: true });
+    window.addEventListener('load', controlla);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(controlla);
+    controlla();
   })();
 })();
 </script>
